@@ -1,9 +1,9 @@
 ---
-layout: page-cv # no need to modify
+layout: cvpage
 title: Huilin Cao # Firstname Lastname
 # description: # you can leave it empty
 img: huilin_cao_2inch.jpg # change "profile" to the name of your picture
-yaml: huilin_cao # name of the yml file
+cv: huilin_cao
 toc:
   sidebar: right # no need to modify
 importance: 1 # no need to modify
@@ -16,4 +16,4 @@ github: # link to your github page, leave it as it is now if you don't have one
 
 Welcome to my webpage!
 
-I'm currently a second-year phd student. My research interests are machine learning, dictionary learning, computational electronmagnetism. 
+I'm currently a second-year PhD student. My research interests are machine learning, dictionary learning, and computational electromagnetism.

@@ -8,18 +8,15 @@
     - name: Research Interests
       value: opimization, machine learning
 
-
 - title: Education
   type: time_table
   contents:
     - title: PhD in Mathematics
-      institution: Institute of Natural Science and School of Mathematical Sciences, Shanghai Jiao Tong University, 
+      institution: Institute of Natural Science and School of Mathematical Sciences, Shanghai Jiao Tong University,
       year: 2024.09 - PRESENT
     - title: Bachelor in Mathematics
       institution: Zhiyuan College and School of Mathematical Sciences, Shanghai Jiao Tong University
       year: 2020.09 - 2024.06
-
-
 
 - title: Other Interests
   type: list

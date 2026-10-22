@@ -28,7 +28,6 @@
 #         - Description 1.
 #         - Description 2.
 
-
 - title: Education
   type: time_table
   contents:
@@ -49,9 +48,8 @@
       institution: School of Mathematics and Statistics, Huazhong University of Science and Technology
       year: 2018.09 - 2022.06
       # description:
-      #   - Description 1. 
-        # - Description 2. 
-
+      #   - Description 1.
+      # - Description 2.
 # - title: Research Experience & Internships
 #   type: time_table
 #   contents:

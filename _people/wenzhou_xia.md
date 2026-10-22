@@ -16,4 +16,4 @@ github: https://github.com/WenzhouXia
 
 Welcome to my webpage!
 
-I'm currently a first-year phd student, under the supervision of [Prof. Xiaoqun Zhang](https://math.sjtu.edu.cn/faculty/xqzhang/). My research interests are optimization, machine learning. 
+I'm currently a first-year PhD student under the supervision of [Prof. Xiaoqun Zhang](https://math.sjtu.edu.cn/faculty/xqzhang/). My research interests are optimization and machine learning.

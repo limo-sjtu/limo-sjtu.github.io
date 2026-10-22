@@ -4,5 +4,4 @@ title: Talks
 yaml: talks
 ---
 
-
 {% include activity_talks.liquid %}

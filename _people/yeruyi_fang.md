@@ -16,4 +16,4 @@ github: # link to your github page, leave it as it is now if you don't have one
 
 Welcome to my webpage!
 
-I'm currently a third-year master student, under the supervision of [Prof. Jingwei Liang](https://jliang993.github.io/). My research interests are non-smooth optimization, stochastic optimization and imaging processing. 
+I'm currently a third-year master's student under the supervision of [Prof. Jingwei Liang](https://jliang993.github.io/). My research interests are non-smooth optimization, stochastic optimization, and image processing.

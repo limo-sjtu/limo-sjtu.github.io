@@ -20,9 +20,14 @@
         {% endif %}
         <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
           <h6 class="title font-weight-bold ml-1 ml-md-4">
-          {% if content.session_url %}<a href="{{ content.session_url }}">{{ content.session }}</a>{% else %}{{ content.session }}{% endif %} @ <a href="{{ content.conf_url }}">{{ content.conference }}</a>
+            {% if content.session_url -%}
+              <a href="{{ content.session_url }}">{{ content.session }}</a>
+            {%- else -%}
+              {{- content.session -}}
+            {%- endif %}
+            @ <a href="{{ content.conf_url }}">{{ content.conference }}</a>
           </h6>
-          <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ content.organizers }} </h6>
+          <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ content.organizers }}</h6>
         </div>
         {% comment %} --------------------- {% endcomment %}
         <!-- Links/Buttons -->
@@ -39,15 +44,13 @@
             {% else %}
               <a href="{{ entry.html | prepend: '/assets/html/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
             {% endif %}
-          {% endif %}      
+          {% endif %}
           {% if entry.website %}
             <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
           {% endif %}
         </div>
         {% comment %} ------------------------------ {% endcomment %}
       </div>
-      
     </li>
   {% endfor %}
 </ul>
-

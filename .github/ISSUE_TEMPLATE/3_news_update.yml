@@ -1,0 +1,54 @@
+name: 📣 News update
+description: Request a publication, event, award, member, or general announcement.
+title: "[News] "
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: News type
+      options:
+        - publication
+        - event
+        - award
+        - member
+        - general
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Publication date
+      description: Date on which this item should appear in the news list.
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Short title
+    validations:
+      required: true
+
+  - type: textarea
+    id: body
+    attributes:
+      label: Announcement text
+      description: Keep homepage announcements concise. Markdown links are supported.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Supporting links
+      description: Paper page, event page, award notice, or another public source.
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I confirm that this announcement may be published on the public LIMO website.
+          required: true

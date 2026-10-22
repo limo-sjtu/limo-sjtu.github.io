@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: ❓ Ask a Question
-    url: https://github.com/alshedivat/al-folio/discussions/categories/q-a
-    about: Ask and answer al-folio related questions.
-  - name: 📖 Read the documentation
-    url: https://github.com/alshedivat/al-folio/blob/master/README.md
-    about: Please consult the documentation before opening any issues!
+  - name: 🌐 View the website
+    url: https://limo-sjtu.github.io
+    about: Check the current published content before submitting a change.
+  - name: 📖 Maintainer guide
+    url: https://github.com/limo-sjtu/limo-sjtu.github.io/blob/master/update.md
+    about: Read the review, implementation, and publishing workflow.

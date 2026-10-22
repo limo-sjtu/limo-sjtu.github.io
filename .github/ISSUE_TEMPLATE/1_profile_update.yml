@@ -1,0 +1,85 @@
+name: 👤 Member profile update
+description: Request a new member profile or a change to an existing profile.
+title: "[Profile] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit facts only; the website maintainer will prepare and review the repository changes.
+        Do not include private information that should not appear on the public website.
+
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: Request type
+      options:
+        - Add a new member
+        - Update an existing member
+        - Change membership category
+        - Remove or archive a member
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Full name
+      placeholder: Firstname Lastname
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Membership category
+      options:
+        - Faculty
+        - Post-doc
+        - PhD student
+        - Master student
+        - Undergraduate
+        - Alumni
+    validations:
+      required: true
+
+  - type: input
+    id: current_page
+    attributes:
+      label: Current profile URL
+      description: Leave blank for a new member.
+      placeholder: https://limo-sjtu.github.io/people/...
+
+  - type: textarea
+    id: requested_changes
+    attributes:
+      label: Requested changes
+      description: List the facts that should be added, changed, or removed.
+      placeholder: |
+        Research interests:
+        Public contact (use "name at domain dot com" format):
+        Education / experience:
+        Short biography:
+    validations:
+      required: true
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Public links
+      description: Personal homepage, Google Scholar, GitHub, or other public links.
+
+  - type: textarea
+    id: photo
+    attributes:
+      label: Portrait photo
+      description: For a new or replacement portrait, drag the image into this field. A clear headshot is preferred.
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I confirm that this information may be published on the public LIMO website.
+          required: true
+        - label: I have checked the spelling, links, and membership category.
+          required: true

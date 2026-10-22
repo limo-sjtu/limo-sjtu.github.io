@@ -16,7 +16,6 @@ layout: default
 
   <article>
     {% if page.profile %}
-
       <div class="profile float-center" style="width:80%;">
         {% if page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
@@ -26,19 +25,23 @@ layout: default
             {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
           {% endif %}
           {% comment %} ---------------------------------------- {% endcomment %}
-          {% comment %} {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 50 | times: 0.2}}px, (min-width: 576px)
-          20vw, 80vw"{% endcapture %}  {% endcomment %}
+          {% comment %}
+            {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 50 | times: 0.2}}px, (min-width: 576px)
+            20vw, 80vw"{% endcapture %}
+          {% endcomment %}
 
           {%
-            include figure.liquid loading="lazy" path=profile_image_path class=profile_image_class alt=page.profile.image width="10rem" 
+            include figure.liquid loading="lazy" path=profile_image_path class=profile_image_class alt=page.profile.image width="10rem"
             cache_bust=true
             align="left"
           %}
 
-          {% comment %} {%
-            include figure.liquid loading="lazy" path=profile_image_path class=profile_image_class max-width="10rem" alt=page.profile.image
-            cache_bust=true
-          %} {% endcomment %}
+          {% comment %}
+            {%
+              include figure.liquid loading="lazy" path=profile_image_path class=profile_image_class max-width="10rem" alt=page.profile.image
+              cache_bust=true
+            %}
+          {% endcomment %}
         {% endif %}
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
@@ -57,20 +60,21 @@ layout: default
         {% include new_news.liquid limit=true %}
       {% endif %}
 
-    {% comment %} <!-- Event organized -->
-    <h4>
-        <a href="/activities/" style="color: inherit">News and activities</a>
-    </h4>
-    <h5 class="services" style="margin-left:1rem;">News</h5>
-    {% include new_news.liquid limit=3 %}
-    {% comment %} asdf {% endcomment %}
-    <h5 class="services" style="margin-left:1rem;">Recent talks</h5>
-    {% include activity_talks.liquid  file="talks" limit=2 %}
-    <h5 class="services" style="margin-left:1rem;">Recent events</h5>
-    {% include activity_events.liquid file="events" limit=2 %} {% endcomment %}
+      {% comment %}
+        <!-- Event organized -->
+        <h4>
+            <a href="/activities/" style="color: inherit">News and activities</a>
+        </h4>
+        <h5 class="services" style="margin-left:1rem;">News</h5>
+        {% include new_news.liquid limit=3 %}
+        {% comment %} asdf {% endcomment %}
+        <h5 class="services" style="margin-left:1rem;">Recent talks</h5>
+        {% include activity_talks.liquid  file="talks" limit=2 %}
+        <h5 class="services" style="margin-left:1rem;">Recent events</h5>
+        {% include activity_events.liquid file="events" limit=2 %}
+      {% endcomment %}
 
-
-    <!-- Latest posts -->
+      <!-- Latest posts -->
       {% if site.latest_posts.enabled %}
         <h4>
           <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest posts</a>
@@ -106,7 +110,6 @@ layout: default
       {% if site.newsletter.enabled and site.footer_fixed %}
         {% include scripts/newsletter.liquid center=true %}
       {% endif %}
-
     </div>
   </article>
 </div>

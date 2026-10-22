@@ -1,9 +1,9 @@
 ---
-layout: page-cv # no need to modify
+layout: cvpage
 title: Ziqi Qin
 # description: # you can leave it empty
 img: ziqi_qin_2inch.jpg # change "profile" to the name of your picture
-yaml: ziqi_qin # name of the yml file
+cv: ziqi_qin
 toc:
   sidebar: right # no need to modify
 importance: 1 # no need to modify
@@ -16,4 +16,4 @@ github: # link to your github page, leave it as it is now if you don't have one
 
 Welcome to my webpage!
 
-I'm currently a fourth-year phd student. My research interests are non-smooth optimization, machine learning. 
+I'm currently a fourth-year PhD student. My research interests are non-smooth optimization and machine learning.

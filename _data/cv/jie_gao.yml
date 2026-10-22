@@ -4,9 +4,9 @@
     - name: Email Address
       value: zjgaojie at sjtu dot edu dot cn # do not use the full email address to avoid spam
     - name: Address
-      value: Room 502, No.6 Sicence Building
+      value: Room 502, No. 6 Science Building
     - name: Research Interests
-      value: Non-smooth optimization, inverse problems, reinforcement learning 
+      value: Non-smooth optimization, inverse problems, reinforcement learning
 
 - title: Education
   type: time_table
@@ -14,6 +14,3 @@
     - title: Bachelor in Mathematics
       institution: Zhiyuan college, Shanghai Jiao Tong University
       year: 2017.09 - 2021.06
-      
-
-

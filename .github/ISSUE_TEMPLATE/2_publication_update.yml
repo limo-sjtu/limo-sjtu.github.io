@@ -1,0 +1,101 @@
+name: 📄 Publication update
+description: Request that a publication be added or corrected.
+title: "[Publication] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The maintainer will normalize the BibTeX entry and decide whether it appears in the homepage selection.
+
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: Request type
+      options:
+        - Add a publication
+        - Correct an existing publication
+        - Update a preprint to its published version
+        - Remove a duplicate entry
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Publication title
+    validations:
+      required: true
+
+  - type: textarea
+    id: authors
+    attributes:
+      label: Authors in publication order
+    validations:
+      required: true
+
+  - type: input
+    id: venue
+    attributes:
+      label: Journal, conference, or preprint venue
+    validations:
+      required: true
+
+  - type: input
+    id: year
+    attributes:
+      label: Publication year
+      placeholder: "2026"
+    validations:
+      required: true
+
+  - type: input
+    id: public_link
+    attributes:
+      label: DOI or public paper URL
+      placeholder: https://doi.org/... or https://arxiv.org/abs/...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: primary_category
+    attributes:
+      label: Primary research category
+      options:
+        - imaging
+        - optimization
+        - learning
+    validations:
+      required: true
+
+  - type: dropdown
+    id: secondary_category
+    attributes:
+      label: Secondary research category
+      options:
+        - none
+        - imaging
+        - optimization
+        - learning
+    validations:
+      required: true
+
+  - type: textarea
+    id: bibtex
+    attributes:
+      label: BibTeX (optional)
+      description: Paste a publisher-provided BibTeX entry if available.
+      render: bibtex
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Abstract, code, award, or other notes
+      description: Optional. Include only information that may be published.
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have checked the title, author order, venue, year, and link.
+          required: true

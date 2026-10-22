@@ -1,14 +1,13 @@
 {% if include.file %}
-  {%  assign events=site.data.activity[include.file] %}  
+  {% assign events = site.data.activity[include.file] %}
 {% else %}
-  {%  assign events=site.data.activity[page.yaml] %}  
-{% endif %}   
-
+  {% assign events = site.data.activity[page.yaml] %}
+{% endif %}
 
 <div class="news">
   <div class="table-list">
     {% for entry in events %}
-      {% if entry.type=="service" %}
+      {% if entry.type == 'service' %}
         <h5 class="services">{{ entry.title }}</h5>
         <table>
           <tbody>
@@ -16,12 +15,17 @@
               <tr>
                 <td class="percentage-width">
                   <h6 class="item-badge" style="">
-                  <b>{{- item.date -}} {{ }} {{ item.year -}}</b>
+                    <b>
+                      {{- item.date -}}
+                      {{  }}
+                      {{ item.year -}}
+                    </b>
                   </h6>
                 </td>
                 <td>
                   <div style="">
-                    {{ item.role }} <i>of</i> <a href="{{ item.venue_url }}" style="font-weight: bold;">{{ item.venue }}</a> 
+                    {{ item.role }}
+                    <i>of</i> <a href="{{ item.venue_url }}" style="font-weight: bold;">{{ item.venue }}</a>
                   </div>
                 </td>
               </tr>
@@ -38,7 +42,7 @@
 <div class="news">
   <div class="table-list">
     {% for entry in events %}
-      {% if entry.type=="review" %}
+      {% if entry.type == 'review' %}
         <h5 class="services">{{ entry.title }}</h5>
         <table>
           <tbody>
@@ -46,7 +50,7 @@
               <tr>
                 <td class="percentage-width">
                   <h6 class="item-badge" style="">
-                  <b>{{- item.title -}}</b>
+                    <b>{{- item.title -}}</b>
                   </h6>
                 </td>
                 <td>
@@ -55,7 +59,10 @@
                     {% comment %} {{ journal_count }} {% endcomment %}
                     {% assign count = 1 %}
                     {% for journal in item.description %}
-                      {{ journal }} {% if count<journal_count %} <span>&bull;</span> {% endif %}
+                      {{ journal }}
+                      {% if count < journal_count %}
+                        <span>&bull;</span>
+                      {% endif %}
                       {% assign count = count | plus: 1 %}
                     {% endfor %}
                   </div>
@@ -68,4 +75,3 @@
     {% endfor %}
   </div>
 </div>
-

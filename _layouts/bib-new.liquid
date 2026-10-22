@@ -2,16 +2,14 @@
 ---
 <div class="row">
   {% if site.enable_publication_thumbnails %}
-
     <div class="col col-sm-2 abbr" style="max-width: 7.5rem; margin-left: 1rem">
-
       {%- if entry.abbr -%}
         {%- if site.data.venues[entry.abbr] -%}
           {% assign venue_style = null %}
           {% if site.data.venues[entry.abbr].color != blank %}
             {% assign venue_style = site.data.venues[entry.abbr].color | prepend: 'style="background-color:' | append: '"' %}
           {%- endif -%}
-          
+
           <abbr
             class="badge rounded w-100"
             {% if venue_style %}
@@ -45,9 +43,7 @@
           %}
         {% endif %}
       {% endif %}
-
     </div>
-
   {% endif %}
 
   <!-- Entry bib key -->
@@ -259,8 +255,8 @@
         <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
       {% endif %}
     </div>
-    
-      {% if site.enable_publication_badges %}
+
+    {% if site.enable_publication_badges %}
       {% assign entry_has_altmetric_badge = false %}
       {% if entry.altmetric and entry.altmetric != 'false' %}
         {% assign entry_has_altmetric_badge = true %}

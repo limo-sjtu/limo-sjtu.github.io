@@ -4,7 +4,7 @@
     - name: Email Address
       value: yutingshen98 at sjtu dot edu dot cn # do not use the full email address to avoid spam
     - name: Address
-      value: Room 603, No.6 Sicence Building
+      value: Room 603, No. 6 Science Building
     - name: Research Interests
       value: Non-smooth optimization, image processing, machine learning
 
@@ -12,7 +12,7 @@
   type: time_table
   contents:
     - title: Master in Mathematics
-      institution: School of Mathematical Sciences, Shanghai Jiaotong University
+      institution: School of Mathematical Sciences, Shanghai Jiao Tong University
       year: 2020.09 - 2022.07
       description:
         - Image processing based on PDE
@@ -30,7 +30,6 @@
       name: Determinant of a rectangle matrix over the quaternion algebra
       publisher: Journal of Shanghai University (Natural Science)
       authors: Pingping Song, Yuxin Jiang, Yuting Shen.
-      url: link to the paper
     - year: 2018.05
       name: A quaternion matrix equation involving φ-Hermicity
       publisher: JP Journal of Algebra, Number Theory & Applications

@@ -4,10 +4,9 @@
     - name: Email Address
       value: bgye at sjtu dot edu dot cn # do not use the full email address to avoid spam
     - name: Address
-      value: Room 505, No.6 Sicence Building
+      value: Room 505, No. 6 Science Building
     - name: Research Interests
       value: Image processing, machine learning, parameter-efficient fine-tuning.
-
 # - title: Experience # this is for working experience
 #   type: time_table
 #   contents:

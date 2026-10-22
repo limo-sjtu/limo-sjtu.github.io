@@ -57,7 +57,7 @@ h3.talk-year {
   text-align: right;
 }
 
-h4.card-title{
+h4.card-title {
   color: var(--global-text-color);
   border-bottom: 1px solid var(--global-divider-color);
   // padding-top: 0.5rem;
@@ -565,7 +565,7 @@ footer.sticky-bottom {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
     text-align: left;
-  } 
+  }
 }
 
 // for activity-talks liquid
@@ -581,7 +581,7 @@ footer.sticky-bottom {
     border: 1px solid black;
     border-color: #666666;
     margin: 0;
-}
+  }
 
   .slidesbadge {
     color: var(--global-card-bg-color) !important;
@@ -782,9 +782,8 @@ footer.sticky-bottom {
     margin-top: 2rem;
     margin-bottom: 1rem;
     text-align: right;
-  }  
+  }
 }
-
 
 // Research
 
@@ -825,56 +824,51 @@ footer.sticky-bottom {
   }
 }
 
-
 // asdf
 
 // Card
 
 .info-card {
-//  	overflow: auto;
-	min-width: 18rem;
-	max-width: 22rem;
-	max-height: 10rem;
-//	padding: 1rem 0rem 0rem 0rem;
-//	min-height: 25rem;
-//	height: 8.5rem;
-//	background-color: red;
-	background-color: var(--global-card-bg-color);
+  //  	overflow: auto;
+  min-width: 18rem;
+  max-width: 22rem;
+  max-height: 10rem;
+  //	padding: 1rem 0rem 0rem 0rem;
+  //	min-height: 25rem;
+  //	height: 8.5rem;
+  //	background-color: red;
+  background-color: var(--global-card-bg-color);
 
-	display: grid;
-    grid-template-columns: 1fr 2fr; /* Two equal columns */
-	
-	.info-texts {
-	  min-height: 5rem;
-	  padding: 0.75rem 0rem 0rem 0.35rem;
-	  color: var(--global-text-color);
-	}
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Two equal columns */
 
-	
+  .info-texts {
+    min-height: 5rem;
+    padding: 0.75rem 0rem 0rem 0.35rem;
+    color: var(--global-text-color);
+  }
 
-	.info-name {
+  .info-name {
     font-size: 1.1rem;
-	}
+  }
 
-	.info-about {
-	  font-size: 1.0rem;
-	}
+  .info-about {
+    font-size: 1rem;
+  }
 
-	.info-img {
-	margin-top: 0.25rem;
-	margin-left: 0.25rem;
-	margin-bottom: 0.25rem;
-	min-width: 5rem;
-	height: 5rem;
-	border-radius: 5%;
-	max-width: 6rem;
-	max-height: 6rem;
-	object-fit: contain;
-	// border: 2px rgba(200, 105, 66, 0.849) solid;
-	}
-
+  .info-img {
+    margin-top: 0.25rem;
+    margin-left: 0.25rem;
+    margin-bottom: 0.25rem;
+    min-width: 5rem;
+    height: 5rem;
+    border-radius: 5%;
+    max-width: 6rem;
+    max-height: 6rem;
+    object-fit: contain;
+    // border: 2px rgba(200, 105, 66, 0.849) solid;
+  }
 }
-
 
 // People
 
@@ -888,23 +882,21 @@ footer.sticky-bottom {
       }
     }
   }
-  
-  
+
   .card {
     img {
       width: 100%;
     }
   }
-  
+
   .card-title {
-	  // color: red;
-	  margin-top: 0rem;
+    // color: red;
+    margin-top: 0rem;
   }
 
   .col {
     padding-bottom: 0.5rem;
   }
-
 
   h3.category {
     color: var(--global-text-color); //var(--global-divider-color);
@@ -914,7 +906,7 @@ footer.sticky-bottom {
     margin-bottom: 1rem;
     text-align: left;
   }
-  
+
   h4.category {
     color: var(--global-text-color); //var(--global-divider-color);
     border-bottom: 1.25px solid var(--global-divider-color);
@@ -923,7 +915,6 @@ footer.sticky-bottom {
     margin-bottom: 1rem;
     text-align: left;
   }
-
 }
 
 // Teaching
@@ -977,16 +968,14 @@ footer.sticky-bottom {
 // extra_info in homepage
 
 .extra_info {
-  
   h4 {
     color: var(--global-text-color); //var(--global-divider-color);
     border-bottom: 1px solid var(--global-divider-color);
     padding-top: 0.75rem;
     margin-top: 0.5rem;
-    margin-bottom:0.75rem;
+    margin-bottom: 0.75rem;
     text-align: left;
   }
-
 }
 
 // Publications
@@ -1044,7 +1033,7 @@ footer.sticky-bottom {
               text-decoration: none;
             }
           }
-        }        
+        }
       }
 
       .award {
@@ -1179,7 +1168,7 @@ footer.sticky-bottom {
         border-color: var(--global-highlight-color);
       }
     }
-    
+
     div.award.hidden {
       border: dashed 1px var(--global-bg-color);
     }
@@ -1193,7 +1182,6 @@ footer.sticky-bottom {
     div.highlights.hidden.open {
       border-color: var(--global-highlight-color);
     }
-    
   }
 }
 
@@ -1670,14 +1658,13 @@ ninja-keys::part(ninja-input-wrapper) {
   color: var(--global-text-color);
 }
 
-
 // for events and talks button
 
 .button-more {
   font-size: 0.9rem;
   font-weight: 500;
 
-  margin-top: 2rem; 
+  margin-top: 2rem;
   margin-left: 1px;
 
   color: var(--global-card-bg-color);
@@ -1701,8 +1688,6 @@ ninja-keys::part(ninja-input-wrapper) {
   border-color: var(--global-card-bg-color) transparent transparent transparent; /* Black triangle */
 }
 
-
-
 .list-group-item {
   width: 96%;
   margin-left: 2%;
@@ -1710,10 +1695,10 @@ ninja-keys::part(ninja-input-wrapper) {
   border-color: var(--global-divider-color);
 
   .badge {
-    margin-top: -.5rem;
-    padding: .15em .2em;
+    margin-top: -0.5rem;
+    padding: 0.15em 0.2em;
     font-size: 70%;
-    border-radius:.1rem;
+    border-radius: 0.1rem;
     text-align: center;
 
     margin-right: -0.5rem;
@@ -1727,11 +1712,10 @@ ninja-keys::part(ninja-input-wrapper) {
   .item-detail {
     margin-left: 1rem;
   }
-  
 }
 
-.item-badge{
-  display:inline-block;
+.item-badge {
+  display: inline-block;
   // padding:.15em .3em;
   font-size: 0.95rem;
   font-weight: 300;
@@ -1742,16 +1726,15 @@ ninja-keys::part(ninja-input-wrapper) {
 
   // text-align:center;
   // white-space:nowrap;
-  vertical-align:baseline;
+  vertical-align: baseline;
   // border-radius:.1rem;
-  
+
   // background-color: var(--global-badge-color);  // _themes.scss
   // color: var(--global-card-bg-color);
 }
 
-
-.news-badge{
-  display:inline-block;
+.news-badge {
+  display: inline-block;
   // padding:.15em .3em;
   font-size: 1rem;
   font-weight: 400;
@@ -1762,10 +1745,10 @@ ninja-keys::part(ninja-input-wrapper) {
   margin-right: 0rem;
 
   // text-align:center;
-  white-space:nowrap;
+  white-space: nowrap;
   // vertical-align:baseline;
-  border-radius:.1rem;
-  
+  border-radius: 0.1rem;
+
   // background-color: var(--global-badge-color);  // _themes.scss
   // color: var(--global-card-bg-color);
 }
@@ -1821,16 +1804,17 @@ table {
   margin-left: auto; /* Center the table horizontally */
   margin-right: auto; /* Center the table horizontally */
 
-  th, td {
+  th,
+  td {
     border: none; /* Remove all borders */
     padding: 4px 10px; /* Add padding for consistency */
 
     font-size: 1rem;
   }
- 
+
   tr {
     border-bottom: 1px dashed var(--global-divider-color); /* Add horizontal borders between rows */
-  } 
+  }
 
   thead tr {
     border-bottom: 2px solid #ed2020; /* Optional: Different border for header row */
@@ -1840,7 +1824,6 @@ table {
     border-bottom: none; /* Remove the bottom border of the last row */
   }
 }
-
 
 .table-list {
   width: 98%; /* Table container takes the full width of the page */
@@ -1852,15 +1835,16 @@ table {
   margin-left: auto; /* Center the table horizontally */
   margin-right: auto; /* Center the table horizontally */
 
-  th, td {
+  th,
+  td {
     border: none; /* Remove all borders */
     padding: 6px 10px; /* Add padding for consistency */
     // font-size: 1rem;
   }
- 
+
   tr {
     border-bottom: 1px dashed var(--global-divider-color); /* Add horizontal borders between rows */
-  } 
+  }
 
   thead tr {
     border-bottom: 2px solid #ed2020; /* Optional: Different border for header row */
@@ -1881,15 +1865,16 @@ table {
   margin-left: auto; /* Center the table horizontally */
   margin-right: auto; /* Center the table horizontally */
 
-  th, td {
+  th,
+  td {
     border: none; /* Remove all borders */
     padding: 6px 10px; /* Add padding for consistency */
     font-size: 1rem;
   }
- 
+
   tr {
     border-bottom: 1px dashed var(--global-divider-color); /* Add horizontal borders between rows */
-  } 
+  }
 
   thead tr {
     border-bottom: 2px solid #ed2020; /* Optional: Different border for header row */
@@ -1899,7 +1884,6 @@ table {
     border-bottom: none; /* Remove the bottom border of the last row */
   }
 }
-
 
 // for news md files
 
@@ -1914,7 +1898,6 @@ table {
 //   white-space: nowrap; /* Prevent text from wrapping if you prefer */
 // }
 
-
 .table-list-innews {
   width: 100%; /* Table container takes the full width of the page */
   // max-width: 100%; /* Ensures it doesn't exceed the maximum width of the page */
@@ -1925,8 +1908,9 @@ table {
   margin-left: auto; /* Center the table horizontally */
   margin-right: auto; /* Center the table horizontally */
 
-  th, td {
-    width: auto; 
+  th,
+  td {
+    width: auto;
 
     border: none; /* Remove all borders */
     // padding: 6px 2px; /* Add padding for consistency */
@@ -1934,10 +1918,10 @@ table {
     margin-right: 8px;
     // font-size: 1rem;
   }
- 
+
   tr {
     border-bottom: 1px dashed var(--global-divider-color); /* Add horizontal borders between rows */
-  } 
+  }
 
   thead tr {
     border-bottom: 2px solid #ed2020; /* Optional: Different border for header row */
@@ -1973,8 +1957,8 @@ table {
   // background-color: red;
 }
 
-.item-badge-innews{
-  display:inline-block;
+.item-badge-innews {
+  display: inline-block;
   // padding:.15em .3em;
   font-size: 0.95rem;
   font-weight: 300;
@@ -1985,12 +1969,10 @@ table {
   padding-left: 0rem;
 
   text-align: right;
-  white-space:nowrap;
+  white-space: nowrap;
   // vertical-align:baseline;
-  border-radius:.1rem;
-  
+  border-radius: 0.1rem;
+
   // background-color: var(--global-badge-color);  // _themes.scss
   // color: var(--global-card-bg-color);
 }
-
-

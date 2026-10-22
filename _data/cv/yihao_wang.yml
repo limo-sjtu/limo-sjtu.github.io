@@ -4,7 +4,7 @@
     - name: Email Address
       value: haze0023 at sjtu dot edu dot cn # do not use the full email address to avoid spam
     - name: Address
-      value: Room 502, No.6 Sicence Building
+      value: Room 502, No. 6 Science Building
     - name: Research Interests
       value: Non-smooth optimization, image processing, machine learning
 
@@ -28,12 +28,11 @@
 #     #     - Description 1.
 #     #     - Description 2.
 
-
 - title: Education
   type: time_table
   contents:
-    - title: Master in Subject
-      institution: INS, Shanghai Jiao Tong university
+    - title: Master's degree
+      institution: Institute of Natural Sciences, Shanghai Jiao Tong University
       year: 2020.9 - 2026.6
       # description:
       #   - Description 1.
@@ -42,8 +41,8 @@
       #     contents:
       #       - Sub-description 1.
       #       - Sub-description 2.
-    - title: Bachelor in Subject
-      institution: Mathematical Science, Tongji university
+    - title: Bachelor's degree
+      institution: School of Mathematical Sciences, Tongji University
       year: 2016.9 - 2020.6
       # description:
       #   - Description 1.

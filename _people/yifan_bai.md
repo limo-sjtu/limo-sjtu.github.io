@@ -1,9 +1,9 @@
 ---
-layout: page-cv # no need to modify
+layout: cvpage
 title: Yifan Bai
 # description: # you can leave it empty
 img: yifanbai_2inch.JPG # change "profile" to the name of your picture
-yaml: yifan_bai # name of the yml file
+cv: yifan_bai
 toc:
   sidebar: right # no need to modify
 importance: 1 # no need to modify
@@ -16,5 +16,4 @@ github: # link to your github page, leave it as it is now if you don't have one
 
 Welcome to my webpage!
 
-I'm currently a second-year phd student, under the supervision of [Prof. Jingwei Liang](https://jliang993.github.io/). My research interests are non-smooth optimization, image processing, machine learning and mathematics formalization. 
-
+I'm currently a second-year PhD student under the supervision of [Prof. Jingwei Liang](https://jliang993.github.io/). My research interests are non-smooth optimization, image processing, machine learning, and mathematical formalization.

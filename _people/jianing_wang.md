@@ -1,9 +1,9 @@
 ---
-layout: page-cv # no need to modify
+layout: cvpage
 title: Jianing Wang
 # description: # you can leave it empty
 img: jianing_2inch.jpg # change "profile" to the name of your picture
-yaml: jianing_wang # name of the yml file
+cv: jianing_wang
 toc:
   sidebar: right # no need to modify
 importance: 1 # no need to modify
@@ -16,4 +16,4 @@ github: # link to your github page, leave it as it is now if you don't have one
 
 Welcome to my webpage!
 
-I'm currently a second-year master student.
+I'm currently a second-year master's student.

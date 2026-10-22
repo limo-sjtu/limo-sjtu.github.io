@@ -8,58 +8,12 @@
     - name: Research Interests
       value: machine learning
 
-- title: Experience # this is for working experience
-  type: time_table
-  contents:
-  #  - title: title of position
-      #institution: Institute of Natural Sciences, Shanghai Jiao Tong University
-      #year: xxxx.xx - Now
-      #description:
-        #- Description 1.
-        #- Description 2.
-        #- title: Description 3.
-          #contents:
-            #- Sub-description 1.
-            #- Sub-description 2.
-    #- title: title of position
-      #institution: name of school, name of university
-      #year: xxxx.xx - xxxx.xx
-      #description:
-        #- Description 1.
-        #- Description 2.
-
-
 - title: Education
   type: time_table
   contents:
     - title: Master
       institution: School of Mathematical Sciences, SJTU
       year: 2023.9 - Now
-      description:
-        #- Description 1.
-        #- Description 2.
-        #- title: Description 3.
-          #contents:
-            #- Sub-description 1.
-            #- Sub-description 2.
-    #- title: Bachelor
-      #institution: name of school, name of university
-      #year: xxxx.xx - xxxx.xx
-      #description:
-        #- Description 1.
-        #- Description 2.
-
-- title: Research Experience & Internships
-  type: time_table
-  contents:
-#    - title: name of the experience
-      #year: 2014 - 2015
-      #description: extra information
-
-- title: Selected Publications
-#  type: publications
-#  contents:
-
 
 - title: Honors and Awards
   type: time_table
@@ -67,8 +21,3 @@
     - year: 2023
       items:
         - first-class scholarship
-
-- title: Other Interests
-  type: list
-  contents:
-#    - <b>Hobbies:</b> Hobby 1, Hobby 2, etc.

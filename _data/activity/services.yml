@@ -4,15 +4,15 @@
     - year: 2024 - Now
       role: Area Chair
       venue: Advances in Neural Information Processing Systems (NeurIPS)
-      venue_url: 
+      venue_url:
     - year: 2024
       role: Guest editor
       venue: Journal of Nonlinear & Variational Analysis
-      venue_url: 
+      venue_url:
     - year: 2022 - Now
       role: Associate Editor
       venue: Journal of Applied and Numerical Optimization
-      venue_url: 
+      venue_url:
 
 - title: Conference/Journal Referees
   type: review
@@ -52,11 +52,11 @@
     - title: Informs
       description:
         - Mathematics of Operations Research
-    - title: IEEE 
+    - title: IEEE
       description:
         - IEEE Trans. on Image Processing
         - IEEE Trans. on Signal Processing
-    - title: IMA 
+    - title: IMA
       description:
         - IMA Journal of Numerical Analysis
     - title: Taylor & Francis

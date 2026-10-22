@@ -1,0 +1,32 @@
+name: ✏️ Website correction
+description: Report incorrect, outdated, or broken website content.
+title: "[Correction] "
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+      placeholder: https://limo-sjtu.github.io/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_content
+    attributes:
+      label: What is currently wrong?
+      description: Quote only the smallest relevant part of the current page.
+    validations:
+      required: true
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: Requested correction
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting source or context
+      description: Add a public source when the correction cannot be verified from the page itself.

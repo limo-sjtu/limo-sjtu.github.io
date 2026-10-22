@@ -26,6 +26,7 @@ nav_order: 0
       &nbsp;·&nbsp;
       <i class="ai ai-google-scholar-square"></i> <a href="https://scholar.google.com/citations?user=mzsf_aUAAAAJ&hl=en" target="_blank">Google Scholar</a>
     </p>
+
   </div>
 </div>
 
@@ -44,23 +45,25 @@ Institute of Natural Sciences, Shanghai Jiao Tong University<br>
 <h3 class="section-title">Short Curriculum Vitae</h3>
 
 **School of Mathematical Sciences and Institute of Natural Sciences, Shanghai Jiao Tong University**
+
 - Jan 2022 - Present: Distinguished Professor
 - Jan 2017 - Dec 2021: Professor
 - Jul 2010 - Dec 2016: Distinguished Research Fellow (Associate Professor)
 
 **Department of Mathematics, University of California, Los Angeles**
+
 - Jul 2007 - Jul 2010: CAM Adjunct Assistant Professor
 
 **Laboratory of Mathematics and Applications of Mathematics, University of South Brittany, France**
+
 - Sep 2006 - Jun 2007: Temporary Assistant Professor (ATER)
 - Oct 2003 - Nov 2006: PhD in Applied Mathematics
 
 **School of Mathematics and Statistics, Wuhan University, China**
+
 - Sep 2000 - Jul 2003: M.S. in Applied Mathematics
 - Sep 1996 - Jul 2000: B.S. in Computational Mathematics
 
 <h3 class="section-title">Recruiting</h3>
 
 Currently recruiting PhD students and postdocs. Please email for details.
-
-

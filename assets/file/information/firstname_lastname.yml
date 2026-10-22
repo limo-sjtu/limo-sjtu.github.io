@@ -4,7 +4,7 @@
     - name: Email Address
       value: emailname at sjtu dot edu dot cn # do not use the full email address to avoid spam
     - name: Address
-      value: Room xx, No.6 Sicence Building
+      value: Room XXX, No. 6 Science Building
     - name: Research Interests
       value: Non-smooth optimization, image processing, machine learning
 
@@ -27,7 +27,6 @@
       description:
         - Description 1.
         - Description 2.
-
 
 - title: Education
   type: time_table

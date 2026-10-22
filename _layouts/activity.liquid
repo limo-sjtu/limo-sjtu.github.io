@@ -19,11 +19,10 @@ layout: default
 
     <div class="extra_info">
       <!-- Recent events -->
-        <h4>
-          <a href="{{ '/activities/' | relative_url }}" style="color: inherit">Recent events</a>
-        </h4>
-        {% include events.liquid %}
-      {% endif %}
+      <h4>
+        <a href="{{ '/activities/' | relative_url }}" style="color: inherit">Recent events</a>
+      </h4>
+      {% include events.liquid %}
 
       {% comment %}  limit=true {% endcomment %}
 
@@ -59,7 +58,6 @@ layout: default
           <div class="contact-note">{{ site.contact_note }}</div>
         </div>
       {% endif %}
-
     </div>
   </article>
 </div>

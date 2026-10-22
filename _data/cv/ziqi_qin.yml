@@ -4,7 +4,7 @@
     - name: Email Address
       value: zqqin58 at sjtu dot edu dot cn # do not use the full email address to avoid spam
     - name: Address
-      value: Room 348, No.6 Sicence Building
+      value: Room 348, No. 6 Science Building
     - name: Research Interests
       value: Non-smooth optimization, image processing, machine learning
 
@@ -18,7 +18,6 @@
       institution: School of Mathematical Sciences and College of Chemisty, Nankai University
       year: 2017.09 - 2021.06
 
-
 - title: Experience
   type: time_table
   contents:
@@ -26,9 +25,7 @@
       year: 2024
       description: presented "Activity Identification in Non-smooth Optimization - A Set-Valued Operator Perspective"
 
-
 - title: Other Interests
   type: list
   contents:
     - <b>Hobbies:</b> table tennis, swimming, etc.
-

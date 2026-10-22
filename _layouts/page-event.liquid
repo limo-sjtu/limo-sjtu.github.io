@@ -10,44 +10,48 @@ layout: default
   <article>
     <div class="clearfix">{{ content }}</div>
 
-      {%  assign events=site.data.activity[page.yaml] %} 
-     
-      {% for entry in events %}
+    {% assign events = site.data.activity[page.yaml] %}
 
-        <ul class="card-text font-weight-light list-group list-group-flush">
-          {% for item in entry.contents %}
-            <li class="list-group-item">
-              <div class="row">
-                {% if item.year %}
-                  <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px">
-                    <table class="table-cv">
-                      <tbody>
-                        <tr>
-                          <td>
-                            <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
-                              {{- item.year -}}
-                            </span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                {% endif %}
-                <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
-                  <h6 class="title font-weight-bold ml-1 ml-md-4">
-                  {% if item.session_url %}<a href="{{ item.session_url }}">{{ item.session }}</a>{% else %}{{ item.session }}{% endif %} @ <a href="{{ item.conf_url }}">{{ item.conference }}</a>
-                  </h6>
-                  <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ item.organizers }} </h6>
+    {% for entry in events %}
+      <ul class="card-text font-weight-light list-group list-group-flush">
+        {% for item in entry.contents %}
+          <li class="list-group-item">
+            <div class="row">
+              {% if item.year %}
+                <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px">
+                  <table class="table-cv">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+                            {{- item.year -}}
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+              {% endif %}
+              <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
+                <h6 class="title font-weight-bold ml-1 ml-md-4">
+                  {% if item.session_url -%}
+                    <a href="{{ item.session_url }}">{{ item.session }}</a>
+                  {%- else -%}
+                    {{- item.session -}}
+                  {%- endif %}
+                  @ <a href="{{ item.conf_url }}">{{ item.conference }}</a>
+                </h6>
+                <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ item.organizers }}</h6>
               </div>
-              
-            </li>
-          {% endfor %}
-        </ul>  
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
 
-      {% endfor %}
-          
-    {% comment %} <div class="extra_info">
-    </div> {% endcomment %}
+    {% comment %}
+      <div class="extra_info">
+      </div>
+    {% endcomment %}
   </article>
 </div>

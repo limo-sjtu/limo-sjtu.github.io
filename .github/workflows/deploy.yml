@@ -13,6 +13,7 @@ on:
       - "**.liquid"
       - "**/*.md"
       - "**.yml"
+      - "scripts/**"
       - "Gemfile"
       - "Gemfile.lock"
       - "!.github/workflows/axe.yml"
@@ -40,6 +41,7 @@ on:
       - "**.liquid"
       - "**/*.md"
       - "**.yml"
+      - "scripts/**"
       - "Gemfile"
       - "Gemfile.lock"
       - "!.github/workflows/axe.yml"
@@ -72,6 +74,8 @@ jobs:
         with:
           ruby-version: "3.2.2"
           bundler-cache: true
+      - name: Validate structured content ✅
+        run: ruby scripts/validate_content.rb
       - name: Update _config.yml ⚙️
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -82,9 +86,8 @@ jobs:
             config["giscus"]["repo"] = ENV.fetch("GITHUB_REPOSITORY")
             File.write("_config.yml", config.to_yaml)
           '
-      - name: Install and Build 🔧
+      - name: Build 🔧
         run: |
-          pip3 install --upgrade jupyter
           export JEKYLL_ENV=production
           bundle exec jekyll build
       - name: Purge unused CSS 🧹

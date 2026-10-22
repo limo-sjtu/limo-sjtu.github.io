@@ -4,7 +4,7 @@
 
 "ding":
   - firstname: ["Qiaoqiao", "Q."]
-    url: https://insimaging.github.io/people/qiaoqiaoding/
+    url: https://qqding.github.io
 
 "liang":
   - firstname: ["Jingwei", "J."]
@@ -27,119 +27,110 @@
     url: https://junqitang.com/
 
 "poon":
-    - firstname: ["Clarice"]
-      url: https://cmhsp2.github.io/
+  - firstname: ["Clarice"]
+    url: https://cmhsp2.github.io/
 
 "peyre":
-    - firstname: ["Gabriel"]
-      url: https://www.gpeyre.com/
+  - firstname: ["Gabriel"]
+    url: https://www.gpeyre.com/
 
 "fadili":
-    - firstname: ["Jalal"]      
-      url: https://fadili.users.greyc.fr/
+  - firstname: ["Jalal"]
+    url: https://fadili.users.greyc.fr/
 
 "davies":
-    - firstname: ["Mike"]      
-      url: https://www.eng.ed.ac.uk/about/people/professor-michael-e-davies
-
+  - firstname: ["Mike"]
+    url: https://www.eng.ed.ac.uk/about/people/professor-michael-e-davies
 
 "ehrhardt":
-    - firstname: ["Matthias J.", "Matthias"]      
-      url: https://mehrhardt.github.io/
+  - firstname: ["Matthias J.", "Matthias"]
+    url: https://mehrhardt.github.io/
 
 "kereta":
-    - firstname: ["Zeljko"]      
-      url: http://www0.cs.ucl.ac.uk/people/Z.Kereta.html
+  - firstname: ["Zeljko"]
+    url: http://www0.cs.ucl.ac.uk/people/Z.Kereta.html
 
 "aviles-rivero":
-    - firstname: ["Angelica I.", "Angelica"]      
-      url: https://angelicaiaviles.wordpress.com/
+  - firstname: ["Angelica I.", "Angelica"]
+    url: https://angelicaiaviles.wordpress.com/
 
 "lewis":
-    - firstname: ["Adrian S."]      
-      url: https://people.orie.cornell.edu/aslewis/
+  - firstname: ["Adrian S."]
+    url: https://people.orie.cornell.edu/aslewis/
 
 "driggs":
-    - firstname: ["Derek"]      
-      url: https://derekdriggs.github.io/
+  - firstname: ["Derek"]
+    url: https://derekdriggs.github.io/
 
 "dutta":
-    - firstname: ["Aritra"]      
-      url: https://sciences.ucf.edu/math/person/aritra-dutta/
+  - firstname: ["Aritra"]
+    url: https://sciences.ucf.edu/math/person/aritra-dutta/
 
 "li":
-    - firstname: ["Xin"]      
-      url: https://sciences.ucf.edu/math/xli/
+  - firstname: ["Xin"]
+    url: https://sciences.ucf.edu/math/xli/
+  - firstname: ["Jia"]
+    url: https://math.sysu.edu.cn/teacher/550
 
 "richtarik":
-    - firstname: ["Peter"]      
-      url: https://richtarik.org/
+  - firstname: ["Peter"]
+    url: https://richtarik.org/
 
 "molinari":
-    - firstname: ["Cesare"]      
-      url: https://ceciomolinari.wixsite.com/my-site-3
+  - firstname: ["Cesare"]
+    url: https://ceciomolinari.wixsite.com/my-site-3
 
 "luke":
-    - firstname: ["Russell"]      
-      url: https://num.math.uni-goettingen.de/~r.luke/
+  - firstname: ["Russell"]
+    url: https://num.math.uni-goettingen.de/~r.luke/
 
 "ma":
-    - firstname: ["Jianwei"]      
-      url: https://homepage.hit.edu.cn/jma
-
+  - firstname: ["Jianwei"]
+    url: https://homepage.hit.edu.cn/jma
 
 "shen":
-    - firstname: ["Zuowei"]      
-      url: https://blog.nus.edu.sg/matzuows/
-
-
-"li":
-    - firstname: ["Jia"]      
-      url: https://math.sysu.edu.cn/teacher/550
-
+  - firstname: ["Zuowei"]
+    url: https://blog.nus.edu.sg/matzuows/
 
 "zhu":
-    - firstname: ["Yanan", "Ya-Nan"]      
-      url: https://www.kumc.edu/yzhu4.html
-
+  - firstname: ["Yanan", "Ya-Nan"]
+    url: https://www.kumc.edu/yzhu4.html
 
 "jiang":
-    - firstname: ["Ming"]      
-      url: https://web.xidian.edu.cn/mingjiang/
-
+  - firstname: ["Ming"]
+    url: https://web.xidian.edu.cn/mingjiang/
+# "":
+#     - firstname: [""]
+#       url:
 
 # "":
-#     - firstname: [""]      
-#       url: 
+#     - firstname: [""]
+#       url:
 
 # "":
-#     - firstname: [""]      
-#       url: 
+#     - firstname: [""]
+#       url:
 
 # "":
-#     - firstname: [""]      
-#       url: 
+#     - firstname: [""]
+#       url:
 
 # "":
-#     - firstname: [""]      
-#       url: 
+#     - firstname: [""]
+#       url:
 
 # "":
-#     - firstname: [""]      
-#       url: 
+#     - firstname: [""]
+#       url:
 
 # "":
-#     - firstname: [""]      
-#       url: 
+#     - firstname: [""]
+#       url:
 
 # "":
-#     - firstname: [""]      
-#       url: 
+#     - firstname: [""]
+#       url:
 
 # "":
-#     - firstname: [""]      
-#       url: 
-
-# "":
-#     - firstname: [""]      
-#       url: 
+#     - firstname: [""]
+#       url:

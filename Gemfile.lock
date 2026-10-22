@@ -167,6 +167,7 @@ GEM
     nokogiri (1.19.3-x86_64-linux-gnu)
       racc (~> 1.4)
     observer (0.1.2)
+    ostruct (0.6.1)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (6.0.1)
@@ -224,6 +225,7 @@ DEPENDENCIES
   jemoji
   mini_racer
   observer
+  ostruct
   unicode_utils
   webrick
 

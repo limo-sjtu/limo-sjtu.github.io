@@ -1,9 +1,8 @@
 ---
-layout: cvpage
+layout: page
 title: Jingwei Liang
 # description: Associate Processor
 img: jingwei_2inch.jpeg
-cv: jingwei_liang # name of the yml file
 toc:
   sidebar: right
 importance: 2

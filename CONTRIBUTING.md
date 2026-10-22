@@ -1,28 +1,30 @@
-# Contributing to al-folio
+# Requesting a LIMO website update
 
-Thank you for considering contributing to al-folio!
+Lab members do not need repository write access and should not edit website files directly.
+Submit a structured request through the
+[website update forms](https://github.com/limo-sjtu/limo-sjtu.github.io/issues/new/choose):
 
-## Pull Requests
+- **Member profile update** — add a member, revise a profile, or change membership status.
+- **Publication update** — add or correct a paper, or replace a preprint with its published version.
+- **News update** — announce a publication, event, award, or member update.
+- **Website correction** — report incorrect, outdated, or broken content.
 
-We welcome your pull requests (PRs).
-For minor fixes (e.g., documentation improvements), feel free to submit a PR directly.
-If you would like to implement a new feature or a bug, please make sure you (or someone else) has opened an appropriate issue first; in your PR, please mention the issue it addresses.
+## What happens after submission
 
-Note that since [#2048](https://github.com/alshedivat/al-folio/pull/2048) al-folio uses the [prettier formatter](https://prettier.io/) for its code, meaning all new submitted code must conform to its standard. If you don't have `prettier` installed for your setup and the `prettier` code check fails when submitting a PR, you can check the referred failed action in our repo. In that action there will be an artifact with an HTML diff showing the needed changes.
+1. The website maintainer checks that the request is complete and appropriate for the public site.
+2. The maintainer accepts it, asks for revisions, or rejects it with an explanation.
+3. For an accepted request, the maintainer prepares the repository change and links the pull request to the issue.
+4. Automated content validation and the Jekyll build must pass.
+5. The maintainer reviews the preview, merges the pull request, and closes the request after publication.
 
-## Issues
+The submitted wording may be edited for consistency, clarity, formatting, and accessibility. A submitted request does not publish content automatically.
 
-We use GitHub issues to track bugs and feature requests.
-Before submitting an issue, please make sure:
+## Submission rules
 
-1. You have read [the FAQ section](FAQ.md) of the README and your question is NOT addressed there.
-2. You have done your best to ensure that your issue is NOT a duplicate of one of [the previous issues](https://github.com/alshedivat/al-folio/issues).
-3. Your issue is either a bug (unexpected/undesirable behavior) or a feature request.
-   If it is just a question, please ask it in the [Discussions](https://github.com/alshedivat/al-folio/discussions) forum.
+- Include only information that may appear on a public website.
+- Use an obfuscated public email such as `name at sjtu dot edu dot cn`; do not post a private email address.
+- Provide a public source for publication, event, or award claims when possible.
+- Upload only portraits and other assets that the lab has permission to publish.
+- Open one request per logical update so that it can be reviewed and closed independently.
 
-When submitting an issue, please make sure to use the appropriate template.
-
-## License
-
-By contributing to al-folio, you agree that your contributions will be licensed
-under the LICENSE file in the root directory of the source tree.
+Repository maintainers should follow the [website maintenance guide](update.md).

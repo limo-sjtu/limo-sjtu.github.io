@@ -8,5 +8,5 @@ category: Faculty
 redirect: https://math.sjtu.edu.cn/faculty/xqzhang/
 webpage: true
 scholar: https://scholar.google.com/citations?user=mzsf_aUAAAAJ&hl=en
-github: 
+github:
 ---

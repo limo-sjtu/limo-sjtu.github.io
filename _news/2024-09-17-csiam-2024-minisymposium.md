@@ -1,15 +1,15 @@
 ---
 layout: post
+title: LIMO co-organizes a mini-symposium at CSIAM 2024
 date: 2024-09-17
+kind: event
 inline: true
 related_posts: false
 ---
 
-
 We are co-organizing a mini-symposium at CSIAM 2024 Annual Meeting.
 
-
-{% assign total=site.data.activity.events %}  
+{% assign total=site.data.activity.events %}
 
 <div class="table-list-innews">
     <table class="">

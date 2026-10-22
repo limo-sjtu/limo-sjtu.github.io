@@ -1,9 +1,9 @@
 ---
-layout: page-cv # no need to modify
+layout: cvpage
 title: Yuting Shen
 # description: # you can leave it empty
 img: yuting_2inch.jpg # change "profile" to the name of your picture
-yaml: yuting_shen # name of the yml file
+cv: yuting_shen
 toc:
   sidebar: right # no need to modify
 importance: 1 # no need to modify
@@ -16,4 +16,4 @@ github: # link to your github page, leave it as it is now if you don't have one
 
 Welcome to my webpage!
 
-I'm currently a second-year phd student, my research interests are non-smooth optimization, imaging processing and machine learning.
+I'm currently a second-year PhD student. My research interests are non-smooth optimization, image processing, and machine learning.

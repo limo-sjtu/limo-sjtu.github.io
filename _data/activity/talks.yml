@@ -4,60 +4,60 @@
   session: 运筹与控制分组
   conference: 中国数学会2024年会
   location: 嘉兴，浙江
-  session_url: 
+  session_url:
   conf_url: https://xshy.zjxu.edu.cn/hyjf.htm
   slides: /assets/slides/example_pdf.pdf
 - year: 2024
   date: 20-22 Sep
   title: Accelerating Sparse Over-parameterized Solvers via Fast Inexact Gradients
-  session: 
+  session:
   conference: 第六届矩阵优化学术研讨会
   location: 长沙，湖南
-  session_url: 
-  conf_url: 
-  slides: 
+  session_url:
+  conf_url:
+  slides:
 - year: 2024
   date: 20-24 July
   title: Model Consistency of Iterative Regularization
-  session: 
+  session:
   conference: Workshop on Structure-preserving Numerical Methods and Their Applications
   location: PolyU Hong Kong, China
-  session_url: 
+  session_url:
   conf_url: https://events.polyu.edu.hk/spnm/home
-  slides: 
+  slides:
 - year: 2024
   date: 28 Apr-04 May
   title: An Fast Over-parameterization Approach for Sparse Regularization
-  session: 
+  session:
   conference: 计算调和分析及其超分辨率成像应用研讨会
   location: 天元数学国际交流中心，昆明
-  session_url: 
-  conf_url: 
-  slides: 
+  session_url:
+  conf_url:
+  slides:
 - year: 2024
   date: 22-25 Mar
   title: Model Consistency of Iterative Regularization
-  session: 
+  session:
   conference: 深圳应用反问题理论与数值方法研讨会
   location: 深圳北理莫斯科大学，深圳
-  session_url: 
-  conf_url: 
-  slides: 
+  session_url:
+  conf_url:
+  slides:
 - year: 2024
   date: 08-11 Jan
   title: Partial Smoothness:&nbsp;from Functions to Sub-differentials and Beyond
-  session: 
+  session:
   conference: IMS Young Mathematical Scientists Forum — Applied Mathematics
   location: Institute for Mathematical Sciences (IMS), National University of Singapore, Singapore
-  session_url: 
+  session_url:
   conf_url: https://ims.nus.edu.sg/events/ims_forummath2023/
-  slides: 
+  slides:
 - year: 2023
-  date: 
-  title: 
-  session: 
-  conference: 
-  location: 
-  session_url: 
-  conf_url: 
-  slides: 
+  date:
+  title:
+  session:
+  conference:
+  location:
+  session_url:
+  conf_url:
+  slides:

@@ -1,124 +1,163 @@
 {% if include.limit %}
-{% comment %} this case is for activity page, only list *limit* items {% endcomment %}
+  {% comment %} this case is for activity page, only list *limit* items {% endcomment %}
 
-{% assign total=site.data.activity[include.file] %}  
-{% assign limit=include.limit %}
-{% assign count = 0 %}
+  {% assign total = site.data.activity[include.file] %}
+  {% assign limit = include.limit %}
+  {% assign count = 0 %}
 
-<div class="news">
-  <div class="table-list">
-    <table>
-      <!-- <thead>
-        <tr>
-          <th class="percentage-width">Header 1</th>
-          <th>Header 2</th>
-        </tr>
-      </thead> -->
-      <tbody>
-        {% for item in total %}
-          {% if count < limit %}
+  <div class="news">
+    <div class="table-list">
+      <table>
+        <!--
+          <thead>
             <tr>
-              <td class="percentage-width">
-                <h6 class="item-badge" style="">
-                  <b>{{- item.date -}} {{ ", " }} {{ item.year -}}</b>
-                </h6>
-                {% comment %} todo: add slides {% endcomment %}
-                 {% if item.slides %}
-                  <div class="slides-button">
-                    <span class="textbox font-weight-bold text-uppercase align-middle" style="min-width: 75px;">
-                      <a href="{{ item.slides }}">Slides</a>
-                    </span>
-                  </div> 
-                 {% endif %}
-              </td>
-              <td>
-                <span style="font-weight: 400;">{{ item.title }}</span>
-                {% if item.session %}
-                  <br>
-                  {% if item.session_url %}<a href="{{ item.session_url }}">{{ item.session }}</a>{% else %}{{ item.session }}{% endif %},  
-                {% endif %}
-                  <br>
-                <span style="font-weight: 400;">{% if item.conf_url %}<a href="{{ item.conf_url }}">{{ item.conference }}</a>{% else %}{{ item.conference }}{% endif %}</span>  @ {{ item.location }}
-              </td>
+              <th class="percentage-width">Header 1</th>
+              <th>Header 2</th>
             </tr>
-            {% assign count = count | plus: 1 %}
-          {% else %}
-            {% break %}
-          {% endif %}
-        {% endfor %}
-        
-      </tbody>
-    </table>
+          </thead>
+        -->
+        <tbody>
+          {% for item in total %}
+            {% if count < limit %}
+              <tr>
+                <td class="percentage-width">
+                  <h6 class="item-badge" style="">
+                    <b>
+                      {{- item.date -}}
+                      {{ ', ' }}
+                      {{ item.year -}}
+                    </b>
+                  </h6>
+                  {% comment %} todo: add slides {% endcomment %}
+                  {% if item.slides %}
+                    <div class="slides-button">
+                      <span class="textbox font-weight-bold text-uppercase align-middle" style="min-width: 75px;">
+                        <a href="{{ item.slides }}">Slides</a>
+                      </span>
+                    </div>
+                  {% endif %}
+                </td>
+                <td>
+                  <span style="font-weight: 400;">{{ item.title }}</span>
+                  {% if item.session %}
+                    <br>
+                    {% if item.session_url -%}
+                      <a href="{{ item.session_url }}">{{ item.session }}</a>
+                    {%- else -%}
+                      {{- item.session -}}
+                    {%- endif -%}
+                    ,
+                  {% endif %}
+                  <br>
+                  <span style="font-weight: 400;">
+                    {%- if item.conf_url -%}
+                      <a href="{{ item.conf_url }}">{{ item.conference }}</a>
+                    {%- else -%}
+                      {{- item.conference -}}
+                    {%- endif -%}
+                  </span>
+                  @ {{ item.location }}
+                </td>
+              </tr>
+              {% assign count = count | plus: 1 %}
+            {% else %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 
 {% else %}
+  {% assign groups = site.data.activity[page.yaml] | group_by: 'year' %}
+  {% assign current_year = 'now' | date: '%Y' %}
+  {% assign collapse_year_threshold = current_year | minus: 2 %}
 
-{% assign groups = site.data.activity[page.yaml] | group_by: "year" %}
-{% assign current_year = "now" | date: "%Y" %}
-{% assign collapse_year_threshold = current_year | minus: 2 %}
-
-{% for group in groups %}
-{% assign year = group.name | plus: 0 %} <!-- Convert year to a number -->
-<div class="conference-group news" data-year="{{ year }}" {% if year < collapse_year_threshold %}style="display: none;"{% endif %}>
-  <h3 class="talk-year">{{ year }}</h3> 
-  <div class="table-list">
-    <table>
-      <!-- <thead>
-        <tr>
-          <th class="percentage-width">Header 1</th>
-          <th>Header 2</th>
-        </tr>
-      </thead> -->
-      <tbody>
-    {% for item in group.items %}
-      <tr>
-              <td class="percentage-width">
-                <h6 class="item-badge" style="">
-                  <b>{{- item.date -}} {{ ", " }} {{ item.year -}}</b>
-                </h6>
-                {% comment %} todo: add slides {% endcomment %}
-                {% if item.slides %}
-                  <div class="slides-button">
-                    <span class="textbox font-weight-bold text-uppercase align-middle" style="min-width: 75px;">
-                      <a href="{{ item.slides }}">Slides</a>
-                    </span>
-                  </div> 
-                 {% endif %}
-              </td>
-              <td>
-                <span style="font-weight: 400;">{{ item.title }}</span>
-                {% if item.session %}
+  {% for group in groups %}
+    {% assign year = group.name | plus: 0 %}
+    <!-- Convert year to a number -->
+    <div
+      class="conference-group news"
+      data-year="{{ year }}"
+      {% if year < collapse_year_threshold %}
+        style="display: none;"
+      {% endif %}
+    >
+      <h3 class="talk-year">{{ year }}</h3>
+      <div class="table-list">
+        <table>
+          <!--
+            <thead>
+              <tr>
+                <th class="percentage-width">Header 1</th>
+                <th>Header 2</th>
+              </tr>
+            </thead>
+          -->
+          <tbody>
+            {% for item in group.items %}
+              <tr>
+                <td class="percentage-width">
+                  <h6 class="item-badge" style="">
+                    <b>
+                      {{- item.date -}}
+                      {{ ', ' }}
+                      {{ item.year -}}
+                    </b>
+                  </h6>
+                  {% comment %} todo: add slides {% endcomment %}
+                  {% if item.slides %}
+                    <div class="slides-button">
+                      <span class="textbox font-weight-bold text-uppercase align-middle" style="min-width: 75px;">
+                        <a href="{{ item.slides }}">Slides</a>
+                      </span>
+                    </div>
+                  {% endif %}
+                </td>
+                <td>
+                  <span style="font-weight: 400;">{{ item.title }}</span>
+                  {% if item.session %}
+                    <br>
+                    {% if item.session_url -%}
+                      <a href="{{ item.session_url }}">{{ item.session }}</a>
+                    {%- else -%}
+                      {{- item.session -}}
+                    {%- endif -%}
+                    ,
+                  {% endif %}
                   <br>
-                {% if item.session_url %}<a href="{{ item.session_url }}">{{ item.session }}</a>{% else %}{{ item.session }}{% endif %},  {% endif %}
-                  <br>
-                <span style="font-weight: 400;">{% if item.conf_url %}<a href="{{ item.conf_url }}">{{ item.conference }}</a>{% else %}{{ item.conference }}{% endif %}</span>  @ {{ item.location }}
-              </td>
-            </tr>
-    {% endfor %}
-    </tbody>
-    </table>
-  </div>
-</div>
+                  <span style="font-weight: 400;">
+                    {%- if item.conf_url -%}
+                      <a href="{{ item.conf_url }}">{{ item.conference }}</a>
+                    {%- else -%}
+                      {{- item.conference -}}
+                    {%- endif -%}
+                  </span>
+                  @ {{ item.location }}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-{% if year==collapse_year_threshold %}
-<button onclick="toggle_older_items()" class="button-more toggle-button"> Older talks</button>
+    {% if year == collapse_year_threshold %}
+      <button onclick="toggle_older_items()" class="button-more toggle-button">Older talks</button>
+    {% endif %}
+    <script>
+      function toggle_older_items() {
+        const collapseYearThreshold = {{ collapse_year_threshold }};
+        const conferenceGroups = document.querySelectorAll('.conference-group');
+
+        conferenceGroups.forEach(group => {
+          const year = parseInt(group.getAttribute('data-year'), 10);
+          if (year < collapseYearThreshold) {
+            group.style.display = group.style.display === 'none' ? 'block' : 'none';
+          }
+        });
+      }
+    </script>
+  {% endfor %}
 {% endif %}
-<script>
-function toggle_older_items() {
-  const collapseYearThreshold = {{ collapse_year_threshold }};
-  const conferenceGroups = document.querySelectorAll('.conference-group');
-
-  conferenceGroups.forEach(group => {
-    const year = parseInt(group.getAttribute('data-year'), 10);
-    if (year < collapseYearThreshold) {
-      group.style.display = group.style.display === 'none' ? 'block' : 'none';
-    }
-  });
-}
-</script>
-
-{% endfor %}
-
-{% endif %}
-

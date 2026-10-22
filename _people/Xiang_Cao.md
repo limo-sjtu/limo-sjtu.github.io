@@ -16,4 +16,4 @@ github: # link to your github page, leave it as it is now if you don't have one
 
 Welcome to my webpage!
 
-I'm currently a third-year phd student, under the supervision of [Prof. Xiaoqun Zhang](https://math.sjtu.edu.cn/faculty/xqzhang/). My research interests are machine learning (especially in generative models), image processing, PDE-based inverse problems. 
+I'm currently a third-year PhD student under the supervision of [Prof. Xiaoqun Zhang](https://math.sjtu.edu.cn/faculty/xqzhang/). My research interests are machine learning (especially generative models), image processing, and PDE-based inverse problems.

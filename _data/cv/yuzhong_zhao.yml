@@ -4,7 +4,7 @@
     - name: Email Address
       value: zhaoyuzhong at sjtu dot edu dot cn # do not use the full email address to avoid spam
     - name: Address
-      value: Room 370, No.6 Sicence Building
+      value: Room 370, No. 6 Science Building
     - name: Research Interests
       value: Anomaly Detection, OOD Detection, Medical Image Analysis.
 

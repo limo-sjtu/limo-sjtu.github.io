@@ -1,9 +1,9 @@
 ---
-layout: page-cv # no need to modify
+layout: cvpage
 title: Yihao Wang
 # description: # you can leave it empty
 img: yihao_2inch.jpg # change "profile" to the name of your picture
-yaml: yihao_wang # name of the yml file
+cv: yihao_wang
 toc:
   sidebar: right # no need to modify
 importance: 1 # no need to modify
@@ -16,4 +16,4 @@ github: # link to your github page, leave it as it is now if you don't have one
 
 Welcome to my webpage!
 
-I'm currently a third-year phd student, under the supervision of [Prof. Jingwei Liang](https://jliang993.github.io/) and [Prof. Xiaoqun Zhang](https://math.sjtu.edu.cn/faculty/xqzhang/). My research interests are imaging processing, machine learning. 
+I'm currently a third-year PhD student under the supervision of [Prof. Jingwei Liang](https://jliang993.github.io/) and [Prof. Xiaoqun Zhang](https://math.sjtu.edu.cn/faculty/xqzhang/). My research interests are image processing and machine learning.

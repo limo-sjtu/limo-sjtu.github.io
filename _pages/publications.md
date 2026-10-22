@@ -9,11 +9,10 @@ nav_order: 1
 
 <!-- _pages/publications.md -->
 
-<!-- See also my 
-<a href="https://scholar.google.com/citations?user=aaIkvG0AAAAJ&hl=en" style="height:2rem;">Google Scholar <i class="ai ai-google-scholar-square" style="padding-right:0.25rem;"></i></a> 
-and 
-<a href="https://github.com/jliang993" title="GitHub">Github <i class="fa-brands fa-github"></i></a> pages. 
+<!-- See also my
+<a href="https://scholar.google.com/citations?user=aaIkvG0AAAAJ&hl=en" style="height:2rem;">Google Scholar <i class="ai ai-google-scholar-square" style="padding-right:0.25rem;"></i></a>
+and
+<a href="https://github.com/jliang993" title="GitHub">Github <i class="fa-brands fa-github"></i></a> pages.
 You can also view them by choosing the category below.  -->
 
 {% include publications.liquid %}
-

@@ -16,4 +16,4 @@ github: # link to your github page, leave it as it is now if you don't have one
 
 Welcome to my webpage!
 
-I'm currently a second-year phd student, under the supervision of [Prof. Xiaoqun Zhang](https://math.sjtu.edu.cn/faculty/xqzhang/). My research interests are imaging processing, machine learning and parameter-efficient fine-tuning (PEFT). 
+I'm currently a second-year PhD student under the supervision of [Prof. Xiaoqun Zhang](https://math.sjtu.edu.cn/faculty/xqzhang/). My research interests are image processing, machine learning, and parameter-efficient fine-tuning (PEFT).

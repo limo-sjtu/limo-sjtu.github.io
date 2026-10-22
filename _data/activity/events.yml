@@ -5,7 +5,7 @@
   id: csiam2024
   location: 南京
   organizers: <b>陈冲</b>（中国科学院数学与系统科学研究院），<b>董彬</b>（北京大学），<b>梁经纬</b>（上海交通大学），<b>刘九龙</b>（中国科学院数学与系统科学研究院），<b>张小群</b>（上海交通大学）
-  session_url: 
+  session_url:
   conf_url: https://meeting.csiam.org.cn/#/2024/
   language: Chinese
   abstract: 图像反问题与计算成像问题主要涉及借助数学模型和算法从间接、部分和噪声测量数据中确定感兴趣的未知图像。这些问题是医学成像、生物成像、图像处理、无损检测、地质勘探和现代天文学等工业和应用领域的基础。本专题研讨会议的目的是召集一批活跃的研究人员，共同探讨图像反问题和计算成像问题的数学方法和人工智能方法。通过这些研究领域之间的交流和互动，促进图像反问题与计算成像数学方法的新突破和推动工业应用领域的新发展。
@@ -16,10 +16,10 @@
   id: csml2024
   location: 上海
   organizers: <b>包承龙</b>（清华大学），<b>梁经纬</b>（上海交通大学）
-  session_url: 
+  session_url:
   conf_url: https://c2sml.cn/conference.html
   language: Chinese
-  abstract: 
+  abstract:
 - year: 2024
   date: 21-26 July
   session: Nonsmooth Calculus and Optimization in Machine Learning
@@ -27,10 +27,10 @@
   id: ismp2024
   location: Montreal, Canada
   organizers: <b>Jalal Fadili</b> (GREYC, ENSICAEN, Université de Caen Normandie, France), <b>Jingwei Liang</b> (Shanghai Jiao Tong University, China), <b>Antonio Silveti-Falls</b> (CentraleSupélec, Université Paris-Saclay, France)
-  session_url: 
+  session_url:
   conf_url: https://ismp2024.gerad.ca/
   language: English
-  abstract: 
+  abstract:
 - year: 2023
   date: 20-25 Aug
   session: Recent Advances on Non-convex Optimization in Inverse Problems, Imaging and Machine Learning
@@ -41,7 +41,7 @@
   session_url: https://iciam2023.org/registered_data?id=00521#04380
   conf_url: https://iciam2023.org/
   language: English
-  abstract: Non-convex optimization has become increasingly important for modern data science applications, with many unsolved challenging open problems. Due to the absence of convexity, the well- developed paradigms convex optimization cannot be fully extended here, leading to the current situation that the theory of non-convex optimization is way behind the practice. In this mini-symposium, we focus on recent advances in non-convex optimization, including the analysis and understanding of the fundamental nature of the non-convex optimization, algorithmic bias/implicit regularization of gradient-based algorithms, fast convergent algorithms in non-convex problems, and their applications in inverse problems, imaging and machine learning and many others. 
+  abstract: Non-convex optimization has become increasingly important for modern data science applications, with many unsolved challenging open problems. Due to the absence of convexity, the well- developed paradigms convex optimization cannot be fully extended here, leading to the current situation that the theory of non-convex optimization is way behind the practice. In this mini-symposium, we focus on recent advances in non-convex optimization, including the analysis and understanding of the fundamental nature of the non-convex optimization, algorithmic bias/implicit regularization of gradient-based algorithms, fast convergent algorithms in non-convex problems, and their applications in inverse problems, imaging and machine learning and many others.
 - year: 2022
   date: 17-20 Nov
   session: 面向大规模图像数据科学问题的优化算法
@@ -49,9 +49,7 @@
   id: csiam2022
   location: 广州（线上）
   organizers: <b>董国志</b>（中南大学），<b>梁经纬</b>（上海交通大学）
-  session_url: 
+  session_url:
   conf_url: https://meeting.csiam.org.cn/#/2022/
   language: Chinese
   abstract: 随着科学计算中数据量的不断增加和数学建模精准性要求的不断提 高，算法效率逐渐成为实际应用问题求解时的瓶颈，对快速算法的 需求日益增加。本论坛将聚焦近几年算法加速技巧的发展，包含惯 性加速、随机算法等方面，也同时关注他们在实际问题中的应用。 计划邀请应用与算法两方面的专家进行交流，探讨更加有效的实际问题求解算法等发展方向。
-
-
