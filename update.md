@@ -56,6 +56,7 @@ toc:
   sidebar: right
 importance: 10
 category: PhD student
+sort_name: Lastname Firstname
 status: current
 research_areas: [imaging, optimization]
 webpage: true
@@ -82,7 +83,7 @@ github:
 ---
 ```
 
-Allowed categories are `Faculty`, `Post-doc`, `PhD student`, `Master student`, `Undergraduate`, and `Alumni`. Use `status: current` for current members and `status: alumni` with the `Alumni` category for former members. Optional `research_areas` values are `imaging`, `optimization`, and `learning`; only add areas supported by the member's submitted biography. `importance` is an integer used for ordering within a category. Use full `https://` URLs for public links and verify that the portrait filename matches its case exactly.
+Allowed categories are `Faculty`, `Post-doc`, `PhD student`, `Master student`, `Undergraduate`, and `Alumni`. Use `status: current` for current members and `status: alumni` with the `Alumni` category for former members. Optional `research_areas` values are `imaging`, `optimization`, and `learning`; only add areas supported by the member's submitted biography. PhD students, master's students, and alumni require `sort_name` in `Family-name Given-name` pinyin order and are displayed alphabetically by that field. Alumni also require `alumni_degree: phd` or `alumni_degree: masters`, which controls their subgroup. Other categories use the integer `importance` field for ordering. Use full `https://` URLs for public links and verify that the portrait filename matches its case exactly.
 
 CV data is a list of sections. Supported section types are `map`, `time_table`, `publications`, `list`, `nested_list`, and `list_groups`. Remove empty sections instead of leaving template placeholders in production data. A publication URL is optional in an existing CV entry; the template renders plain text when no URL is present.
 

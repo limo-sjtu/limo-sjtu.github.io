@@ -438,8 +438,6 @@ h4,
 pre,
 code,
 form,
-fieldset,
-legend,
 input,
 button,
 textarea,
@@ -583,6 +581,14 @@ input.raw_input {
   margin: 0em 0.25em;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+
+video {
+  display: inline;
+  vertical-align: middle;
+  align-content: center;
+  margin-left: 20%;
 }
 
 

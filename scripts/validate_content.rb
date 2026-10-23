@@ -9,10 +9,13 @@ require "yaml"
 ROOT = File.expand_path("..", __dir__)
 PEOPLE_CATEGORIES = ["Faculty", "Post-doc", "PhD student", "Master student", "Undergraduate", "Alumni"].freeze
 PEOPLE_STATUSES = %w[current alumni].freeze
+ALUMNI_DEGREES = %w[phd masters].freeze
 CV_SECTION_TYPES = %w[list list_groups map nested_list publications time_table].freeze
-NEWS_KINDS = %w[award event general grant member publication recruiting].freeze
+NEWS_KINDS = %w[award event general grant member preprint publication recruiting].freeze
 BIB_ABBREVIATIONS = %w[Conference Journal Preprint Thesis].freeze
 BIB_CATEGORIES = %w[imaging learning optimization].freeze
+PLACEHOLDER_PATTERN = /\bxxxx(?:\.xx)?\b|Hobby\s+\d|link to the paper|title of position|name of school|Author\s+\d|Description\s+\d|Master in Subject|Bachelor in Subject/i
+PEOPLE_PLACEHOLDER_PATTERN = /Welcome to my (?:webpage|homepage)/i
 
 errors = []
 warnings = []
@@ -222,7 +225,7 @@ people_files.each do |path|
   next unless data.is_a?(Hash)
 
   label = relative(path)
-  %w[layout title img importance category status webpage].each do |field|
+  %w[layout title description img importance category status position webpage].each do |field|
     errors << "#{label}: missing #{field.inspect}" unless present?(data[field]) || data[field] == false
   end
 
@@ -236,6 +239,16 @@ people_files.each do |path|
     errors << "#{label}: current membership categories require status current"
   end
   errors << "#{label}: importance must be an integer" unless data["importance"].is_a?(Integer)
+  if ["PhD student", "Master student", "Alumni"].include?(data["category"]) && !present?(data["sort_name"])
+    errors << "#{label}: students and alumni require sort_name in 'Family-name Given-name' order"
+  end
+  if data["category"] == "Alumni"
+    unless ALUMNI_DEGREES.include?(data["alumni_degree"])
+      errors << "#{label}: Alumni require alumni_degree to be phd or masters"
+    end
+  elsif data.key?("alumni_degree")
+    errors << "#{label}: alumni_degree is only allowed for Alumni"
+  end
   errors << "#{label}: webpage must be true or false" unless [true, false].include?(data["webpage"])
   errors << "#{label}: legacy yaml field is not allowed; use cv" if data.key?("yaml")
 
@@ -270,9 +283,14 @@ people_files.each do |path|
   when "page"
     errors << "#{label}: redirect-only page requires redirect" unless present?(data["redirect"])
     errors << "#{label}: redirect-only page must not define cv" if present?(data["cv"])
+    errors << "#{label}: redirect-only page must set sitemap to false" unless data["sitemap"] == false
   else
     errors << "#{label}: layout must be limo-member or page"
   end
+
+  source = File.read(path)
+  body = source.sub(/\A---\s*\n.*?\n---\s*/m, "")
+  errors << "#{label}: placeholder profile introduction is not allowed" if body.match?(PEOPLE_PLACEHOLDER_PATTERN)
 end
 
 cv_files = Dir[File.join(ROOT, "_data", "cv", "*.yml")].sort
@@ -284,8 +302,6 @@ end
 (available_cvs - referenced_cvs).sort.each do |cv|
   errors << "_data/cv/#{cv}.yml: orphaned CV data is not referenced by a member page"
 end
-
-placeholder_pattern = /\bxxxx(?:\.xx)?\b|Hobby\s+\d|link to the paper|title of position|name of school|Author\s+\d|Description\s+\d|Master in Subject|Bachelor in Subject/i
 
 cv_files.each do |path|
   data = load_yaml(path, errors)
@@ -312,7 +328,7 @@ cv_files.each do |path|
   end
 
   each_scalar(data) do |value, value_path|
-    next unless value.is_a?(String) && value.match?(placeholder_pattern)
+    next unless value.is_a?(String) && value.match?(PLACEHOLDER_PATTERN)
     errors << "#{label}: placeholder content at #{value_path.join('.')} (#{value.inspect})"
   end
 end
@@ -329,7 +345,7 @@ news_files.each do |path|
   filename_match = filename.match(/\A(\d{4}-\d{2}-\d{2})-[a-z0-9][a-z0-9-]*\.md\z/)
   errors << "#{label}: filename must use YYYY-MM-DD-short-slug.md" unless filename_match
 
-  %w[layout title date kind inline related_posts].each do |field|
+  %w[layout title description date kind inline related_posts].each do |field|
     errors << "#{label}: missing #{field.inspect}" unless present?(data[field]) || data[field] == false
   end
   errors << "#{label}: layout must be post" unless data["layout"] == "post"
@@ -381,6 +397,14 @@ bib_entries.each do |entry|
 
   abbr = unwrap_bib_value(fields["abbr"]&.last)
   errors << "#{label}: abbr must be one of #{BIB_ABBREVIATIONS.join(', ')}" if present?(abbr) && !BIB_ABBREVIATIONS.include?(abbr)
+  if abbr == "Conference" && entry[:type] != "inproceedings"
+    errors << "#{label}: Conference entries must use @inproceedings"
+  end
+
+  %w[journal booktitle].each do |field|
+    next unless fields.key?(field)
+    errors << "#{label}: #{field} must not contain HTML" if unwrap_bib_value(fields[field].last).match?(%r{</?[A-Za-z][^>]*>})
+  end
 
   primary = unwrap_bib_value(fields["cate_primary"]&.last)
   errors << "#{label}: cate_primary must be one of #{BIB_CATEGORIES.join(', ')}" if present?(primary) && !BIB_CATEGORIES.include?(primary)
