@@ -1,218 +1,233 @@
-# Website Update Guide
+# LIMO website maintenance guide
 
-This document serves as a prompt/reference for future updates to the SJTU LIMO Lab website (insimaging.github.io).
+This repository uses a request-and-review workflow. Lab members submit facts through GitHub Issue Forms; the website maintainer decides what to publish, prepares the file changes, reviews the pull request, and merges it. Submitting a request never changes the website automatically.
 
-## Site Overview
+## Roles and access
 
-- Built with Jekyll (al-folio theme variant)
-- Hosted on GitHub Pages
-- URL: https://insimaging.github.io
-- Group: Institute of Natural Sciences, Shanghai Jiao Tong University
-- Research areas: mathematical imaging, medical imaging, machine learning, optimization
+| Role               | Access                                  | Responsibility                                                 |
+| ------------------ | --------------------------------------- | -------------------------------------------------------------- |
+| Lab member         | Open and comment on issues              | Submit complete, public, accurate information                  |
+| Website maintainer | Write access and pull-request review    | Accept, revise, or reject requests; implement accepted changes |
+| GitHub Actions     | Read repository contents and run checks | Reject structurally invalid content and failed builds          |
 
-## Directory Structure
+Members do not need direct write access. The maintainer remains the code owner for the repository through `.github/CODEOWNERS`.
 
-```
-_pages/          → Main site pages (about, people, publications, research, news)
-_people/         → One .md file per group member
-_data/cv/        → One .yml file per member (CV/profile data)
-_bibliography/   → papers.bib (all publications)
-_news/           → News posts (one .md per announcement)
-_research/       → Research project pages (currently empty)
-_includes/       → Liquid templates (people.liquid, publications.liquid, etc.)
-_sass/           → Stylesheets
-assets/img/people/ → Member photos
-assets/img/        → General images
-```
+## Request lifecycle
 
-## How to Add a New Group Member
+1. A member opens a [website update request](https://github.com/limo-sjtu/limo-sjtu.github.io/issues/new/choose).
+2. The maintainer checks the request and records one of these decisions in a comment:
+   - **Accepted** — implement the request as submitted.
+   - **Revision requested** — ask the submitter for missing or corrected facts.
+   - **Accepted with revisions** — the maintainer adjusts wording or structure while preserving the facts.
+   - **Rejected** — close the request with a short reason.
+3. For an accepted request, create a branch and a pull request that contains `Closes #<issue-number>`.
+4. Review the generated diff, automated validation, Jekyll build, and affected pages.
+5. Merge to `master`. Close the issue only after the deployed page is correct.
 
-1. Add a photo to `assets/img/people/` (JPG/JPEG/PNG, any reasonable size).
+Recommended labels are `status: needs review`, `status: revision requested`, `status: accepted`, and `status: rejected`. Labels are optional; the issue and linked pull request remain the audit trail.
 
-2. Create `_people/<firstname_lastname>.md`:
+## Sources of truth
 
-```markdown
+| Content                              | Canonical files                    |
+| ------------------------------------ | ---------------------------------- |
+| Member directory entry and biography | `_people/<member-id>.md`           |
+| Structured member CV                 | `_data/cv/<member-id>.yml`         |
+| Member portrait                      | `assets/img/people/<filename>`     |
+| Research-area descriptions           | `_data/research_areas.yml`         |
+| Publications                         | `_bibliography/papers.bib`         |
+| News                                 | `_news/YYYY-MM-DD-<short-slug>.md` |
+| Recruitment information              | `_pages/join.md`                   |
+
+Do not create a second bibliography, a second member-layout protocol, or an additional copy of publication data. Historical CV publication lists may remain, but new publications must first be added to `papers.bib`.
+
+## Member schema
+
+Use a lowercase `firstname_lastname` identifier for new members. The page and CV filenames must share the same identifier.
+
+Internal profile:
+
+```yaml
 ---
-layout: cvpage
+layout: limo-member
 title: Full Name
-img: photo_filename.jpg
+img: portrait.jpg
 cv: firstname_lastname
 toc:
   sidebar: right
-importance: 1
+importance: 10
 category: PhD student
+status: current
+research_areas: [imaging, optimization]
 webpage: true
 scholar:
 github:
 ---
-
-Short bio paragraph here.
+Short biography.
 ```
 
-- `category`: one of `Faculty`, `Post-doc`, `PhD student`, `Master student`, `Undergraduate`, `Alumni`
-- `importance`: controls sort order within category (lower = first)
-- For faculty with external homepages, add `redirect: https://...` and keep `webpage: true`
-- `scholar` / `github`: full URLs if available, leave blank otherwise
-
-3. Create `_data/cv/<firstname_lastname>.yml`:
+Redirect-only profile:
 
 ```yaml
-- title: General Information
-  type: map
-  contents:
-    - name: Email Address
-      value: name at sjtu dot edu dot cn
-    - name: Address
-      value: Room XXX, No.6 Science Building
-    - name: Research Interests
-      value: Topic 1, topic 2, topic 3.
+---
+layout: page
+title: Full Name
+img: portrait.jpg
+importance: 10
+category: Faculty
+status: current
+redirect: https://example.edu/profile
+webpage: true
+scholar:
+github:
+---
 ```
 
-Optional sections (type can be `map`, `time_table`, `publications`, or `list`):
+Allowed categories are `Faculty`, `Post-doc`, `PhD student`, `Master student`, `Undergraduate`, and `Alumni`. Use `status: current` for current members and `status: alumni` with the `Alumni` category for former members. Optional `research_areas` values are `imaging`, `optimization`, and `learning`; only add areas supported by the member's submitted biography. `importance` is an integer used for ordering within a category. Use full `https://` URLs for public links and verify that the portrait filename matches its case exactly.
 
-```yaml
-- title: Education
-  type: time_table
-  contents:
-    - title: PhD in Mathematics
-      institution: Shanghai Jiao Tong University
-      year: 2023.09 - PRESENT
+CV data is a list of sections. Supported section types are `map`, `time_table`, `publications`, `list`, `nested_list`, and `list_groups`. Remove empty sections instead of leaving template placeholders in production data. A publication URL is optional in an existing CV entry; the template renders plain text when no URL is present.
 
-- title: Selected Publications
-  type: publications
-  contents:
-    - year: 2024.01
-      name: Paper Title
-      publisher: Journal Name
-      authors: Author 1, Author 2
-      url: https://link-to-paper
+## Publication schema
 
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 2024
-      items:
-        - Award name
-```
-
-## How to Add a Publication
-
-Edit `_bibliography/papers.bib`. Each entry follows this format:
+`_bibliography/papers.bib` is the only bibliography. Each citation key and each field inside an entry must be unique.
 
 ```bibtex
-@article{authorYEARkeyword,
+@article{author2026keyword,
   title={Paper Title},
-  author={Last1, First1 and Last2, First2 and Last3, First3},
+  author={Last, First and Last, First},
   journal={Journal Name},
-  year={2024},
+  year={2026},
   abbr={Journal},
   bibtex_show={true},
-  html={https://link-to-paper},
-  abstract={Abstract text here.},
+  html={https://doi.org/...},
   cate_primary={optimization},
-  cate_secondary={imaging},
-  selected={true},
+  cate_secondary={none},
+  selected={false},
 }
 ```
 
-In addition to the standard BibTeX fields (`title`, `author`, `journal` /
-`booktitle`, `year`, `volume`, `number`, `pages`, etc.), the following custom
-properties **must** be filled in for every new entry:
+Rules for new entries:
 
-1. **`abbr`** — display badge for the entry. Choose exactly one of:
-   - `Journal` — for journal articles
-   - `Conference` — for conference / workshop papers (use with `@inproceedings`)
-   - `Preprint` — for arXiv preprints and other unpublished manuscripts
+- Use `@article`, `@inproceedings`, or `@phdthesis` as appropriate.
+- `abbr` must be `Journal`, `Conference`, `Preprint`, or `Thesis`.
+- `cate_primary` must be `imaging`, `optimization`, or `learning`.
+- `cate_secondary` is optional and may use the same values or `none`.
+- `bibtex_show` and `selected` must be explicit booleans.
+- Add a DOI or public `html` link. Historical entries without links are allowed temporarily and reported as a warning.
+- Add `abstract` only when real abstract text is available; omit empty fields.
+- The maintainer decides `selected`; submitters do not decide homepage placement.
 
-2. **`bibtex_show`** — controls whether the BibTeX expand button is shown.
-   Default to `true` for all entries.
+## News schema
 
-3. **`abstract`** — the paper's abstract. If the user does not provide one when
-   adding the paper, leave the `abstract` field empty (or omit it) and note in
-   the response that the abstract should be filled in manually. Do **not**
-   search the web for abstracts.
+Filename: `_news/YYYY-MM-DD-short-slug.md`.
 
-4. **`cate_primary`** and **`cate_secondary`** — topic categorization. The only
-   allowed keywords are:
-   - `imaging`
-   - `optimization`
-   - `learning`
-
-   `cate_primary` is **required** — pick the keyword that best matches the
-   paper's main contribution. `cate_secondary` is **optional** — include it
-   only when the paper meaningfully spans a second area; if unused, either
-   omit the field or set it to `none`.
-
-5. **`selected`** — controls whether the paper appears in the homepage
-   "Recent Papers" section.
-   - Set `selected={true}` for papers in **top-tier** journals or conferences
-     (e.g., SIAM journals, IEEE journals, JMLR, NeurIPS, ICML, ICLR, CVPR, ICCV,
-     ECCV, AAAI, etc.)
-   - Set `selected={false}` otherwise.
-
-Other useful fields:
-- `html` — link to the paper (arXiv, publisher, DOI). Always include this.
-- `pdf` — local PDF in `assets/pdf/` (optional)
-- `code` — link to source code repository (optional)
-- `award`, `award_name` — for award-winning papers (optional)
-
-Organize entries chronologically by year, with comment separators between
-years: `% Year 2024 ---------------------------------------------------------------`.
-
-## How to Add a News Item
-
-Create `_news/YYYY-MM-DD.md`:
-
-```markdown
+```yaml
 ---
 layout: post
-title: Short Title
+title: Short descriptive title
 date: YYYY-MM-DD
+kind: publication
 inline: true
 related_posts: false
 ---
-
-News content in Markdown. Use **bold** for paper titles.
+Concise Markdown announcement with public links where useful.
 ```
 
-- `inline: true` → shows only on the front page, no separate page
-- `inline: false` → gets its own page (use for longer announcements)
-- The 5 most recent items appear on the homepage (configured in `_config.yml` → `announcements.limit`)
+Allowed `kind` values are `publication`, `event`, `award`, `member`, `recruiting`, `grant`, and `general`. Use `inline: true` for a short list item and `inline: false` for a longer standalone page. News is explicitly sorted by its front-matter date.
 
-## How to Move a Member to Alumni
+Reserve News for meaningful lab updates: awards, defenses and graduations, visitors and events, new members, grants, recruiting, and selected publication milestones. Routine bibliography additions belong only in `_bibliography/papers.bib`; they do not require a duplicate News item.
 
-Edit their file in `_people/`, change:
-```yaml
-category: Alumni
-```
+## Site content architecture
 
-Note: the personal-page link icon is automatically hidden for members in the
-`Alumni` category (logic in `_includes/people.liquid`). The Google Scholar and
-GitHub icons remain visible. To re-enable the personal page link for a specific
-alumnus, you would need to adjust that template.
+The primary navigation is `Research`, `People`, `Publications`, `News`, and `Join Us`. The PI page remains available below People but is not a separate top-level destination.
 
-## Style Conventions
+Research-area names and descriptions are maintained once in `_data/research_areas.yml`. The homepage cards and the full Research page both read this file. Each entry requires a stable lowercase `id`, a title, summary, description, methods, applications, and one or more publication-topic links. Do not duplicate these descriptions directly in page templates.
 
-- Email addresses: use `name at sjtu dot edu dot cn` format (spam protection)
-- Photos: placed in `assets/img/people/`, referenced by filename only (no path)
-- Names: use real full names as titles, filenames use `firstname_lastname` convention
-- Layouts: `cvpage` for members with CV data, `page` for simple redirect-only entries
-- Navigation order is set via `nav_order` in page front matter
-- The site uses CSS custom properties for theming (light/dark mode supported)
+The homepage is a curated overview rather than a complete archive:
 
-## Build & Deploy
+- three research areas come from `_data/research_areas.yml`;
+- three featured papers come from bibliography entries with `selected={true}`;
+- five recent non-preprint publications not already shown as featured come from the bibliography;
+- five recent News items come from `_news/`;
+- recruitment details link to `_pages/join.md`.
+
+The maintainer controls `selected` and homepage placement. Member requests may propose a highlight, but publication acceptance does not automatically make an item featured.
+
+## Local checks
+
+Run the structural validator first:
 
 ```bash
-bundle exec jekyll build    # build the site
-bundle exec jekyll serve    # local preview at localhost:4000
+ruby scripts/validate_content.rb
 ```
 
-The site auto-deploys via GitHub Pages when pushed to the `master` branch.
+Then build the site:
 
-## Common Pitfalls
+```bash
+bundle exec jekyll build
+```
 
-- Don't use full email addresses in any public-facing file
-- Ensure every `cv:` reference in a people .md has a matching .yml in `_data/cv/`
-- Photo filenames are case-sensitive (`.JPG` ≠ `.jpg`)
-- The `_bibliography/papers.bib` file must start with `---\n---\n` (Jekyll front matter)
-- When adding Font Awesome or Tabler icons, the font files are in `assets/webfonts/` and `assets/fonts/`
+For any dependency, layout, include, JavaScript, or Sass change, also run the
+theme compatibility checks:
+
+```bash
+bundle exec al-folio upgrade audit
+bundle exec al-folio upgrade overrides audit --fail-on-stale
+```
+
+The repository excludes the unused demonstration notebook from the build, so Jupyter is not required for ordinary website maintenance. When layout, images, or rendered text changes, also inspect the affected page in a local browser preview.
+
+## Theme architecture and upgrades
+
+The al-folio runtime is supplied by versioned gems in `Gemfile.lock`. Site-owned
+presentation code is deliberately namespaced so that a theme update does not
+silently replace it:
+
+| Responsibility     | Location                                                      |
+| ------------------ | ------------------------------------------------------------- |
+| LIMO layouts       | `_layouts/limo-*.liquid`                                      |
+| LIMO components    | `_includes/limo/`                                             |
+| LIMO styles        | `_sass/limo/`                                                 |
+| Structured content | `_people/`, `_data/cv/`, `_news/`, `_bibliography/papers.bib` |
+
+Only two intentional theme overrides remain and both are recorded in
+`.al-folio-overrides.yml`:
+
+- `_layouts/bib.liquid` adds LIMO publication highlights while retaining the
+  upstream publication renderer.
+- `assets/css/main.scss` loads the upstream Sass modules and then the LIMO Sass
+  entry point.
+
+Do not add a local file with the same path as an al-folio layout, include,
+JavaScript file, or Sass partial unless an override is unavoidable. Prefer a
+new `limo-*` layout or a component below `_includes/limo/`.
+
+To update al-folio:
+
+1. Create a dedicated branch and update the pinned al-folio gems and lockfile.
+2. Run `bundle exec al-folio upgrade audit` and the override audit shown above.
+3. Review the upstream diff for each reported override before acknowledging it.
+4. Run the content validator and a clean Jekyll build.
+5. Inspect the homepage, People, Publications, one member CV, and mobile
+   navigation before merging.
+
+If an intentional override changes after review, acknowledge only that path:
+
+```bash
+bundle exec al-folio upgrade overrides accept _layouts/bib.liquid
+```
+
+Never run `overrides accept --all` merely to silence a warning; the manifest is
+the review record for upstream-sensitive files.
+
+## Repository protection to enable on GitHub
+
+The repository files prepare the workflow, but an owner must enable branch protection in GitHub settings:
+
+1. Create a ruleset for the `master` branch.
+2. Require changes through pull requests.
+3. Require at least one approval and require code-owner review.
+4. Require the `Validate website content / validate` status check and the site build check.
+5. Block force pushes and branch deletion.
+6. Limit bypass permission to the website maintainer or repository administrators.
+
+This is the access-control boundary: members can submit requests without permission to merge or publish, while the maintainer retains the final decision.
