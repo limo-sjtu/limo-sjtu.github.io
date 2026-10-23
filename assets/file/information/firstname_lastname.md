@@ -1,5 +1,5 @@
 ---
-layout: cvpage
+layout: limo-member
 title: Firstname Lastname
 # description: # you can leave it empty
 img: profile.jpg # change "profile" to the name of your picture

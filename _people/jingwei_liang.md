@@ -7,6 +7,7 @@ toc:
   sidebar: right
 importance: 2
 category: Faculty
+status: current
 redirect: https://jliang993.github.io/
 webpage: true
 scholar: https://scholar.google.com/citations?user=aaIkvG0AAAAJ&hl=en

@@ -1,0 +1,33 @@
+<div class="limo-cv-groups">
+  {% for content in entry.contents %}
+    <section class="limo-cv-group">
+      <h3>
+        {% if content.icon %}<i class="{{ content.icon }}" aria-hidden="true"></i>{% endif %}
+        {{ content.category }}
+      </h3>
+      <ul>
+        {% for item in content.items %}
+          <li>
+            <div>
+              <strong>{{ item.name }}</strong>
+              {% if item.level -%}
+                <span>{{ item.level }}</span>
+              {%- endif %}
+              {% if item.school -%}
+                <span>{{ item.school }}</span>
+              {%- endif %}
+              {% if item.time -%}
+                <time>{{ item.time }}</time>
+              {%- endif %}
+            </div>
+            {% if item.link %}
+              <a href="{{ item.link }}" class="limo-cv-button">
+                {% if item.linkname %}{{ item.linkname }}{% else %}Document{% endif %}
+              </a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
+</div>

@@ -1,0 +1,14 @@
+<div class="limo-research-cards">
+  {% for area in site.data.research_areas %}
+    <article class="limo-research-card">
+      <p class="limo-research-card__number" aria-hidden="true">0{{ forloop.index }}</p>
+      <h3>
+        <a href="{{ '/research/#' | append: area.id | relative_url }}">{{ area.title }}</a>
+      </h3>
+      <p>{{ area.summary }}</p>
+      <a class="limo-research-card__link" href="{{ '/research/#' | append: area.id | relative_url }}">
+        Learn more <span aria-hidden="true">→</span>
+      </a>
+    </article>
+  {% endfor %}
+</div>

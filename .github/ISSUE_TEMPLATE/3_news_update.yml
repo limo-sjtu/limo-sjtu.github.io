@@ -1,5 +1,5 @@
 name: 📣 News update
-description: Request a publication, event, award, member, or general announcement.
+description: Request a lab milestone, event, award, member, opportunity, grant, or selected publication announcement.
 title: "[News] "
 body:
   - type: dropdown
@@ -11,6 +11,8 @@ body:
         - event
         - award
         - member
+        - recruiting
+        - grant
         - general
     validations:
       required: true

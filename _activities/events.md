@@ -1,9 +1,9 @@
 ---
-layout: page #page-event
+layout: page
 title: Events organized
 yaml: events
 ---
 
-I have been actively involving in organizing events, see below the list.
+LIMO members contribute to the organization of workshops, conferences, and scientific events. Selected activities are listed below.
 
-{% include activity_events.liquid %}
+{% include limo/activity-events.liquid %}

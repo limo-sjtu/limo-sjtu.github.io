@@ -1,0 +1,56 @@
+{% assign activity_items = site.data.activity[include.file] | default: site.data.activity[page.yaml] %}
+{% assign groups = activity_items | group_by: 'year' %}
+{% assign current_year = 'now' | date: '%Y' | plus: 0 %}
+{% assign archive_before = current_year | minus: 2 %}
+
+{% if include.limit %}
+  <div class="limo-activity-list">
+    {% assign visible_count = 0 %}
+    {% for item in activity_items %}
+      {% if item.title and visible_count < include.limit %}
+        {% include limo/activity-talk-row.liquid item=item %}
+        {% assign visible_count = visible_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="limo-activity-years">
+    {% for group in groups %}
+      {% assign year = group.name | plus: 0 %}
+      {% if year >= archive_before %}
+        <section class="limo-activity-year" aria-labelledby="talks-{{ year }}">
+          <h2 id="talks-{{ year }}">{{ year }}</h2>
+          <div class="limo-activity-list">
+            {% for item in group.items -%}
+              {%- if item.title %}{% include limo/activity-talk-row.liquid item=item %}{% endif -%}
+            {%- endfor %}
+          </div>
+        </section>
+      {% endif %}
+    {% endfor %}
+
+    {% assign has_archived_items = false %}
+    {% for group in groups %}
+      {% assign year = group.name | plus: 0 %}
+      {% if year < archive_before %}{% assign has_archived_items = true %}{% endif %}
+    {% endfor %}
+    {% if has_archived_items %}
+      <details class="limo-activity-archive">
+        <summary>Older talks</summary>
+        {% for group in groups %}
+          {% assign year = group.name | plus: 0 %}
+          {% if year < archive_before %}
+            <section class="limo-activity-year" aria-labelledby="talks-{{ year }}">
+              <h2 id="talks-{{ year }}">{{ year }}</h2>
+              <div class="limo-activity-list">
+                {% for item in group.items -%}
+                  {%- if item.title %}{% include limo/activity-talk-row.liquid item=item %}{% endif -%}
+                {%- endfor %}
+              </div>
+            </section>
+          {% endif %}
+        {% endfor %}
+      </details>
+    {% endif %}
+  </div>
+{% endif %}

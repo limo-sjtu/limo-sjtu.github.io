@@ -1,0 +1,37 @@
+{% assign service_groups = site.data.activity[include.file] | default: site.data.activity[page.yaml] %}
+<div class="limo-service-groups">
+  {% for group in service_groups %}
+    <section class="limo-service-group">
+      <h2>{{ group.title }}</h2>
+      {% if group.type == 'service' %}
+        <div class="limo-activity-list">
+          {% for item in group.contents %}
+            <article class="limo-activity-item">
+              <time class="limo-activity-item__date">
+                {{- item.date -}}
+                {{- item.year -}}
+              </time>
+              <div class="limo-activity-item__body">
+                <p>
+                  {{ item.role }} of
+                  {% if item.venue_url -%}
+                    <a href="{{ item.venue_url }}">{{ item.venue }}</a>
+                  {%- else -%}
+                    <strong>{{ item.venue }}</strong>
+                  {%- endif %}
+                </p>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      {% elsif group.type == 'review' %}
+        <dl class="limo-review-list">
+          {% for item in group.contents %}
+            <dt>{{ item.title }}</dt>
+            <dd>{{ item.description | join: '<span aria-hidden="true"> · </span>' }}</dd>
+          {% endfor %}
+        </dl>
+      {% endif %}
+    </section>
+  {% endfor %}
+</div>

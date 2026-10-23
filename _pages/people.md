@@ -2,36 +2,16 @@
 layout: page
 permalink: /people/
 title: People
-description: Members of the lab.
+description: Faculty, students, and alumni of the LIMO Lab.
 nav: true
-nav_order: 3
+nav_order: 2
 display_categories: [Faculty, Post-doc, PhD student, Master student, Undergraduate, Alumni]
 ---
 
-<!-- pages/people.md -->
-<div class="people">
+<p class="limo-page-lead">
+  LIMO is a collaborative team of faculty, researchers, and students working across mathematical imaging, optimization, and machine learning. Select a member to view their profile and research background.
+</p>
 
-  <!-- Display non-empty people categories -->
+<p class="limo-people-directory__join">Interested in working with us? See <a href="{{ '/join/' | relative_url }}">opportunities to join LIMO</a>.</p>
 
-{% for category in page.display_categories %}
-{% assign categorized_people = site.people | where: "category", category %}
-{% if categorized_people.size > 0 %}
-{% assign category_id = category | slugify %}
-<a id="{{ category_id }}" href="#{{ category_id }}">
-
-<h4 class="category">{{ category }}</h4>
-</a>
-
-    {% assign sorted_people = categorized_people | sort: "importance" %}
-    <div class="container">
-      <div class="row row-cols-1 row-cols-md-2">
-      {% for people in sorted_people %}
-        {% include people.liquid %}
-      {% endfor %}
-      </div>
-    </div>
-
-{% endif %}
-{% endfor %}
-
-</div>
+{% include limo/people-directory.liquid %}

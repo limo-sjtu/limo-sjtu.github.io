@@ -5,6 +5,7 @@ title: Qiaoqiao Ding
 img: qqding_2inch.jpg
 importance: 3
 category: Faculty
+status: current
 toc:
   sidebar: right
 redirect: https://qqding.github.io

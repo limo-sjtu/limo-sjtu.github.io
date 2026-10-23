@@ -1,0 +1,14 @@
+<ul class="limo-cv-list limo-cv-list--nested">
+  {% for content in entry.contents %}
+    <li>
+      <h3>{{ content.title }}</h3>
+      {% if content.items %}
+        <ul>
+          {% for subitem in content.items %}
+            <li>{{ subitem }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

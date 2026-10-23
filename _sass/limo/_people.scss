@@ -1,0 +1,104 @@
+.limo-people-directory__group + .limo-people-directory__group {
+  margin-top: 1.5rem;
+}
+
+.limo-people-directory__join {
+  padding: 0.8rem 1rem;
+  margin: -0.75rem 0 2rem;
+  background: var(--limo-theme-soft);
+  border-left: 3px solid var(--global-theme-color);
+}
+
+.limo-people-directory__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.limo-person-card {
+  display: grid;
+  grid-template-columns: 5.75rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  min-height: 9rem;
+  padding: 0.65rem;
+  overflow: hidden;
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--limo-border);
+  border-radius: 0.35rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition:
+    border-color 120ms ease,
+    box-shadow 120ms ease,
+    transform 120ms ease;
+}
+
+.limo-person-card:hover {
+  border-color: var(--global-theme-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+.limo-person-card__image {
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: contain;
+  border-radius: 0.25rem;
+}
+
+.limo-person-card__name {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.limo-person-card__role {
+  margin: 0.2rem 0 0.55rem;
+  color: var(--global-text-color-light);
+  font-size: 0.82rem;
+}
+
+.limo-person-card__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0;
+  margin: 0 0 0.65rem;
+  list-style: none;
+}
+
+.limo-person-card__topics li {
+  padding: 0.12rem 0.35rem;
+  color: var(--global-text-color-light);
+  font-size: 0.68rem;
+  background: var(--limo-surface-muted);
+  border-radius: 999px;
+}
+
+.limo-person-card__links {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.limo-person-card__links a {
+  color: var(--global-text-color);
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.limo-person-card__links a:hover {
+  color: var(--global-theme-color);
+}
+
+@media (max-width: 900px) {
+  .limo-people-directory__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .limo-people-directory__grid {
+    grid-template-columns: 1fr;
+  }
+}

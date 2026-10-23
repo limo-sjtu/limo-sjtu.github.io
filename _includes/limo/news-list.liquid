@@ -1,0 +1,41 @@
+{% assign limo_news = site.news | sort: 'date' | reverse %}
+{% assign limo_news_size = limo_news | size %}
+{% if include.limit and site.announcements.limit %}
+  {% assign limo_news_limit = site.announcements.limit %}
+{% else %}
+  {% assign limo_news_limit = limo_news_size %}
+{% endif %}
+
+<div class="limo-news-list{% if include.compact %} limo-news-list--compact{% endif %}">
+  {% if limo_news_size > 0 %}
+    <ul class="limo-news-list__items">
+      {% for item in limo_news limit: limo_news_limit %}
+        {% case item.kind %}
+          {% when 'member' %}
+            {% assign kind_label = 'People' %}
+          {% when 'publication' %}
+            {% assign kind_label = 'Publication' %}
+          {% when 'recruiting' %}
+            {% assign kind_label = 'Opportunity' %}
+          {% else %}
+            {% assign kind_label = item.kind | default: 'general' | capitalize %}
+        {% endcase %}
+        <li class="limo-news-list__item">
+          <div class="limo-news-list__meta">
+            <time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%b %d, %Y' }}</time>
+            <span class="limo-news-list__kind limo-news-list__kind--{{ item.kind | default: 'general' | slugify }}">{{ kind_label }}</span>
+          </div>
+          <div class="limo-news-list__content">
+            {% if item.inline %}
+              {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+            {% else %}
+              <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No news so far.</p>
+  {% endif %}
+</div>

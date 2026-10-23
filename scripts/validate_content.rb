@@ -8,8 +8,9 @@ require "yaml"
 
 ROOT = File.expand_path("..", __dir__)
 PEOPLE_CATEGORIES = ["Faculty", "Post-doc", "PhD student", "Master student", "Undergraduate", "Alumni"].freeze
+PEOPLE_STATUSES = %w[current alumni].freeze
 CV_SECTION_TYPES = %w[list list_groups map nested_list publications time_table].freeze
-NEWS_KINDS = %w[award event general member publication].freeze
+NEWS_KINDS = %w[award event general grant member publication recruiting].freeze
 BIB_ABBREVIATIONS = %w[Conference Journal Preprint Thesis].freeze
 BIB_CATEGORIES = %w[imaging learning optimization].freeze
 
@@ -166,6 +167,51 @@ def parse_bibliography(path, errors)
   entries
 end
 
+# Research areas -------------------------------------------------------------
+
+research_areas_path = File.join(ROOT, "_data", "research_areas.yml")
+research_areas = load_yaml(research_areas_path, errors)
+if research_areas.is_a?(Array)
+  ids = []
+  research_areas.each_with_index do |area, index|
+    label = "_data/research_areas.yml: item #{index + 1}"
+    unless area.is_a?(Hash)
+      errors << "#{label} must be a mapping"
+      next
+    end
+
+    %w[id title summary description methods applications publication_topics].each do |field|
+      errors << "#{label}: missing #{field.inspect}" unless present?(area[field])
+    end
+
+    id = area["id"].to_s
+    errors << "#{label}: id must use lowercase letters, digits, and hyphens" unless id.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
+    ids << id unless id.empty?
+
+    %w[methods applications].each do |field|
+      errors << "#{label}: #{field} must be a list" unless area[field].is_a?(Array)
+    end
+
+    topics = area["publication_topics"]
+    next unless topics.is_a?(Array)
+
+    topics.each do |topic|
+      unless topic.is_a?(Hash) && present?(topic["id"]) && present?(topic["label"])
+        errors << "#{label}: each publication topic requires id and label"
+        next
+      end
+      errors << "#{label}: unsupported publication topic #{topic['id'].inspect}" unless BIB_CATEGORIES.include?(topic["id"])
+    end
+  end
+
+  ids.group_by { |id| id }.each do |id, matches|
+    errors << "_data/research_areas.yml: duplicate id #{id.inspect}" if matches.length > 1
+  end
+else
+  errors << "_data/research_areas.yml: top-level value must be a list"
+  research_areas = []
+end
+
 # People and CV data ----------------------------------------------------------
 
 referenced_cvs = Set.new
@@ -176,12 +222,18 @@ people_files.each do |path|
   next unless data.is_a?(Hash)
 
   label = relative(path)
-  %w[layout title img importance category webpage].each do |field|
+  %w[layout title img importance category status webpage].each do |field|
     errors << "#{label}: missing #{field.inspect}" unless present?(data[field]) || data[field] == false
   end
 
   unless PEOPLE_CATEGORIES.include?(data["category"])
     errors << "#{label}: category must be one of #{PEOPLE_CATEGORIES.join(', ')}"
+  end
+  errors << "#{label}: status must be current or alumni" unless PEOPLE_STATUSES.include?(data["status"])
+  if data["category"] == "Alumni" && data["status"] != "alumni"
+    errors << "#{label}: Alumni category requires status alumni"
+  elsif data["category"] != "Alumni" && data["status"] != "current"
+    errors << "#{label}: current membership categories require status current"
   end
   errors << "#{label}: importance must be an integer" unless data["importance"].is_a?(Integer)
   errors << "#{label}: webpage must be true or false" unless [true, false].include?(data["webpage"])
@@ -195,10 +247,23 @@ people_files.each do |path|
     errors << "#{label}: #{field} must be a full http(s) URL" unless valid_http_url?(data[field])
   end
 
+  if present?(data["local_profile"]) && !data["local_profile"].to_s.match?(%r{\A/[^\s]*\z})
+    errors << "#{label}: local_profile must be a root-relative path"
+  end
+
+  if data.key?("research_areas")
+    unless data["research_areas"].is_a?(Array)
+      errors << "#{label}: research_areas must be a list"
+    else
+      invalid_areas = data["research_areas"] - BIB_CATEGORIES
+      errors << "#{label}: unsupported research areas: #{invalid_areas.join(', ')}" if invalid_areas.any?
+    end
+  end
+
   case data["layout"]
-  when "cvpage"
+  when "limo-member"
     cv = data["cv"].to_s
-    errors << "#{label}: cvpage requires a cv identifier" if cv.empty?
+    errors << "#{label}: limo-member requires a cv identifier" if cv.empty?
     expected = File.basename(path, ".md")
     errors << "#{label}: cv identifier must match the page filename (expected #{expected.inspect})" unless cv == expected
     referenced_cvs << cv unless cv.empty?
@@ -206,7 +271,7 @@ people_files.each do |path|
     errors << "#{label}: redirect-only page requires redirect" unless present?(data["redirect"])
     errors << "#{label}: redirect-only page must not define cv" if present?(data["cv"])
   else
-    errors << "#{label}: layout must be cvpage or page"
+    errors << "#{label}: layout must be limo-member or page"
   end
 end
 
@@ -345,4 +410,4 @@ if errors.any?
   exit 1
 end
 
-puts "Content validation passed: #{people_files.length} people, #{cv_files.length} CV files, #{news_files.length} news items, #{bib_entries.length} publications."
+puts "Content validation passed: #{research_areas.length} research areas, #{people_files.length} people, #{cv_files.length} CV files, #{news_files.length} news items, #{bib_entries.length} publications."

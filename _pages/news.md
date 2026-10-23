@@ -6,4 +6,8 @@ nav: true
 nav_order: 4
 ---
 
-{% include news.liquid %}
+<p class="limo-page-lead">
+  Lab milestones, awards, events, member updates, selected publication highlights, and opportunities—listed in reverse chronological order.
+</p>
+
+{% include limo/news-list.liquid %}

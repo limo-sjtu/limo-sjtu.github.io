@@ -9,35 +9,11 @@ related_posts: false
 
 We are co-organizing a mini-symposium at CSIAM 2024 Annual Meeting.
 
-{% assign total=site.data.activity.events %}
+{% for item in site.data.activity.events %}
+{% if item.id == 'csiam2024' %}
 
-<div class="table-list-innews">
-    <table class="">
-      <tbody>
-        {% for item in total %}
-          {% if item.id=="csiam2024" %}
-            <tr>
-              <td class="percentage-width-innews">
-                <h6 class="item-badge-innews" style="">
-                <b>{{- item.date -}} {{ ", " }} {{ item.year -}}</b>
-                </h6>
-              </td>
-              <td class="second-row-info">
-                <div style="margin-left:0.75rem;">
-                {% if item.session_url %}<a href="{{ item.session_url }}">{{ item.session }}</a>{% else %}{{ item.session }}{% endif %}
-                 <br>
-                {% if item.language=="Chinese" %}
-                  <b>组织者</b>: {{ item.organizers }} 
-                {% else %}
-                  <b>Organizers</b>: {{ item.organizers }}
-                {% endif %}
-                <br>
-                  <a href="{{ item.conf_url }}" style="font-weight: bold;">{{ item.conference }}</a> @ <a>{{ item.location }}</a> 
-                  </div>
-              </td>
-            </tr>
-            {% endif %}
-        {% endfor %}
-      </tbody>
-    </table>
+<div class="limo-activity-list">
+{% include limo/activity-event-row.liquid item=item %}
 </div>
+{% endif %}
+{% endfor %}

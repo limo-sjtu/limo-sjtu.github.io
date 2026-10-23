@@ -1,0 +1,28 @@
+<ol class="limo-cv-publications">
+  {% for content in entry.contents %}
+    <li>
+      {% if content.year -%}
+        <span class="limo-cv-year">{{ content.year }}</span>
+      {%- endif %}
+      <div>
+        <h3>
+          {% if content.url -%}
+            <a href="{{ content.url }}">{{ content.name }}</a>
+          {%- else -%}
+            {{- content.name -}}
+          {%- endif %}
+        </h3>
+        {% if content.authors or content.publisher %}
+          <p>
+            {{ content.authors -}}
+            {%- if content.authors and content.publisher %}; {% endif -%}
+            {{- content.publisher }}
+          </p>
+        {% endif %}
+        {% if content.summary %}
+          <p class="limo-cv-publications__summary">{{ content.summary }}</p>
+        {% endif %}
+      </div>
+    </li>
+  {% endfor %}
+</ol>

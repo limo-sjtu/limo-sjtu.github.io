@@ -1,0 +1,52 @@
+{% assign activity_items = site.data.activity[include.file] | default: site.data.activity[page.yaml] %}
+{% if include.limit %}
+  {% assign visible_items = activity_items | slice: 0, include.limit %}
+  <div class="limo-activity-list">
+    {% for item in visible_items -%}
+      {%- include limo/activity-event-row.liquid item=item -%}
+    {%- endfor %}
+  </div>
+{% else %}
+  {% assign groups = activity_items | group_by: 'year' %}
+  {% assign current_year = 'now' | date: '%Y' | plus: 0 %}
+  {% assign archive_before = current_year | minus: 2 %}
+  <div class="limo-activity-years">
+    {% for group in groups %}
+      {% assign year = group.name | plus: 0 %}
+      {% if year >= archive_before %}
+        <section class="limo-activity-year" aria-labelledby="events-{{ year }}">
+          <h2 id="events-{{ year }}">{{ year }}</h2>
+          <div class="limo-activity-list">
+            {% for item in group.items -%}
+              {%- include limo/activity-event-row.liquid item=item -%}
+            {%- endfor %}
+          </div>
+        </section>
+      {% endif %}
+    {% endfor %}
+
+    {% assign has_archived_items = false %}
+    {% for group in groups %}
+      {% assign year = group.name | plus: 0 %}
+      {% if year < archive_before %}{% assign has_archived_items = true %}{% endif %}
+    {% endfor %}
+    {% if has_archived_items %}
+      <details class="limo-activity-archive">
+        <summary>Older events</summary>
+        {% for group in groups %}
+          {% assign year = group.name | plus: 0 %}
+          {% if year < archive_before %}
+            <section class="limo-activity-year" aria-labelledby="events-{{ year }}">
+              <h2 id="events-{{ year }}">{{ year }}</h2>
+              <div class="limo-activity-list">
+                {% for item in group.items -%}
+                  {%- include limo/activity-event-row.liquid item=item -%}
+                {%- endfor %}
+              </div>
+            </section>
+          {% endif %}
+        {% endfor %}
+      </details>
+    {% endif %}
+  </div>
+{% endif %}

@@ -1,0 +1,34 @@
+{% assign item = include.item %}
+<article class="limo-activity-item">
+  <time class="limo-activity-item__date">
+    {{- item.date -}}
+    {%- if item.year %}, {{ item.year }}{% endif -%}
+  </time>
+  <div class="limo-activity-item__body">
+    <h3>
+      {% if item.session_url -%}
+        <a href="{{ item.session_url }}">{{ item.session }}</a>
+      {%- else -%}
+        {{- item.session -}}
+      {%- endif %}
+    </h3>
+    {% if item.organizers %}
+      <p>
+        <strong>
+          {%- if item.language == 'Chinese' %}组织者{% else %}Organizers{% endif %}:</strong
+        >
+        {{ item.organizers }}
+      </p>
+    {% endif %}
+    <p>
+      {% if item.conf_url -%}
+        <a href="{{ item.conf_url }}">{{ item.conference }}</a>
+      {%- else -%}
+        {{- item.conference -}}
+      {%- endif %}
+      {% if item.location -%}
+        <span aria-hidden="true"> · </span>{{ item.location -}}
+      {%- endif %}
+    </p>
+  </div>
+</article>

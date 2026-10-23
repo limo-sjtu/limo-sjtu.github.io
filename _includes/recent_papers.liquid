@@ -1,4 +1,0 @@
-<div class="publications">
-  {% assign current_year = 'now' | date: '%Y' %}
-  {% bibliography --group_by none --max 5 --query @*[year={{ current_year }} && abbr != Preprint]* %}
-</div>

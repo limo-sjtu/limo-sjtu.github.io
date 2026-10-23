@@ -1,0 +1,16 @@
+<div class="limo-people-directory">
+  {% for category in page.display_categories %}
+    {% assign categorized_people = site.people | where: 'category', category | sort: 'importance' %}
+    {% if categorized_people.size > 0 %}
+      {% assign category_id = category | slugify %}
+      <section class="limo-people-directory__group" aria-labelledby="{{ category_id }}">
+        <h2 id="{{ category_id }}" class="limo-section-title">{{ category }}</h2>
+        <div class="limo-people-directory__grid">
+          {% for member in categorized_people %}
+            {% include limo/person-card.liquid member=member %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+</div>

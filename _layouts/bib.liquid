@@ -1,15 +1,19 @@
 ---
 ---
-<div class="row">
+<div
+  class="row"
+  data-limo-publication
+  data-limo-selected="{{ entry.selected | default: false }}"
+  data-limo-categories="{{ entry.cate_primary }} {{ entry.cate_secondary }}"
+>
   {% if site.enable_publication_thumbnails %}
-    <div class="col col-sm-2 abbr" style="max-width: 7.5rem; margin-left: 1rem">
+    <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
         {%- if site.data.venues[entry.abbr] -%}
           {% assign venue_style = null %}
           {% if site.data.venues[entry.abbr].color != blank %}
             {% assign venue_style = site.data.venues[entry.abbr].color | prepend: 'style="background-color:' | append: '"' %}
           {%- endif -%}
-
           <abbr
             class="badge rounded w-100"
             {% if venue_style %}
@@ -19,16 +23,31 @@
             {% if site.data.venues[entry.abbr].url %}
               <a href="{{ site.data.venues[entry.abbr].url }}">{{ entry.abbr }}</a>
             {% else %}
-              <div style="color: #ffffff;">{{- entry.abbr -}}</div>
+              <div>{{- entry.abbr -}}</div>
             {% endif %}
           </abbr>
         {% else %}
           <abbr class="badge rounded w-100">{{ entry.abbr }}</abbr>
         {% endif %}
       {% endif %}
-      {% comment %} ------------------------ {% endcomment %}
       {% if entry.preview %}
-        {% if entry.preview contains '://' %}
+        {%- comment -%}
+          A preview may be a video file rather than an image. Rendering one through the
+          image path below produces a broken <img>, so hand it to video.liquid instead.
+          Keep this list in sync with the native-video branch of _includes/video.liquid:
+          an extension it does not recognize falls through to its <iframe> branch.
+          See alshedivat/al-folio#3564.
+        {%- endcomment -%}
+        {% assign preview_video_extensions = 'mp4,webm,ogg,mov' | split: ',' %}
+        {% assign preview_extension = entry.preview | split: '.' | last | split: '?' | first | downcase %}
+        {% if preview_video_extensions contains preview_extension %}
+          {% if entry.preview contains '://' %}
+            {% assign preview_video_path = entry.preview %}
+          {% else %}
+            {% assign preview_video_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
+          {% endif %}
+          {% include video.liquid path=preview_video_path class="preview z-depth-1 rounded" controls=true %}
+        {% elsif entry.preview contains '://' %}
           <img class="preview z-depth-1 rounded" src="{{ entry.preview }}">
         {% else %}
           {% assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
@@ -39,6 +58,7 @@
             sizes = "200px"
             class="preview z-depth-1 rounded"
             zoomable=true
+            avoid_scaling=true
             alt=entry.preview
           %}
         {% endif %}
@@ -47,7 +67,7 @@
   {% endif %}
 
   <!-- Entry bib key -->
-  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-10{% else %}col-sm-11{% endif %}">
+  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
     <!-- Title -->
     <div class="title">{{ entry.title }}</div>
     <!-- Author -->
@@ -75,13 +95,15 @@
             {% if coauthor.firstname contains author.first %}
               {%- assign coauthor_url = coauthor.url -%}
               {% break %}
-            {% endif %}
+            {%- endif -%}
           {% endfor %}
         {%- endif -%}
 
         {%- if forloop.length > 1 -%}
-          {% if forloop.first == false %},&nbsp;{% endif %}
-          {%- if forloop.last and author_array_limit == author_array_size %}and&nbsp;{% endif -%}
+          {% if forloop.first == false -%}
+            {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %}  {% endif %}
+          {%- endif %}
+          {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
         {% endif %}
         {%- if author_is_self -%}
           <em>
@@ -120,12 +142,12 @@
           class="more-authors"
           title="click to view {{ more_authors_hide }}"
           onclick="
-              var element = $(this);
-              element.attr('title', '');
-              var more_authors_text = element.text() == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
+              var element = this;
+              element.setAttribute('title', '');
+              var more_authors_text = element.textContent == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                element.innerHTML = more_authors_text.substring(0, cursorPosition + 1);
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
@@ -138,10 +160,9 @@
       {% if entry.annotation %}
         <i
           class="fa-solid fa-circle-info ml-1"
-          data-toggle="popover"
-          data-placement="top"
-          data-html="true"
-          data-content="{{ entry.annotation | escape }}"
+          role="img"
+          aria-label="{{ entry.annotation | strip_html | escape }}"
+          title="{{ entry.annotation | strip_html | escape }}"
         >
         </i>
       {% endif %}
@@ -159,9 +180,11 @@
     {% else %}
       {% capture entrytype %}{% endcapture %}
     {% endif %}
+    {% assign entrymonth = '' %}
     {% if entry.month %}
       {% capture entrymonth %}{{ " " }}{{ entry.month | capitalize }}{% endcapture %}
     {% endif %}
+    {% assign entryyear = '' %}
     {% if entry.year %}
       {% capture entryyear %}{{ " " }}{{ entry.year }}{% endcapture %}
     {% endif %}
@@ -187,20 +210,21 @@
     <!-- Links/Buttons -->
     <div class="links">
       {% if entry.award %}
-        <a class="award btn btn-sm z-depth-0" role="button" style="font-weight: 500;">
+        <a class="award btn btn-sm z-depth-0" role="button">
           {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
         </a>
       {% endif %}
-      {% if entry.highlights %}
-        <a class="highlights btn btn-sm z-depth-0" role="button" style="font-weight: 500;">
-          {{- entry.highlights -}}
-        </a>
-      {% endif %}
-      {% if entry.abstract != blank %}
+      {% if entry.abstract %}
         <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+      {% endif %}
+      {% if entry.doi %}
+        <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
       {% endif %}
       {% if entry.arxiv %}
         <a href="http://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
+      {% endif %}
+      {% if entry.hal %}
+        <a href="https://hal.science/{{ entry.hal }}" class="btn btn-sm z-depth-0" role="button">HAL</a>
       {% endif %}
       {% if entry.bibtex_show %}
         <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
@@ -235,7 +259,7 @@
         <a href="{{ entry.blog }}" class="btn btn-sm z-depth-0" role="button">Blog</a>
       {% endif %}
       {% if entry.code %}
-        <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button" style="background-color: #a8ddfc;">Code</a>
+        <a href="{{ entry.code }}" class="btn btn-sm z-depth-0 limo-publication-code" role="button">Code</a>
       {% endif %}
       {% if entry.poster %}
         {% if entry.poster contains '://' %}
@@ -255,6 +279,15 @@
         <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
       {% endif %}
     </div>
+
+    {% if entry.highlights %}
+      <details class="limo-publication-highlight">
+        <summary>{{ entry.highlights }}</summary>
+        {% if entry.highlights_detail %}
+          <div>{{ entry.highlights_detail | markdownify }}</div>
+        {% endif %}
+      </details>
+    {% endif %}
 
     {% if site.enable_publication_badges %}
       {% assign entry_has_altmetric_badge = false %}
@@ -315,13 +348,31 @@
           {% endif %}
           {% if site.enable_publication_badges.google_scholar and entry_has_google_scholar_badge %}
             <a
-              href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user={{ site.scholar_userid }}&citation_for_view={{ site.scholar_userid }}:{{ entry.google_scholar_id }}"
+              href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user={{ site.data.socials.scholar_userid }}&citation_for_view={{ site.data.socials.scholar_userid }}:{{ entry.google_scholar_id }}"
               aria-label="Google Scholar link"
               role="button"
             >
+              {% assign citation_count = 0 %}
+              {% assign scholar_id_key = site.scholar_userid | append: ':' | append: entry.google_scholar_id %}
+              {% assign publication_key = entry.google_scholar_id %}
+
+              {% if site.data.citations.papers[scholar_id_key] %}
+                {% assign citation_count = site.data.citations.papers[scholar_id_key].citations %}
+              {% elsif site.data.citations.papers[publication_key] %}
+                {% assign citation_count = site.data.citations.papers[publication_key].citations %}
+              {% else %}
+                {% for paper in site.data.citations.papers %}
+                  {% assign paper_key = paper[0] %}
+                  {% if paper_key contains entry.google_scholar_id %}
+                    {% assign citation_count = paper[1].citations %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+
               <img
-                src="https://img.shields.io/badge/scholar-{% google_scholar_citations site.scholar_userid entry.google_scholar_id %}-4285F4?logo=googlescholar&labelColor=beige"
-                alt="{% google_scholar_citations site.scholar_userid entry.google_scholar_id %} Google Scholar citations"
+                src="https://img.shields.io/badge/scholar-{{ citation_count }}-4285F4?logo=googlescholar&labelColor=beige"
+                alt="{{ citation_count }} Google Scholar citations"
               >
             </a>
           {% endif %}
@@ -348,14 +399,7 @@
       </div>
     {% endif %}
 
-    {% if entry.highlights_detail %}
-      <!-- Hidden highligh block -->
-      <div class="highlights hidden d-print-inline">
-        <p>{{ entry.highlights_detail | markdownify }}</p>
-      </div>
-    {% endif %}
-
-    {% if entry.abstract != blank %}
+    {% if entry.abstract %}
       <!-- Hidden abstract block -->
       <div class="abstract hidden">
         <p>{{ entry.abstract }}</p>

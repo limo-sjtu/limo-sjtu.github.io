@@ -1,0 +1,141 @@
+:root {
+  --limo-surface-muted: color-mix(in srgb, var(--global-card-bg-color) 92%, var(--global-text-color) 8%);
+  --limo-theme-soft: color-mix(in srgb, var(--global-theme-color) 12%, var(--global-bg-color));
+  --limo-border: var(--global-divider-color);
+}
+
+@media (min-width: 576px) {
+  .navbar-expand-sm .navbar-collapse {
+    display: flex !important;
+    visibility: visible;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .navbar .navbar-brand {
+    flex: 0 1 auto;
+    max-width: calc(100% - 3.5rem);
+    overflow: hidden;
+    font-size: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .navbar .navbar-brand::after {
+    font-size: 1.25rem;
+    content: "LIMO";
+  }
+
+  .navbar .navbar-toggler-main {
+    display: block !important;
+    flex: 0 0 auto;
+    margin-left: auto;
+    visibility: visible !important;
+  }
+
+  .navbar .navbar-toggler-main .icon-bar {
+    display: block !important;
+  }
+}
+
+.limo-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.limo-section-title,
+h3.section-title {
+  padding-top: 0.75rem;
+  margin: 0.75rem 0 1rem;
+  color: var(--global-text-color);
+  font-size: 1.35rem;
+  text-align: left;
+  border-bottom: 1px solid var(--limo-border);
+}
+
+.limo-section-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.limo-section-title a:hover {
+  color: var(--global-theme-color);
+}
+
+.limo-page-lead {
+  max-width: 50rem;
+  margin: 0 0 2rem;
+  color: var(--global-text-color-light);
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.limo-section-heading {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--limo-border);
+}
+
+.limo-section-heading .limo-section-title {
+  flex: 1 1 auto;
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.limo-section-heading > a {
+  flex: 0 0 auto;
+  padding-bottom: 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.limo-action-link {
+  display: inline-flex;
+  min-height: 2.65rem;
+  padding: 0.65rem 1rem;
+  color: var(--global-text-color);
+  font-weight: 650;
+  line-height: 1.2;
+  text-decoration: none;
+  border: 1px solid var(--limo-border);
+  border-radius: 999px;
+}
+
+.limo-action-link:hover,
+.limo-action-link:focus-visible {
+  color: var(--global-theme-color);
+  border-color: var(--global-theme-color);
+}
+
+.limo-action-link--primary {
+  color: var(--global-hover-text-color);
+  background: var(--global-theme-color);
+  border-color: var(--global-theme-color);
+}
+
+.limo-action-link--primary:hover,
+.limo-action-link--primary:focus-visible {
+  color: var(--global-hover-text-color);
+  filter: brightness(1.08);
+}
+
+@media (max-width: 560px) {
+  .limo-section-heading {
+    display: block;
+  }
+
+  .limo-section-heading > a {
+    display: inline-block;
+    padding: 0 0 0.65rem;
+  }
+}

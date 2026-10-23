@@ -1,0 +1,56 @@
+- id: inverse-problems-imaging
+  title: Inverse Problems and Computational Imaging
+  summary: We develop mathematical models and reliable algorithms for recovering information from incomplete, noisy, or indirect measurements.
+  description: >-
+    Our work combines variational modelling, inverse-problem theory, and modern computational methods to make image reconstruction and restoration more accurate, interpretable, and efficient.
+  methods:
+    - Variational and regularization methods
+    - Model-based and data-driven reconstruction
+    - Sparse and low-complexity modelling
+  applications:
+    - Image reconstruction and restoration
+    - Computational sensing
+    - Scientific and engineering imaging
+  publication_topics:
+    - id: imaging
+      label: Imaging publications
+    - id: optimization
+      label: Optimization publications
+
+- id: medical-imaging
+  title: Medical Imaging
+  summary: We build reconstruction, correction, and analysis methods that connect mathematical insight with clinically relevant imaging problems.
+  description: >-
+    We study imaging pipelines in which physical acquisition models, limited observations, and learned priors must work together. Current applications represented in the lab's work include CT, PET, SPECT, MRI, and X-ray image analysis.
+  methods:
+    - Physics-informed reconstruction
+    - Attenuation and scatter correction
+    - Representation and anomaly learning
+  applications:
+    - CT, PET, SPECT, and MRI
+    - Low-dose and limited-angle imaging
+    - X-ray image analysis
+  publication_topics:
+    - id: imaging
+      label: Imaging publications
+    - id: learning
+      label: Machine-learning publications
+
+- id: optimization-learning
+  title: Optimization and Machine Learning
+  summary: We study the algorithms and mathematical structures that make large-scale learning and data-driven computation efficient and dependable.
+  description: >-
+    Our research spans nonsmooth and stochastic optimization, fixed-point and splitting methods, optimal transport, model compression, and learning for inverse problems, with an emphasis on both theory and scalable computation.
+  methods:
+    - Nonsmooth and stochastic optimization
+    - Operator splitting and fixed-point algorithms
+    - Structured and parameter-efficient learning
+  applications:
+    - Large-scale data science
+    - Optimal transport and graph learning
+    - Reliable learning for inverse problems
+  publication_topics:
+    - id: optimization
+      label: Optimization publications
+    - id: learning
+      label: Machine-learning publications

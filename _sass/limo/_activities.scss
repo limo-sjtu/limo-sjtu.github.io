@@ -1,0 +1,102 @@
+.limo-activity-year + .limo-activity-year,
+.limo-service-group + .limo-service-group {
+  margin-top: 1.5rem;
+}
+
+.limo-activity-year > h2,
+.limo-service-group > h2 {
+  padding-top: 0.6rem;
+  margin: 0 0 0.4rem;
+  color: var(--global-text-color-light);
+  font-size: 1.25rem;
+  text-align: right;
+  border-top: 1px solid var(--limo-border);
+}
+
+.limo-activity-list {
+  width: min(100%, 62rem);
+  margin: 0 auto;
+}
+
+.limo-activity-item {
+  display: grid;
+  grid-template-columns: 10rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px dashed var(--limo-border);
+}
+
+.limo-activity-item:last-child {
+  border-bottom: 0;
+}
+
+.limo-activity-item__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: flex-end;
+}
+
+.limo-activity-item__date {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.limo-activity-item__body h3,
+.limo-activity-item__body p {
+  margin: 0 0 0.3rem;
+}
+
+.limo-activity-item__body h3 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.limo-activity-item__slides,
+.limo-activity-archive > summary {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  color: var(--global-hover-text-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--global-theme-color);
+  border-radius: 0.2rem;
+}
+
+.limo-activity-archive {
+  margin-top: 1.25rem;
+}
+
+.limo-activity-archive > summary {
+  margin-bottom: 1rem;
+}
+
+.limo-review-list {
+  margin: 0;
+}
+
+.limo-review-list dt {
+  margin-top: 0.75rem;
+  font-weight: 700;
+}
+
+.limo-review-list dd {
+  margin: 0.2rem 0 0;
+}
+
+@media (max-width: 640px) {
+  .limo-activity-item {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .limo-activity-item__meta {
+    align-items: flex-start;
+  }
+
+  .limo-activity-item__date {
+    text-align: left;
+  }
+}

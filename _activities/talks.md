@@ -1,7 +1,7 @@
 ---
-layout: page #page-event
+layout: page
 title: Talks
 yaml: talks
 ---
 
-{% include activity_talks.liquid %}
+{% include limo/activity-talks.liquid %}

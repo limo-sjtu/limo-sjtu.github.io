@@ -49,6 +49,26 @@ body:
       description: Leave blank for a new member.
       placeholder: https://limo-sjtu.github.io/people/...
 
+  - type: dropdown
+    id: status
+    attributes:
+      label: Membership status
+      options:
+        - current
+        - alumni
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: research_areas
+    attributes:
+      label: Research areas
+      description: Select all broad areas that apply. Add more detail in the requested changes field.
+      options:
+        - label: Imaging and inverse problems
+        - label: Optimization
+        - label: Machine learning
+
   - type: textarea
     id: requested_changes
     attributes:

@@ -1,0 +1,114 @@
+---
+layout: default
+---
+<div class="post limo-home">
+  {% if page.hero %}
+    <header class="limo-home-hero">
+      <div class="limo-home-hero__copy">
+        {% if page.hero.eyebrow %}
+          <p class="limo-home-hero__eyebrow">{{ page.hero.eyebrow }}</p>
+        {% endif %}
+        <h1 class="limo-home-hero__title">{{ page.hero.title | default: site.title }}</h1>
+        {% if page.hero.text %}
+          <p class="limo-home-hero__lead">{{ page.hero.text }}</p>
+        {% endif %}
+        {% if page.hero.actions %}
+          <nav class="limo-home-hero__actions" aria-label="Homepage shortcuts">
+            {% for action in page.hero.actions %}
+              <a
+                class="limo-action-link{% if action.primary %} limo-action-link--primary{% endif %}"
+                href="{{ action.url | relative_url }}"
+              >
+                {{ action.label }}
+              </a>
+            {% endfor %}
+          </nav>
+        {% endif %}
+      </div>
+
+      {% if page.hero.image %}
+        <figure class="limo-home-hero__media">
+          <img
+            src="{{ '/assets/img/' | append: page.hero.image | relative_url }}"
+            alt="{{ page.hero.image_alt | default: site.title | escape }}"
+            width="1618"
+            height="1080"
+            fetchpriority="high"
+          >
+          {% if page.hero.caption %}
+            <figcaption>{{ page.hero.caption }}</figcaption>
+          {% endif %}
+        </figure>
+      {% endif %}
+    </header>
+  {% else %}
+    <header class="post-header limo-home__header">
+      <h1 class="post-title limo-home__title">{{ site.title }}</h1>
+      {% if page.subtitle %}
+        <p class="desc">{{ page.subtitle }}</p>
+      {% endif %}
+    </header>
+  {% endif %}
+
+  <article class="limo-home__body">
+    <section class="limo-home__intro" aria-labelledby="limo-home-about">
+      <h2 id="limo-home-about" class="limo-section-title">About LIMO</h2>
+      <div class="limo-home__intro-copy">{{ content }}</div>
+    </section>
+
+    {% if page.research_areas %}
+      <section class="limo-home__section" aria-labelledby="limo-home-research">
+        <div class="limo-section-heading">
+          <h2 id="limo-home-research" class="limo-section-title">Research areas</h2>
+          <a href="{{ '/research/' | relative_url }}">Explore our research <span aria-hidden="true">→</span></a>
+        </div>
+        {% include limo/research-area-cards.liquid %}
+      </section>
+    {% endif %}
+
+    {% if page.featured_papers %}
+      <section class="limo-home__section" aria-labelledby="limo-home-featured-publications">
+        <div class="limo-section-heading">
+          <h2 id="limo-home-featured-publications" class="limo-section-title">Featured work</h2>
+          <a href="{{ '/publications/?featured=1' | relative_url }}">View featured publications <span aria-hidden="true">→</span></a>
+        </div>
+        {% include limo/featured-publications.liquid %}
+      </section>
+    {% endif %}
+
+    {% if page.join_us %}
+      <aside class="limo-home-callout" aria-labelledby="limo-home-join">
+        <div>
+          <p class="limo-home-callout__eyebrow">Work with us</p>
+          <h2 id="limo-home-join">Join LIMO</h2>
+          <p>
+            We welcome inquiries from prospective PhD students and postdoctoral researchers interested in imaging, optimization, and machine learning.
+          </p>
+        </div>
+        <a class="limo-action-link limo-action-link--primary" href="{{ '/join/' | relative_url }}">View opportunities</a>
+      </aside>
+    {% endif %}
+
+    <div class="limo-home__sections">
+      {% if page.news and site.announcements.enabled %}
+        <section class="limo-home__section" aria-labelledby="limo-home-news">
+          <div class="limo-section-heading">
+            <h2 id="limo-home-news" class="limo-section-title">Latest news</h2>
+            <a href="{{ '/news/' | relative_url }}">All news <span aria-hidden="true">→</span></a>
+          </div>
+          {% include limo/news-list.liquid limit=true compact=true %}
+        </section>
+      {% endif %}
+
+      {% if page.recent_papers %}
+        <section class="limo-home__section" aria-labelledby="limo-home-publications">
+          <div class="limo-section-heading">
+            <h2 id="limo-home-publications" class="limo-section-title">Recent publications</h2>
+            <a href="{{ '/publications/' | relative_url }}">All publications <span aria-hidden="true">→</span></a>
+          </div>
+          {% include limo/recent-publications.liquid %}
+        </section>
+      {% endif %}
+    </div>
+  </article>
+</div>

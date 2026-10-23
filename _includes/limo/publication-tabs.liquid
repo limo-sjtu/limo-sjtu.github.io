@@ -1,0 +1,29 @@
+<div class="limo-publication-tabs" data-limo-publication-tabs>
+  <div class="limo-publication-controls">
+    <fieldset class="limo-publication-controls__topics">
+      <legend>Research topic</legend>
+      <div class="limo-publication-tabs__list" role="group" aria-label="Filter publications by research topic">
+        <button type="button" aria-pressed="true" data-limo-publication-filter="all">All topics</button>
+        <button type="button" aria-pressed="false" data-limo-publication-filter="imaging">Imaging</button>
+        <button type="button" aria-pressed="false" data-limo-publication-filter="optimization">Optimization</button>
+        <button type="button" aria-pressed="false" data-limo-publication-filter="learning">Machine learning</button>
+      </div>
+    </fieldset>
+
+    <label class="limo-publication-controls__featured">
+      <input type="checkbox" data-limo-publication-featured>
+      <span>Featured only</span>
+    </label>
+  </div>
+
+  <p class="limo-publication-tabs__status" aria-live="polite">
+    <span data-limo-publication-count></span>
+  </p>
+
+  <div class="limo-publication-tabs__content">
+    <div class="publications">{% bibliography %}</div>
+    <p class="limo-publication-tabs__empty" data-limo-publication-empty hidden>No publications match these filters.</p>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/limo-publication-tabs.js' | relative_url }}"></script>

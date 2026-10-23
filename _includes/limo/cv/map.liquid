@@ -1,0 +1,27 @@
+<div class="limo-cv-table-wrap">
+  <table class="limo-cv-table">
+    <tbody>
+      {% for content in entry.contents %}
+        <tr>
+          <th scope="row">{{ content.name }}</th>
+          {% if content.value %}
+            <td>{{ content.value }}</td>
+          {% endif %}
+          {% if content.links %}
+            <td>
+              <div class="limo-cv-links">
+                {% for item in content.links %}
+                  {% if item.link %}
+                    <a href="{{ item.link }}" class="limo-cv-button">
+                      {% if item.name %}{{ item.name }}{% else %}Document{% endif %}
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,53 @@
+---
+layout: default
+---
+<div class="post limo-member">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <article>
+    {{ content }}
+
+    {% if page.cv %}
+      <div class="limo-cv">
+        {% for entry in site.data.cv[page.cv] %}
+          {% assign entry_id = entry.title | slugify %}
+          <section class="limo-cv__section" aria-labelledby="{{ entry_id }}">
+            <h2 id="{{ entry_id }}" class="limo-cv__section-title">{{ entry.title }}</h2>
+            {% case entry.type %}
+              {% when 'list' %}
+                {% include limo/cv/list.liquid %}
+              {% when 'map' %}
+                {% include limo/cv/map.liquid %}
+              {% when 'nested_list' %}
+                {% include limo/cv/nested-list.liquid %}
+              {% when 'time_table' %}
+                {% include limo/cv/timeline.liquid %}
+              {% when 'list_groups' %}
+                {% include limo/cv/list-groups.liquid %}
+              {% when 'publications' %}
+                {% include limo/cv/publications.liquid %}
+              {% else %}
+                {{ entry.contents }}
+            {% endcase %}
+          </section>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </article>
+
+  {% if page.related_publications %}
+    <h2>References</h2>
+    <div class="publications">
+      {% bibliography --cited_in_order %}
+    </div>
+  {% endif %}
+
+  {% if site.plugins contains 'al_comments' %}
+    {% include plugins/al_comments.liquid %}
+  {% endif %}
+</div>

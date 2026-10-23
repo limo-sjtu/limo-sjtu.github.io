@@ -3,15 +3,14 @@ layout: page
 title: PI
 permalink: /pi/
 description: Principal Investigator
-nav: true
-nav_order: 0
+nav: false
 ---
 
-<div class="row align-items-center mb-4">
-  <div class="col-md-4 text-center">
-    <img src="{{ '/assets/img/people/xiaoqun.jpg' | relative_url }}" alt="Xiaoqun Zhang" class="img-fluid rounded" style="max-width: 220px;">
+<div class="limo-pi-profile">
+  <div class="limo-pi-profile__portrait">
+    <img src="{{ '/assets/img/people/xiaoqun.jpg' | relative_url }}" alt="Xiaoqun Zhang">
   </div>
-  <div class="col-md-8">
+  <div class="limo-pi-profile__details">
     <h2>Xiaoqun Zhang</h2>
     <p><b>Distinguished Professor</b><br>
     <a href="https://math.sjtu.edu.cn/" target="_blank">School of Mathematical Sciences</a> and
