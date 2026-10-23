@@ -8,7 +8,7 @@ nav_order: 3
 ---
 
 <p class="limo-page-lead">
-  Browse LIMO publications by research topic. “Featured only” is an editorial selection maintained by the website team and can be combined with any topic filter.
+  Search LIMO publications by title, author, or venue, then narrow the results by research topic. “Highlighted only” is an editorial selection maintained by the website team and can be combined with the other filters.
 </p>
 
 {% include limo/publication-tabs.liquid %}

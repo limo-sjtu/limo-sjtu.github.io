@@ -5,16 +5,16 @@
   color: "#ff3399"
 
 "Conference":
-  color: "#ff3399"
+  color: "#9d1466"
 
 "Journal":
-  color: "#0066ff"
+  color: "#004eaa"
 
 "Preprint":
-  color: "#2db500"
+  color: "#236d28"
 
 "Thesis":
-  color: "#7f7979"
+  color: "#5d3f8c"
 
 "AJP":
   url: https://aapt.scitation.org/journal/ajp

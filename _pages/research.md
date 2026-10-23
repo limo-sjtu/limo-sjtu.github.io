@@ -45,7 +45,7 @@ nav_order: 1
           </div>
         </div>
 
-        <div class="limo-research-detail__links" aria-label="Publication links for {{ area.title | escape }}">
+        <div class="limo-research-detail__links" role="group" aria-label="Publication links for {{ area.title | escape }}">
           {% for topic in area.publication_topics %}
             <a href="{{ '/publications/?topic=' | append: topic.id | relative_url }}">{{ topic.label }} <span aria-hidden="true">→</span></a>
           {% endfor %}

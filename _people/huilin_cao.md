@@ -1,7 +1,9 @@
 ---
 layout: limo-member
 title: Huilin Cao # Firstname Lastname
-# description: # you can leave it empty
+name_zh: 曹慧琳
+sort_name: Cao Huilin
+description: PhD student at LIMO working on machine learning, dictionary learning, and computational electromagnetism.
 img: huilin_cao_2inch.jpg # change "profile" to the name of your picture
 cv: huilin_cao
 toc:
@@ -9,6 +11,7 @@ toc:
 importance: 1 # no need to modify
 category: PhD student # choose from [Faculty, Post-doc, PhD student, Master student, Undergraduate, Alumni]
 status: current
+position: PhD Student
 research_areas: [learning]
 # redirect: link # if you have personal webpage, uncomment this line and replace "link" with the url of your personal webpage
 webpage: true # no need to modify, but if line 11 is uncommented, change "true" to "false"
@@ -16,6 +19,4 @@ scholar: # link to your google scholar page, leave it as it is now if you don't 
 github: # link to your github page, leave it as it is now if you don't have one
 ---
 
-Welcome to my webpage!
-
-I'm currently a second-year PhD student. My research interests are machine learning, dictionary learning, and computational electromagnetism.
+Huilin Cao is a PhD student whose research focuses on machine learning, dictionary learning, and computational electromagnetism.

@@ -2,15 +2,44 @@
 layout: default
 ---
 <div class="post limo-member">
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    {% if page.description %}
-      <p class="post-description">{{ page.description }}</p>
-    {% endif %}
+  <header class="limo-member-hero">
+    <img
+      src="{{ 'assets/img/people/' | append: page.img | relative_url }}"
+      alt="Portrait of {{ page.title | escape }}"
+      class="limo-member-hero__image"
+      width="180"
+      height="180"
+    >
+    <div>
+      <p class="limo-member-hero__position">{{ page.position | default: page.category }}</p>
+      <h1 class="post-title">
+        {{ page.title -}}
+        {%- if page.name_zh %}
+          <span class="limo-member-hero__name-zh">({{ page.name_zh }})</span>
+        {%- endif %}
+      </h1>
+      {% if page.research_areas and page.research_areas.size > 0 %}
+        <ul class="limo-member-hero__topics" aria-label="Research areas">
+          {% for area in page.research_areas %}
+            {% case area %}
+              {% when 'imaging' %}
+                {% assign area_label = 'Imaging' %}
+              {% when 'learning' %}
+                {% assign area_label = 'Machine Learning' %}
+              {% when 'optimization' %}
+                {% assign area_label = 'Optimization' %}
+              {% else %}
+                {% assign area_label = area | capitalize %}
+            {% endcase %}
+            <li>{{ area_label }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
   </header>
 
   <article>
-    {{ content }}
+    <div class="limo-member__bio">{{ content }}</div>
 
     {% if page.cv %}
       <div class="limo-cv">
@@ -51,3 +80,7 @@ layout: default
     {% include plugins/al_comments.liquid %}
   {% endif %}
 </div>
+
+{% if page.related_publications %}
+  <script src="{{ '/assets/js/limo-publication-disclosures.js' | relative_url }}"></script>
+{% endif %}

@@ -3,9 +3,9 @@
 # -----------------------------------------------------------------------------
 
 title: Lab for Imaging, Machine Learning and Optimization (LIMO) # the website title (if blank, full name will be used instead)
-first_name:
+first_name: LIMO
 middle_name:
-last_name:
+last_name: Lab
 email: # contact email
 description: >
   Homepage of the Lab for Imaging, Machine Learning and Optimization (LIMO) at the Institute of Natural Sciences, Shanghai Jiao Tong University.
@@ -69,8 +69,7 @@ repo_trophies:
 # -----------------------------------------------------------------------------
 # RSS Feed
 # -----------------------------------------------------------------------------
-# will use title and url fields
-# Take a look to https://github.com/jekyll/jekyll-feed for more customization
+# The site has no posts collection, so feed generation is intentionally disabled.
 
 rss_icon: false
 
@@ -85,7 +84,7 @@ socials_in_search: true
 bib_search: true
 
 # Dimensions
-max_width: 1024px
+max_width: 1180px
 
 # TODO: add layout settings (single page vs. multi-page)
 
@@ -94,9 +93,9 @@ max_width: 1024px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
+serve_schema_org: false # Theme Person schema is disabled; a local Organization schema is emitted instead.
+og_image: /assets/img/group_photo.jpg # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
 # Social integration
@@ -286,6 +285,11 @@ exclude:
   - purgecss.config.js
   - README.md
   - readme_preview/
+  - assets/file/information/
+  - assets/file/information.zip
+  - assets/html/relativity.html
+  - assets/img/people/profile.jpg
+  - assets/img/publication_preview/
   - assets/jupyter/
   - docs/
   - vendor
@@ -299,7 +303,6 @@ plugins:
   - jekyll-archives-v2
   - jekyll-cache-bust
   - jekyll-email-protect
-  - jekyll-feed
   - jekyll-get-json
   - jekyll-imagemagick
   - jekyll-jupyter-notebook
@@ -412,10 +415,10 @@ scholar:
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid
 enable_publication_badges:
-  altmetric: true # Altmetric badge (Customization options: https://badge-docs.altmetric.com/index.html)
-  dimensions: true # Dimensions badge (Customization options: https://badge.dimensions.ai/)
-  google_scholar: true # Google Scholar badge (https://scholar.google.com/intl/en/scholar/citations.html)
-  inspirehep: true # Inspire HEP badge (https://help.inspirehep.net/knowledge-base/citation-metrics/)
+  altmetric: false # No bibliography entries currently use this badge.
+  dimensions: false # No bibliography entries currently use this badge.
+  google_scholar: false # Enable when citation IDs are maintained in papers.bib.
+  inspirehep: false # Enable when InspireHEP IDs are maintained in papers.bib.
 
 # Filter out certain bibtex entry keywords used internally from the bib output
 filtered_bibtex_keywords:
@@ -510,13 +513,13 @@ enable_google_verification: false # enables google site verification
 enable_bing_verification: false # enables bing site verification
 enable_cookie_consent: false # enables GDPR-compliant cookie consent dialog
 protect_email: false # enables email obfuscation
-enable_masonry: true # enables automatic project cards arrangement
-enable_math: true # enables math typesetting (uses MathJax)
+enable_masonry: false # no project masonry grids are currently published
+enable_math: false # enable per site only when mathematical markup is published
 enable_tooltips: false # enables automatic tooltip links generated for each section titles on pages and posts
 enable_darkmode: true # enables switching between light/dark modes
 enable_navbar_social: false # enables displaying social links in the navbar on the about page
 enable_project_categories: false # enables categorization of projects into multiple categories
-enable_medium_zoom: true # enables image zoom feature (as on medium.com)
+enable_medium_zoom: false # no images currently opt in to zoom
 enable_progressbar: true # enables a horizontal progress bar linked to the vertical scroll position
 enable_video_embedding: false # enables video embedding for bibtex entries. If false, the button opens the video link in a new window.
 
@@ -551,9 +554,9 @@ third_party_libraries:
     version: "7.2.0"
   scholar-icons:
     integrity:
-      css: "sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY="
+      css: ""
     url:
-      css: "https://cdn.jsdelivr.net/npm/scholar-icons@{{version}}/css/scholar-icons.css"
+      css: ""
     version: "1.0.3"
   tocbot:
     integrity:
@@ -595,7 +598,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap"
+      fonts: "/assets/css/system-fonts.css"
   highlightjs:
     integrity:
       css:

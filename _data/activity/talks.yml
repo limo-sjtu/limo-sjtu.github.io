@@ -4,6 +4,7 @@
   session: 运筹与控制分组
   conference: 中国数学会2024年会
   location: 嘉兴，浙江
+  details_language: zh-CN
   session_url:
   conf_url: https://xshy.zjxu.edu.cn/hyjf.htm
   slides: /assets/slides/example_pdf.pdf
@@ -13,6 +14,7 @@
   session:
   conference: 第六届矩阵优化学术研讨会
   location: 长沙，湖南
+  details_language: zh-CN
   session_url:
   conf_url:
   slides:
@@ -31,6 +33,7 @@
   session:
   conference: 计算调和分析及其超分辨率成像应用研讨会
   location: 天元数学国际交流中心，昆明
+  details_language: zh-CN
   session_url:
   conf_url:
   slides:
@@ -40,6 +43,7 @@
   session:
   conference: 深圳应用反问题理论与数值方法研讨会
   location: 深圳北理莫斯科大学，深圳
+  details_language: zh-CN
   session_url:
   conf_url:
   slides:

@@ -2,11 +2,11 @@
   title: Inverse Problems and Computational Imaging
   summary: We develop mathematical models and reliable algorithms for recovering information from incomplete, noisy, or indirect measurements.
   description: >-
-    Our work combines variational modelling, inverse-problem theory, and modern computational methods to make image reconstruction and restoration more accurate, interpretable, and efficient.
+    Our work combines variational modeling, inverse-problem theory, and modern computational methods to make image reconstruction and restoration more accurate, interpretable, and efficient.
   methods:
     - Variational and regularization methods
     - Model-based and data-driven reconstruction
-    - Sparse and low-complexity modelling
+    - Sparse and low-complexity modeling
   applications:
     - Image reconstruction and restoration
     - Computational sensing

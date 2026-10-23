@@ -4,19 +4,30 @@
     src="{{ 'assets/img/people/' | append: member.img | relative_url }}"
     alt="Portrait of {{ member.title | escape }}"
     class="limo-person-card__image"
+    width="88"
+    height="88"
     loading="lazy"
   >
   <div class="limo-person-card__body">
-    <h3 class="limo-person-card__name">{{ member.title }}</h3>
-    <p class="limo-person-card__role">{{ member.position | default: member.category }}</p>
-    {% if member.research_areas and member.research_areas.size > 0 %}
+    <div class="limo-person-card__identity">
+      <h3 class="limo-person-card__name">
+        {{ member.title -}}
+        {%- if member.name_zh %}
+          <span class="limo-person-card__name-zh">({{ member.name_zh }})</span>
+        {%- endif %}
+      </h3>
+      {% unless include.hide_role %}
+        <p class="limo-person-card__role">{{ member.position | default: member.category }}</p>
+      {% endunless %}
+    </div>
+    {% if include.hide_topics != true and member.research_areas and member.research_areas.size > 0 %}
       <ul class="limo-person-card__topics" aria-label="Research areas">
         {% for area in member.research_areas limit: 3 %}
           {% case area %}
             {% when 'imaging' %}
               {% assign area_label = 'Imaging' %}
             {% when 'learning' %}
-              {% assign area_label = 'Learning' %}
+              {% assign area_label = 'Machine Learning' %}
             {% when 'optimization' %}
               {% assign area_label = 'Optimization' %}
             {% else %}
@@ -26,7 +37,7 @@
         {% endfor %}
       </ul>
     {% endif %}
-    <div class="limo-person-card__links" aria-label="Links for {{ member.title | escape }}">
+    <div class="limo-person-card__links" role="group" aria-label="Links for {{ member.title | escape }}">
       {% if member.webpage %}
         {% if member.local_profile %}
           {% assign profile_url = member.local_profile | relative_url %}

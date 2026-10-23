@@ -103,7 +103,7 @@ layout: default
       {% if page.recent_papers %}
         <section class="limo-home__section" aria-labelledby="limo-home-publications">
           <div class="limo-section-heading">
-            <h2 id="limo-home-publications" class="limo-section-title">Recent publications</h2>
+            <h2 id="limo-home-publications" class="limo-section-title">More recent work</h2>
             <a href="{{ '/publications/' | relative_url }}">All publications <span aria-hidden="true">→</span></a>
           </div>
           {% include limo/recent-publications.liquid %}
@@ -112,3 +112,5 @@ layout: default
     </div>
   </article>
 </div>
+
+<script src="{{ '/assets/js/limo-publication-disclosures.js' | relative_url }}"></script>

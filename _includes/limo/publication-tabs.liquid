@@ -1,18 +1,29 @@
 <div class="limo-publication-tabs" data-limo-publication-tabs>
   <div class="limo-publication-controls">
-    <fieldset class="limo-publication-controls__topics">
-      <legend>Research topic</legend>
-      <div class="limo-publication-tabs__list" role="group" aria-label="Filter publications by research topic">
+    <label class="limo-publication-controls__search">
+      <span class="limo-publication-controls__label">Search publications</span>
+      <input
+        type="search"
+        inputmode="search"
+        autocomplete="off"
+        placeholder="Title, author, or venue"
+        data-limo-publication-search
+      >
+    </label>
+
+    <div class="limo-publication-controls__topics" role="group" aria-labelledby="limo-publication-topic-label">
+      <span id="limo-publication-topic-label" class="limo-publication-controls__label">Research topic</span>
+      <div class="limo-publication-tabs__list">
         <button type="button" aria-pressed="true" data-limo-publication-filter="all">All topics</button>
         <button type="button" aria-pressed="false" data-limo-publication-filter="imaging">Imaging</button>
         <button type="button" aria-pressed="false" data-limo-publication-filter="optimization">Optimization</button>
-        <button type="button" aria-pressed="false" data-limo-publication-filter="learning">Machine learning</button>
+        <button type="button" aria-pressed="false" data-limo-publication-filter="learning">Machine Learning</button>
       </div>
-    </fieldset>
+    </div>
 
     <label class="limo-publication-controls__featured">
       <input type="checkbox" data-limo-publication-featured>
-      <span>Featured only</span>
+      <span>Highlighted only</span>
     </label>
   </div>
 
@@ -20,10 +31,13 @@
     <span data-limo-publication-count></span>
   </p>
 
+  <nav class="limo-publication-years" aria-label="Jump to publication year" data-limo-publication-years hidden></nav>
+
   <div class="limo-publication-tabs__content">
     <div class="publications">{% bibliography %}</div>
     <p class="limo-publication-tabs__empty" data-limo-publication-empty hidden>No publications match these filters.</p>
   </div>
 </div>
 
+<script src="{{ '/assets/js/limo-publication-disclosures.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/limo-publication-tabs.js' | relative_url }}"></script>

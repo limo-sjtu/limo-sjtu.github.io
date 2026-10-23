@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Events organized
+description: Workshops, conferences, and scientific events organized by LIMO members.
 yaml: events
 ---
 

@@ -9,6 +9,8 @@ on:
     branches:
       - master
       - main
+  schedule:
+    - cron: "0 3 1 * *"
   workflow_dispatch:
 
 jobs:
@@ -35,3 +37,11 @@ jobs:
           fail: true
           # Check generated pages so Liquid expressions are resolved first.
           args: --offline --remap '_site(/?.*)/assets/(.*) _site/assets/$2' --verbose --no-progress '_site/**/*.html'
+
+      - name: Monthly external link check 🌐
+        if: github.event_name == 'schedule'
+        continue-on-error: true
+        uses: lycheeverse/lychee-action@v1.9.0
+        with:
+          fail: false
+          args: --max-retries 2 --timeout 20 --verbose --no-progress '_site/**/*.html'

@@ -1,9 +1,9 @@
 .limo-home-hero {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(20rem, 1.05fr);
-  gap: clamp(1.5rem, 5vw, 4rem);
+  gap: clamp(1.5rem, 4vw, 3rem);
   align-items: center;
-  padding: clamp(1rem, 3vw, 2rem) 0 clamp(2rem, 5vw, 4rem);
+  padding: clamp(1rem, 3vw, 2rem) 0 clamp(2rem, 4vw, 3rem);
 }
 
 .limo-home-hero__eyebrow,
@@ -14,6 +14,10 @@
   font-weight: 750;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.limo-home-callout__eyebrow {
+  color: var(--limo-accent-on-soft);
 }
 
 .limo-home-hero__title {
@@ -80,7 +84,7 @@
 }
 
 .limo-home__section {
-  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+  margin-top: clamp(2.5rem, 5vw, 3.25rem);
 }
 
 .limo-research-cards {
@@ -148,7 +152,7 @@
   align-items: center;
   justify-content: space-between;
   padding: clamp(1.25rem, 4vw, 2.25rem);
-  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+  margin-top: clamp(2.5rem, 5vw, 3.25rem);
   background: var(--limo-theme-soft);
   border: 1px solid color-mix(in srgb, var(--global-theme-color) 28%, var(--limo-border));
   border-radius: 0.9rem;

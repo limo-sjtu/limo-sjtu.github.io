@@ -9,10 +9,27 @@
   border-left: 3px solid var(--global-theme-color);
 }
 
+.limo-people-directory__join a {
+  color: var(--limo-accent-on-soft);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 .limo-people-directory__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.limo-people-directory__subgroup + .limo-people-directory__subgroup {
+  margin-top: 1.5rem;
+}
+
+.limo-people-directory__subheading {
+  margin: 0.9rem 0 0.7rem;
+  color: var(--global-text-color);
+  font-size: 1rem;
+  font-weight: 650;
 }
 
 .limo-person-card {
@@ -20,7 +37,6 @@
   grid-template-columns: 5.75rem minmax(0, 1fr);
   gap: 0.7rem;
   align-items: start;
-  min-height: 9rem;
   padding: 0.65rem;
   overflow: hidden;
   background: var(--global-card-bg-color);
@@ -42,8 +58,22 @@
 .limo-person-card__image {
   width: 5.5rem;
   height: 5.5rem;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center top;
   border-radius: 0.25rem;
+}
+
+.limo-person-card__body {
+  display: flex;
+  min-width: 0;
+  min-height: 5.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.limo-person-card__identity {
+  min-width: 0;
 }
 
 .limo-person-card__name {
@@ -52,8 +82,13 @@
   line-height: 1.25;
 }
 
+.limo-person-card__name-zh,
+.limo-member-hero__name-zh {
+  white-space: nowrap;
+}
+
 .limo-person-card__role {
-  margin: 0.2rem 0 0.55rem;
+  margin: 0.18rem 0 0;
   color: var(--global-text-color-light);
   font-size: 0.82rem;
 }
@@ -63,13 +98,13 @@
   flex-wrap: wrap;
   gap: 0.25rem;
   padding: 0;
-  margin: 0 0 0.65rem;
+  margin: 0;
   list-style: none;
 }
 
 .limo-person-card__topics li {
   padding: 0.12rem 0.35rem;
-  color: var(--global-text-color-light);
+  color: var(--global-text-color);
   font-size: 0.68rem;
   background: var(--limo-surface-muted);
   border-radius: 999px;
@@ -77,18 +112,90 @@
 
 .limo-person-card__links {
   display: flex;
-  gap: 0.7rem;
+  flex: 0 0 auto;
+  gap: 1.35rem;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .limo-person-card__links a {
+  position: relative;
+  display: inline-flex;
+  width: 1.4rem;
+  height: 1.4rem;
+  align-items: center;
+  justify-content: flex-start;
   color: var(--global-text-color);
   font-size: 1.1rem;
   text-decoration: none;
 }
 
+.limo-person-card__links a::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
 .limo-person-card__links a:hover {
   color: var(--global-theme-color);
+}
+
+.limo-member-hero {
+  display: grid;
+  grid-template-columns: 11.25rem minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--limo-border);
+}
+
+.limo-member-hero__image {
+  width: 11.25rem;
+  height: 11.25rem;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 0.5rem;
+}
+
+.limo-member-hero__position {
+  margin: 0 0 0.35rem;
+  color: var(--global-theme-color);
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.limo-member-hero .post-title {
+  margin: 0;
+}
+
+.limo-member-hero__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0;
+  margin: 0.85rem 0 0;
+  list-style: none;
+}
+
+.limo-member-hero__topics li {
+  padding: 0.28rem 0.6rem;
+  color: var(--global-text-color);
+  font-size: 0.8rem;
+  background: var(--limo-surface-muted);
+  border-radius: 999px;
+}
+
+.limo-member__bio {
+  max-width: 48rem;
+  font-size: 1.02rem;
+  line-height: 1.7;
 }
 
 @media (max-width: 900px) {
@@ -100,5 +207,30 @@
 @media (max-width: 560px) {
   .limo-people-directory__grid {
     grid-template-columns: 1fr;
+  }
+
+  .limo-member-hero {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .limo-member-hero__image {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .limo-person-card {
+    grid-template-columns: 4.75rem minmax(0, 1fr);
+  }
+
+  .limo-person-card__image {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .limo-person-card__body {
+    min-height: 4.5rem;
   }
 }

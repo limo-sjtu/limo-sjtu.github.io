@@ -1,17 +1,82 @@
 :root {
+  --global-text-color-light: #6c757d;
   --limo-surface-muted: color-mix(in srgb, var(--global-card-bg-color) 92%, var(--global-text-color) 8%);
   --limo-theme-soft: color-mix(in srgb, var(--global-theme-color) 12%, var(--global-bg-color));
   --limo-border: var(--global-divider-color);
+  --limo-accent-fill: #9d078f;
+  --limo-accent-on-soft: #9d078f;
 }
 
-@media (min-width: 576px) {
-  .navbar-expand-sm .navbar-collapse {
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+html[data-theme="dark"] {
+  --global-text-color-light: #b8bec5;
+  --limo-accent-fill: #006b85;
+  --limo-accent-on-soft: #71c7df;
+}
+
+p a:not(.btn),
+footer a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.limo-skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1100;
+  padding: 0.65rem 0.9rem;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  background: #000;
+  border-radius: 0.25rem;
+  transform: translateY(-160%);
+}
+
+.limo-skip-link:focus {
+  color: #fff;
+  transform: translateY(0);
+}
+
+.navbar .navbar-collapse-main {
+  display: none;
+}
+
+.navbar .navbar-collapse-main.show {
+  display: block;
+  visibility: visible;
+}
+
+@media (min-width: 768px) {
+  .navbar-expand-md .navbar-collapse-main {
+    flex-basis: auto;
+    width: auto;
     display: flex !important;
     visibility: visible;
   }
+
+  .navbar-expand-md .navbar-nav {
+    flex-direction: row;
+  }
+
+  .navbar-expand-md .navbar-nav .dropdown-menu {
+    position: absolute;
+  }
+
+  .navbar-expand-md .navbar-nav .nav-link {
+    padding: 0.5rem;
+  }
+
+  .navbar-expand-md .navbar-toggler {
+    display: none;
+  }
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   .navbar .navbar-brand {
     flex: 0 1 auto;
     max-width: calc(100% - 3.5rem);
@@ -119,8 +184,8 @@ h3.section-title {
 
 .limo-action-link--primary {
   color: var(--global-hover-text-color);
-  background: var(--global-theme-color);
-  border-color: var(--global-theme-color);
+  background: var(--limo-accent-fill);
+  border-color: var(--limo-accent-fill);
 }
 
 .limo-action-link--primary:hover,

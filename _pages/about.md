@@ -23,4 +23,4 @@ news: true
 recent_papers: true
 ---
 
-The **Lab for Imaging, Machine Learning and Optimization (LIMO)** brings together researchers in mathematics and computer science at Shanghai Jiao Tong University. We combine mathematical modelling, optimization, and machine learning to solve inverse and data-driven problems, with close connections to scientific, experimental, and clinical applications.
+The **Lab for Imaging, Machine Learning and Optimization (LIMO)** brings together researchers in mathematics and computer science at Shanghai Jiao Tong University. We combine mathematical modeling, optimization, and machine learning to solve inverse and data-driven problems, with close connections to scientific, experimental, and clinical applications.

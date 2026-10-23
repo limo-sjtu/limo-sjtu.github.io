@@ -1,6 +1,7 @@
 ---
 layout: post
 title: LIMO Lab webpage online.
+description: The official website of the LIMO Lab at Shanghai Jiao Tong University is now online.
 date: 2024-09-10
 kind: general
 inline: false

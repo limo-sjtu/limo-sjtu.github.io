@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Single-Mode Quasi Riemannian Gradient Descent for Tensor Recovery Published
+description: A LIMO paper on single-mode quasi-Riemannian gradient descent for low-rank tensor recovery has been published.
 date: 2026-01-01
 kind: publication
 inline: true

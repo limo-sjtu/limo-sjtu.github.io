@@ -12,7 +12,11 @@
   <div class="limo-activity-item__body">
     <h3>{{ item.title }}</h3>
     {% if item.session %}
-      <p>
+      <p
+        {% if item.details_language %}
+          lang="{{ item.details_language }}"
+        {% endif %}
+      >
         {% if item.session_url -%}
           <a href="{{ item.session_url }}">{{ item.session }}</a>
         {%- else -%}
@@ -20,7 +24,11 @@
         {%- endif %}
       </p>
     {% endif %}
-    <p>
+    <p
+      {% if item.details_language %}
+        lang="{{ item.details_language }}"
+      {% endif %}
+    >
       {% if item.conf_url -%}
         <a href="{{ item.conf_url }}">{{ item.conference }}</a>
       {%- else -%}

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Federated Primal-Dual Fixed-Point Algorithm
+description: New LIMO work on a federated primal-dual fixed-point algorithm.
 date: 2024-11-25
 kind: publication
 inline: true

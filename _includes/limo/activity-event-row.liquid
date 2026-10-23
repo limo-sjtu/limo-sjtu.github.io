@@ -4,7 +4,12 @@
     {{- item.date -}}
     {%- if item.year %}, {{ item.year }}{% endif -%}
   </time>
-  <div class="limo-activity-item__body">
+  <div
+    class="limo-activity-item__body"
+    {% if item.language == 'Chinese' %}
+      lang="zh-CN"
+    {% endif %}
+  >
     <h3>
       {% if item.session_url -%}
         <a href="{{ item.session_url }}">{{ item.session }}</a>

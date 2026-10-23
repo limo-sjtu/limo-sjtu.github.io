@@ -32,7 +32,7 @@
 .limo-news-list__kind {
   display: inline-block;
   padding: 0.15rem 0.45rem;
-  color: var(--global-text-color-light);
+  color: var(--global-text-color);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -43,14 +43,20 @@
 
 .limo-news-list__kind--award,
 .limo-news-list__kind--member,
+.limo-news-list__kind--preprint,
 .limo-news-list__kind--recruiting {
-  color: var(--global-theme-color);
+  color: var(--limo-accent-on-soft);
   background: var(--limo-theme-soft);
 }
 
 .limo-news-list__content {
   min-width: 0;
   line-height: 1.55;
+}
+
+.limo-news-list__content a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .limo-news-list__content p {

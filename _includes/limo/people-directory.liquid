@@ -1,15 +1,69 @@
 <div class="limo-people-directory">
   {% for category in page.display_categories %}
-    {% assign categorized_people = site.people | where: 'category', category | sort: 'importance' %}
+    {% assign categorized_people = site.people | where: 'category', category %}
+    {% if category == 'PhD student' or category == 'Master student' %}
+      {% assign categorized_people = categorized_people | sort: 'sort_name' %}
+    {% else %}
+      {% assign categorized_people = categorized_people | sort: 'importance' %}
+    {% endif %}
     {% if categorized_people.size > 0 %}
       {% assign category_id = category | slugify %}
+      {% case category %}
+        {% when 'Faculty' %}
+          {% assign category_label = 'Faculty' %}
+        {% when 'Post-doc' %}
+          {% assign category_label = 'Postdoctoral Researchers' %}
+        {% when 'PhD student' %}
+          {% assign category_label = 'PhD Students' %}
+        {% when 'Master student' %}
+          {% assign category_label = "Master's Students" %}
+        {% when 'Undergraduate' %}
+          {% assign category_label = 'Undergraduate Students' %}
+        {% else %}
+          {% assign category_label = category %}
+      {% endcase %}
       <section class="limo-people-directory__group" aria-labelledby="{{ category_id }}">
-        <h2 id="{{ category_id }}" class="limo-section-title">{{ category }}</h2>
-        <div class="limo-people-directory__grid">
-          {% for member in categorized_people %}
-            {% include limo/person-card.liquid member=member %}
-          {% endfor %}
-        </div>
+        <h2 id="{{ category_id }}" class="limo-section-title">{{ category_label }}</h2>
+        {% if category == 'Alumni' %}
+          {% assign phd_alumni = categorized_people | where: 'alumni_degree', 'phd' | sort: 'sort_name' %}
+          {% assign masters_alumni = categorized_people | where: 'alumni_degree', 'masters' | sort: 'sort_name' %}
+
+          {% if phd_alumni.size > 0 %}
+            <section class="limo-people-directory__subgroup" aria-labelledby="alumni-phd">
+              <h3 id="alumni-phd" class="limo-people-directory__subheading">PhD Graduates</h3>
+              <div class="limo-people-directory__grid">
+                {% for member in phd_alumni %}
+                  {% include limo/person-card.liquid member=member hide_role=true %}
+                {% endfor %}
+              </div>
+            </section>
+          {% endif %}
+
+          {% if masters_alumni.size > 0 %}
+            <section class="limo-people-directory__subgroup" aria-labelledby="alumni-masters">
+              <h3 id="alumni-masters" class="limo-people-directory__subheading">Master's Graduates</h3>
+              <div class="limo-people-directory__grid">
+                {% for member in masters_alumni %}
+                  {% include limo/person-card.liquid member=member hide_role=true %}
+                {% endfor %}
+              </div>
+            </section>
+          {% endif %}
+        {% else %}
+          {% assign hide_redundant_role = false %}
+          {% assign hide_research_topics = false %}
+          {% if category == 'PhD student' or category == 'Master student' %}
+            {% assign hide_redundant_role = true %}
+          {% endif %}
+          {% if category == 'Faculty' %}
+            {% assign hide_research_topics = true %}
+          {% endif %}
+          <div class="limo-people-directory__grid">
+            {% for member in categorized_people %}
+              {% include limo/person-card.liquid member=member hide_role=hide_redundant_role hide_topics=hide_research_topics %}
+            {% endfor %}
+          </div>
+        {% endif %}
       </section>
     {% endif %}
   {% endfor %}

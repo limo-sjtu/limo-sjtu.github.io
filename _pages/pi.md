@@ -8,7 +8,7 @@ nav: false
 
 <div class="limo-pi-profile">
   <div class="limo-pi-profile__portrait">
-    <img src="{{ '/assets/img/people/xiaoqun.jpg' | relative_url }}" alt="Xiaoqun Zhang">
+    <img src="{{ '/assets/img/people/xiaoqun.jpg' | relative_url }}" alt="Xiaoqun Zhang" width="200" height="300">
   </div>
   <div class="limo-pi-profile__details">
     <h2>Xiaoqun Zhang</h2>

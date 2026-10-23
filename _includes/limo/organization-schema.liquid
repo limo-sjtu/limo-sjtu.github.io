@@ -1,0 +1,20 @@
+{%- assign organization_url = site.url | append: site.baseurl | append: '/' -%}
+{%- assign organization_id = organization_url | append: '#organization' -%}
+{%- assign organization_image = site.og_image | absolute_url -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": {{ organization_id | jsonify }},
+    "name": {{ site.title | jsonify }},
+    "alternateName": "LIMO Lab",
+    "url": {{ organization_url | jsonify }},
+    "description": {{ site.description | strip | jsonify }},
+    "image": {{ organization_image | jsonify }},
+    "parentOrganization": {
+      "@type": "CollegeOrUniversity",
+      "name": "Shanghai Jiao Tong University",
+      "url": "https://www.sjtu.edu.cn/"
+    }
+  }
+</script>
