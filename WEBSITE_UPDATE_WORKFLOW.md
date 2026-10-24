@@ -206,6 +206,7 @@ flowchart TD
 - 是否只修改必要文件；
 - 姓名、中文名、成员身份和拼音排序是否正确；
 - 论文类型、作者顺序、年份、期刊或会议、DOI 是否正确；
+- 论文的 `limo_members` 是否列出所有需要在个人页展示该论文的 LIMO 作者，并且每个值都对应现有 `member_id`；
 - 新闻是否确有发布价值，且没有无意义地复制全部论文记录；
 - 图片是否有使用许可、尺寸合理且替代文本准确；
 - 是否引入第二份事实来源或硬编码重复内容；
@@ -308,6 +309,7 @@ flowchart TD
 | PI 独立页面      | `_pages/pi.md`                       |
 | 头像             | `assets/img/people/`                 |
 | 论文             | `_bibliography/papers.bib`           |
+| 成员与论文的关联 | 论文条目中的 `limo_members` 字段     |
 | 新闻             | `_news/`                             |
 | 活动、报告和服务 | `_data/activity/`                    |
 | 研究方向         | `_data/research_areas.yml`           |
