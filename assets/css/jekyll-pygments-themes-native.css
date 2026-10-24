@@ -71,7 +71,10 @@
 } /* Name.Label */ /* Name.Namespace */ /* Name.Other */
 .highlight .py {
   color: #d0d0d0;
-} /* Name.Property */ /* Name.Tag */ /* Name.Variable */ /* Operator.Word */
+} /* Name.Property */ /* Name.Tag */
+.highlight .nv {
+  color: #40ffff;
+} /* Name.Variable */ /* Operator.Word */
 .highlight .w {
   color: #666666;
 } /* Text.Whitespace */ /* Literal.Number.Float */ /* Literal.Number.Hex */ /* Literal.Number.Integer */ /* Literal.Number.Oct */ /* Literal.String.Backtick */ /* Literal.String.Char */ /* Literal.String.Doc */ /* Literal.String.Double */ /* Literal.String.Escape */ /* Literal.String.Heredoc */ /* Literal.String.Interpol */ /* Literal.String.Other */ /* Literal.String.Regex */ /* Literal.String.Single */ /* Literal.String.Symbol */ /* Name.Builtin.Pseudo */ /* Name.Variable.Class */ /* Name.Variable.Global */ /* Name.Variable.Instance */ /* Literal.Number.Integer.Long */
