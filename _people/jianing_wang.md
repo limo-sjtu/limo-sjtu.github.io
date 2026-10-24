@@ -1,6 +1,7 @@
 ---
 layout: limo-member
 title: Jianing Wang
+member_id: jianing_wang
 name_zh: 汪嘉宁
 sort_name: Wang Jianing
 description: Master's student at the LIMO Lab.

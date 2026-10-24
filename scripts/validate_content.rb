@@ -16,6 +16,7 @@ BIB_ABBREVIATIONS = %w[Conference Journal Preprint Thesis].freeze
 PLACEHOLDER_PATTERN = /\bxxxx(?:\.xx)?\b|Hobby\s+\d|link to the paper|title of position|name of school|Author\s+\d|Description\s+\d|Master in Subject|Bachelor in Subject/i
 PEOPLE_PLACEHOLDER_PATTERN = /Welcome to my (?:webpage|homepage)/i
 IDENTIFIER_PATTERN = /\A[a-z0-9]+(?:[_-][a-z0-9]+)*\z/
+MEMBER_ID_PATTERN = /\A[a-z0-9]+(?:_[a-z0-9]+)*\z/
 CV_YEAR_PATTERN = /\A(?:completed|\d{4}(?:\.\d{1,2})?(?:\s*-\s*(?:\d{4}(?:\.\d{1,2})?|now|present))?)\z/i
 EMAIL_PATTERN = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i
 
@@ -266,6 +267,7 @@ end
 
 referenced_cvs = Set.new
 people_by_cv = {}
+people_member_ids = []
 people_files = Dir[File.join(ROOT, "_people", "*.md")].sort
 
 people_files.each do |path|
@@ -273,12 +275,19 @@ people_files.each do |path|
   next unless data.is_a?(Hash)
 
   label = relative(path)
-  member_id = File.basename(path, ".md")
-  if data["layout"] == "limo-member" && !member_id.match?(IDENTIFIER_PATTERN)
+  filename_id = File.basename(path, ".md")
+  if data["layout"] == "limo-member" && !filename_id.match?(IDENTIFIER_PATTERN)
     warnings << "#{label}: member identifiers must be lowercase; preserve the former URL with a redirect page during migration"
   end
-  %w[layout title description img importance category status position webpage].each do |field|
+  %w[layout title member_id description img importance category status position webpage].each do |field|
     errors << "#{label}: missing #{field.inspect}" unless present?(data[field]) || data[field] == false
+  end
+
+  member_id = data["member_id"].to_s
+  unless member_id.empty?
+    errors << "#{label}: member_id must use lowercase letters, digits, and underscores" unless member_id.match?(MEMBER_ID_PATTERN)
+    errors << "#{label}: member_id must match the page filename (expected #{filename_id.inspect})" unless member_id == filename_id
+    people_member_ids << member_id
   end
 
   unless PEOPLE_CATEGORIES.include?(data["category"])
@@ -333,8 +342,7 @@ people_files.each do |path|
   when "limo-member"
     cv = data["cv"].to_s
     errors << "#{label}: limo-member requires a cv identifier" if cv.empty?
-    expected = File.basename(path, ".md")
-    errors << "#{label}: cv identifier must match the page filename (expected #{expected.inspect})" unless cv == expected
+    errors << "#{label}: cv identifier must match the page filename (expected #{filename_id.inspect})" unless cv == filename_id
     referenced_cvs << cv unless cv.empty?
     people_by_cv[cv] = data unless cv.empty?
   when "page"
@@ -349,6 +357,11 @@ people_files.each do |path|
   body = source.sub(/\A---\s*\n.*?\n---\s*/m, "")
   errors << "#{label}: placeholder profile introduction is not allowed" if body.match?(PEOPLE_PLACEHOLDER_PATTERN)
 end
+
+people_member_ids.group_by { |member_id| member_id }.each do |member_id, matches|
+  errors << "_people: duplicate member_id #{member_id.inspect}" if matches.length > 1
+end
+people_member_id_set = people_member_ids.to_set
 
 cv_files = Dir[File.join(ROOT, "_data", "cv", "*.yml")].sort
 available_cvs = cv_files.map { |path| File.basename(path, ".yml") }.to_set
@@ -594,6 +607,18 @@ bib_entries.each do |entry|
   secondary = unwrap_bib_value(fields["cate_secondary"]&.last)
   allowed_secondary = publication_topic_ids + ["none"]
   errors << "#{label}: cate_secondary must be one of #{allowed_secondary.join(', ')}" if present?(secondary) && !allowed_secondary.include?(secondary)
+
+  if fields.key?("limo_members")
+    member_ids = unwrap_bib_value(fields["limo_members"].last).split(",").map(&:strip).reject(&:empty?)
+    errors << "#{label}: limo_members must contain at least one member_id" if member_ids.empty?
+    member_ids.group_by { |member_id| member_id }.each do |member_id, matches|
+      errors << "#{label}: duplicate limo_members identifier #{member_id.inspect}" if matches.length > 1
+    end
+    member_ids.each do |member_id|
+      errors << "#{label}: invalid limo_members identifier #{member_id.inspect}" unless member_id.match?(MEMBER_ID_PATTERN)
+      errors << "#{label}: limo_members references unknown member_id #{member_id.inspect}" unless people_member_id_set.include?(member_id)
+    end
+  end
 
   %w[bibtex_show selected homepage_featured].each do |field|
     value = unwrap_bib_value(fields[field]&.last)

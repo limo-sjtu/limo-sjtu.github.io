@@ -1,6 +1,7 @@
 ---
 layout: limo-member
 title: Jie Gao
+member_id: jie_gao
 name_zh: 高婕
 sort_name: Gao Jie
 alumni_degree: phd

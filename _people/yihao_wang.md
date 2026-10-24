@@ -1,6 +1,7 @@
 ---
 layout: limo-member
 title: Yihao Wang
+member_id: yihao_wang
 name_zh: 王逸昊
 sort_name: Wang Yihao
 description: PhD student at LIMO working on image processing and machine learning.

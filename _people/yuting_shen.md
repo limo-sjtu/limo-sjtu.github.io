@@ -1,6 +1,7 @@
 ---
 layout: limo-member
 title: Yuting Shen
+member_id: yuting_shen
 name_zh: 沈雨婷
 sort_name: Shen Yuting
 alumni_degree: phd

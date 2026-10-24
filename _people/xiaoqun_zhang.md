@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Xiaoqun Zhang
+member_id: xiaoqun_zhang
 name_zh: 张小群
 description: Distinguished Professor at Shanghai Jiao Tong University working on mathematical imaging, optimization, and machine learning.
 img: xiaoqun_2inch.jpg

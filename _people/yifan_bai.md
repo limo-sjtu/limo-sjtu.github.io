@@ -1,6 +1,7 @@
 ---
 layout: limo-member
 title: Yifan Bai
+member_id: yifan_bai
 name_zh: 白一凡
 sort_name: Bai Yifan
 description: PhD student at LIMO working on nonsmooth optimization, image processing, machine learning, and mathematical formalization.

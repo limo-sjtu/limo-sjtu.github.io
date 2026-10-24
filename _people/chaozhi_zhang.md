@@ -1,6 +1,7 @@
 ---
 layout: limo-member # no need to modify
 title: Chaozhi Zhang
+member_id: chaozhi_zhang
 name_zh: 张超志
 sort_name: Zhang Chaozhi
 alumni_degree: phd

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Jingwei Liang
+member_id: jingwei_liang
 name_zh: 梁经纬
 description: Tenure-track Associate Professor at Shanghai Jiao Tong University working on nonsmooth optimization, data science, and mathematical image processing.
 img: jingwei_2inch.jpeg

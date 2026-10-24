@@ -1,6 +1,7 @@
 ---
 layout: limo-member
 title: Junzhe Liu
+member_id: junzhe_liu
 name_zh: 刘俊哲
 sort_name: Liu Junzhe
 alumni_degree: masters

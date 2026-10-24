@@ -1,6 +1,7 @@
 ---
 layout: limo-member
 title: Huilin Cao # Firstname Lastname
+member_id: huilin_cao
 name_zh: 曹慧琳
 sort_name: Cao Huilin
 description: PhD student at LIMO working on machine learning, dictionary learning, and computational electromagnetism.

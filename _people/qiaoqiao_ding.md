@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Qiaoqiao Ding
+member_id: qiaoqiao_ding
 name_zh: 丁乔乔
 description: Research Scientist at the Institute of Natural Sciences, Shanghai Jiao Tong University.
 img: qqding_2inch.jpg

@@ -1,6 +1,7 @@
 ---
 layout: limo-member # no need to modify
 title: Yuzhong Zhao
+member_id: yuzhong_zhao
 name_zh: 赵煜中
 sort_name: Zhao Yuzhong
 alumni_degree: phd

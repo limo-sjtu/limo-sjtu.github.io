@@ -1,6 +1,7 @@
 ---
 layout: limo-member
 title: Xiang Cao
+member_id: xiang_cao
 name_zh: 曹翔
 sort_name: Cao Xiang
 description: PhD student at LIMO working on generative models, image processing, and PDE-based inverse problems.

@@ -1,6 +1,7 @@
 ---
 layout: limo-member # no need to modify
 title: Yeruyi Fang
+member_id: yeruyi_fang
 name_zh: 方叶如浥
 sort_name: Fang Yeruyi
 alumni_degree: masters

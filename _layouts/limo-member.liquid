@@ -13,10 +13,10 @@ layout: default
     <div>
       <p class="limo-member-hero__position">{{ page.position | default: page.category }}</p>
       <h1 class="post-title">
-        {{ page.title -}}
-        {%- if page.name_zh %}
+        {{ page.title }}
+        {% if page.name_zh %}
           <span class="limo-member-hero__name-zh">({{ page.name_zh }})</span>
-        {%- endif %}
+        {% endif %}
       </h1>
       {% if page.category != 'Faculty' and page.research_areas and page.research_areas.size > 0 %}
         <ul class="limo-member-hero__topics" aria-label="Research areas">
@@ -64,14 +64,24 @@ layout: default
     {% endif %}
   </article>
 
-  {% if page.related_publications %}
-    <h2>References</h2>
-    <div class="publications">
-      {% bibliography --cited_in_order %}
-    </div>
+  {% capture member_publication_count -%}
+    {% bibliography_count --query @*[limo_members ~= \b{{ page.member_id }}\b] %}
+  {%- endcapture %}
+  {% assign member_publication_count = member_publication_count | strip | plus: 0 %}
+
+  {% if member_publication_count > 0 %}
+    <section class="limo-member-publications" aria-labelledby="member-publications-heading">
+      <header class="limo-section-heading limo-member-publications__header">
+        <h2 id="member-publications-heading" class="limo-section-title">Publications</h2>
+        <a href="{{ '/publications/' | relative_url }}">View all publications <span aria-hidden="true">→</span></a>
+      </header>
+      <div class="publications no_toc_section">
+        {% bibliography --group_by none --query @*[limo_members ~= \b{{ page.member_id }}\b] %}
+      </div>
+    </section>
   {% endif %}
 </div>
 
-{% if page.related_publications %}
+{% if member_publication_count > 0 %}
   <script src="{{ '/assets/js/limo-publication-disclosures.js' | relative_url }}"></script>
 {% endif %}

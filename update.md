@@ -45,14 +45,13 @@ Recommended labels are `status: needs review`, `status: revision requested`, `st
 | Events, talks, and service           | `_data/activity/*.yml`             |
 | Recruitment information              | `_data/recruitment.yml`            |
 
-Do not create a second bibliography, a second member-layout protocol, or an additional copy of publication data. Historical CV publication lists may remain, but new publications must first be added to `papers.bib`.
+Do not create a second bibliography, a second member-layout protocol, or an additional copy of publication data. A historical CV publication list may remain only for work that is not yet in `papers.bib`; once a paper is added to the central bibliography, remove its duplicate CV entry.
 
 The PI is an intentional exception to the general member-page pattern. Keep the directory metadata in `_people/xiaoqun_zhang.md` and maintain the complete standalone profile only in `_pages/pi.md`. The People card and the generated `/people/xiaoqun_zhang/` redirect both lead to `/pi/`; do not assign that permalink to the collection record as well.
 
 ## Member schema
 
-Use a lowercase `firstname_lastname` identifier for new members. The page and CV filenames must share the same identifier.
-Some historical profiles still have mixed-case identifiers. Keep those URLs stable until a reviewed redirect migration is prepared; the validator reports them as warnings rather than blocking unrelated updates.
+Use a stable lowercase `firstname_lastname` identifier for every member. The `_people` filename, its `member_id`, and (for an internal profile) the CV filename and `cv` value must match. Do not change `member_id` when a member graduates: publication-to-profile links depend on it. A rename requires a reviewed URL migration and an update to every matching `limo_members` field.
 
 Internal profile:
 
@@ -60,12 +59,15 @@ Internal profile:
 ---
 layout: limo-member
 title: Full Name
+member_id: firstname_lastname
+description: One-sentence public profile summary.
 img: portrait.jpg
 cv: firstname_lastname
 toc:
   sidebar: right
 importance: 10
 category: PhD student
+position: PhD Student
 sort_name: Lastname Firstname
 status: current
 research_areas: [imaging, optimization]
@@ -82,11 +84,15 @@ Redirect-only profile:
 ---
 layout: page
 title: Full Name
+member_id: firstname_lastname
+description: One-sentence public profile summary.
 img: portrait.jpg
 importance: 10
 category: Faculty
+position: Professor
 status: current
 redirect: https://example.edu/profile
+sitemap: false
 webpage: true
 scholar:
 github:
@@ -113,6 +119,7 @@ Use scalar dates in `YYYY.MM - YYYY.MM` form, or `YYYY.MM - Present` only for ge
   html={https://doi.org/...},
   cate_primary={optimization},
   cate_secondary={none},
+  limo_members={firstname_lastname},
   selected={false},
   homepage_featured={false},
 }
@@ -124,6 +131,7 @@ Rules for new entries:
 - `abbr` must be `Journal`, `Conference`, `Preprint`, or `Thesis`.
 - `cate_primary` must be an ID from `_data/publication_topics.yml`.
 - `cate_secondary` is optional and may use a taxonomy ID or `none`.
+- `limo_members` is an optional comma-separated list of profile `member_id` values, for example `{firstname_lastname, second_member}`. Include every LIMO author whose local profile should show the paper; the member page creates its Publications section automatically and omits the section when there are no matches. This internal field is removed from the public BibTeX panel. Do not type publication lists into profile Markdown or CV data.
 - `bibtex_show`, `selected`, and (when present) `homepage_featured` must be booleans.
 - Add a DOI or public `html` link. Historical entries without links are allowed temporarily and reported as a warning.
 - Add `abstract` only when real abstract text is available; omit empty fields.

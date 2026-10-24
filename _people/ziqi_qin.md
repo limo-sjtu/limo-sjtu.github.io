@@ -1,6 +1,7 @@
 ---
 layout: limo-member
 title: Ziqi Qin
+member_id: ziqi_qin
 name_zh: 秦子祺
 sort_name: Qin Ziqi
 description: PhD student at LIMO working on nonsmooth optimization and machine learning.

@@ -1,6 +1,7 @@
 ---
 layout: limo-member # no need to modify
 title: Wenzhou Xia
+member_id: wenzhou_xia
 name_zh: 夏文洲
 sort_name: Xia Wenzhou
 description: PhD student at LIMO working on optimization and machine learning.

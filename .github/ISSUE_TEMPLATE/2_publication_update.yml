@@ -39,6 +39,15 @@ body:
     validations:
       required: true
 
+  - type: textarea
+    id: limo_authors
+    attributes:
+      label: LIMO authors whose profiles should show this publication
+      description: List every relevant LIMO member by full name. The maintainer will map these names to stable member IDs in papers.bib.
+      placeholder: Firstname Lastname; Secondname Lastname
+    validations:
+      required: true
+
   - type: input
     id: venue
     attributes:

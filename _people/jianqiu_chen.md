@@ -1,6 +1,7 @@
 ---
 layout: limo-member
 title: Jianqiu Chen
+member_id: jianqiu_chen
 name_zh: 陈建秋
 sort_name: Chen Jianqiu
 alumni_degree: masters

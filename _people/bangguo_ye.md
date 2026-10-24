@@ -1,6 +1,7 @@
 ---
 layout: limo-member # no need to modify
 title: Bangguo Ye
+member_id: bangguo_ye
 name_zh: 叶邦国
 sort_name: Ye Bangguo
 description: PhD student at LIMO working on image processing, machine learning, and parameter-efficient fine-tuning.
