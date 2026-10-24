@@ -1,0 +1,11 @@
+- id: imaging
+  label: Imaging
+  publication_label: Imaging publications
+
+- id: optimization
+  label: Optimization
+  publication_label: Optimization publications
+
+- id: learning
+  label: Machine Learning
+  publication_label: Machine-learning publications

@@ -4,6 +4,7 @@
   --limo-theme-soft: color-mix(in srgb, var(--global-theme-color) 12%, var(--global-bg-color));
   --limo-border: var(--global-divider-color);
   --limo-accent-fill: #9d078f;
+  --limo-on-accent: #fff;
   --limo-accent-on-soft: #9d078f;
 }
 
@@ -18,6 +19,8 @@ html[data-theme="dark"] {
 }
 
 p a:not(.btn),
+.post article > ul a:not(.btn),
+.post article > ol a:not(.btn),
 footer a {
   text-decoration: underline;
   text-underline-offset: 0.15em;
@@ -135,7 +138,8 @@ h3.section-title {
 }
 
 .limo-page-lead {
-  max-width: 50rem;
+  width: 100%;
+  max-width: none;
   margin: 0 0 2rem;
   color: var(--global-text-color-light);
   font-size: clamp(1.05rem, 2vw, 1.2rem);
@@ -183,14 +187,14 @@ h3.section-title {
 }
 
 .limo-action-link--primary {
-  color: var(--global-hover-text-color);
+  color: var(--limo-on-accent);
   background: var(--limo-accent-fill);
   border-color: var(--limo-accent-fill);
 }
 
 .limo-action-link--primary:hover,
 .limo-action-link--primary:focus-visible {
-  color: var(--global-hover-text-color);
+  color: var(--limo-on-accent);
   filter: brightness(1.08);
 }
 

@@ -46,8 +46,9 @@ nav_order: 1
         </div>
 
         <div class="limo-research-detail__links" role="group" aria-label="Publication links for {{ area.title | escape }}">
-          {% for topic in area.publication_topics %}
-            <a href="{{ '/publications/?topic=' | append: topic.id | relative_url }}">{{ topic.label }} <span aria-hidden="true">→</span></a>
+          {% for topic_id in area.publication_topics %}
+            {% assign topic = site.data.publication_topics | where: 'id', topic_id | first %}
+            <a href="{{ '/publications/?topic=' | append: topic.id | relative_url }}">{{ topic.publication_label }} <span aria-hidden="true">→</span></a>
           {% endfor %}
         </div>
       </div>

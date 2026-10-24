@@ -32,17 +32,23 @@ Recommended labels are `status: needs review`, `status: revision requested`, `st
 | ------------------------------------ | ---------------------------------- |
 | Member directory entry and biography | `_people/<member-id>.md`           |
 | Structured member CV                 | `_data/cv/<member-id>.yml`         |
+| Principal Investigator page          | `_pages/pi.md`                     |
 | Member portrait                      | `assets/img/people/<filename>`     |
 | Research-area descriptions           | `_data/research_areas.yml`         |
+| Publication-topic taxonomy           | `_data/publication_topics.yml`     |
 | Publications                         | `_bibliography/papers.bib`         |
 | News                                 | `_news/YYYY-MM-DD-<short-slug>.md` |
-| Recruitment information              | `_pages/join.md`                   |
+| Events, talks, and service           | `_data/activity/*.yml`             |
+| Recruitment information              | `_data/recruitment.yml`            |
 
 Do not create a second bibliography, a second member-layout protocol, or an additional copy of publication data. Historical CV publication lists may remain, but new publications must first be added to `papers.bib`.
+
+The PI is an intentional exception to the general member-page pattern. Keep the directory metadata in `_people/xiaoqun_zhang.md` and maintain the complete standalone profile only in `_pages/pi.md`. The People card and the generated `/people/xiaoqun_zhang/` redirect both lead to `/pi/`; do not assign that permalink to the collection record as well.
 
 ## Member schema
 
 Use a lowercase `firstname_lastname` identifier for new members. The page and CV filenames must share the same identifier.
+Some historical profiles still have mixed-case identifiers. Keep those URLs stable until a reviewed redirect migration is prepared; the validator reports them as warnings rather than blocking unrelated updates.
 
 Internal profile:
 
@@ -83,9 +89,10 @@ github:
 ---
 ```
 
-Allowed categories are `Faculty`, `Post-doc`, `PhD student`, `Master student`, `Undergraduate`, and `Alumni`. Use `status: current` for current members and `status: alumni` with the `Alumni` category for former members. Optional `research_areas` values are `imaging`, `optimization`, and `learning`; only add areas supported by the member's submitted biography. PhD students, master's students, and alumni require `sort_name` in `Family-name Given-name` pinyin order and are displayed alphabetically by that field. Alumni also require `alumni_degree: phd` or `alumni_degree: masters`, which controls their subgroup. Other categories use the integer `importance` field for ordering. Use full `https://` URLs for public links and verify that the portrait filename matches its case exactly.
+Allowed categories are `Faculty`, `Post-doc`, `PhD student`, `Master student`, `Undergraduate`, and `Alumni`. Use `status: current` for current members and `status: alumni` with the `Alumni` category for former members. Optional `research_areas` values are `imaging`, `optimization`, and `learning`; only add areas supported by the member's submitted biography. PhD students, master's students, and alumni require `sort_name` in `Family-name Given-name` pinyin order and are displayed alphabetically by that field. Alumni also require `alumni_degree: phd` or `alumni_degree: masters`, which controls their subgroup. Other categories use the integer `importance` field for ordering. Use full `https://` URLs for public links and verify that the portrait filename matches its case exactly. A `redirect` may instead use a root-relative path such as `/pi/` when it intentionally preserves a historical internal URL.
 
-CV data is a list of sections. Supported section types are `map`, `time_table`, `publications`, `list`, `nested_list`, and `list_groups`. Remove empty sections instead of leaving template placeholders in production data. A publication URL is optional in an existing CV entry; the template renders plain text when no URL is present.
+CV data is a list of sections. Supported section types are `map`, `time_table`, `publications`, `list`, `nested_list`, and `list_groups`. Each `map` row requires `name` and either a non-empty `value` or a non-empty `links` list of `{name, link}` records. Remove empty sections instead of leaving template placeholders in production data. A publication URL is optional in an existing CV entry; the template renders plain text when no URL is present.
+Use scalar dates in `YYYY.MM - YYYY.MM` form, or `YYYY.MM - Present` only for genuinely current activities. Alumni education must not end in `Now` or `Present`; use `Completed` when the exact graduation date has not been confirmed rather than inventing a date. Do not publish literal email addresses; use the anti-spam `name at domain dot com` form, and remove rows whose value is only `None` or `N/A`.
 
 ## Publication schema
 
@@ -103,6 +110,7 @@ CV data is a list of sections. Supported section types are `map`, `time_table`, 
   cate_primary={optimization},
   cate_secondary={none},
   selected={false},
+  homepage_featured={false},
 }
 ```
 
@@ -110,12 +118,12 @@ Rules for new entries:
 
 - Use `@article`, `@inproceedings`, or `@phdthesis` as appropriate.
 - `abbr` must be `Journal`, `Conference`, `Preprint`, or `Thesis`.
-- `cate_primary` must be `imaging`, `optimization`, or `learning`.
-- `cate_secondary` is optional and may use the same values or `none`.
-- `bibtex_show` and `selected` must be explicit booleans.
+- `cate_primary` must be an ID from `_data/publication_topics.yml`.
+- `cate_secondary` is optional and may use a taxonomy ID or `none`.
+- `bibtex_show`, `selected`, and (when present) `homepage_featured` must be booleans.
 - Add a DOI or public `html` link. Historical entries without links are allowed temporarily and reported as a warning.
 - Add `abstract` only when real abstract text is available; omit empty fields.
-- The maintainer decides `selected`; submitters do not decide homepage placement.
+- The maintainer decides `selected` and `homepage_featured`; submitters do not decide homepage placement. Exactly three entries must set `homepage_featured={true}`, and each must also set `selected={true}`.
 
 ## News schema
 
@@ -125,33 +133,43 @@ Filename: `_news/YYYY-MM-DD-short-slug.md`.
 ---
 layout: post
 title: Short descriptive title
+description: One-sentence summary used by previews and metadata.
 date: YYYY-MM-DD
 kind: publication
+publication_key: author2026keyword
 inline: true
 related_posts: false
 ---
 Concise Markdown announcement with public links where useful.
 ```
 
-Allowed `kind` values are `publication`, `event`, `award`, `member`, `recruiting`, `grant`, and `general`. Use `inline: true` for a short list item and `inline: false` for a longer standalone page. News is explicitly sorted by its front-matter date.
+Allowed `kind` values are `publication`, `preprint`, `event`, `award`, `member`, `recruiting`, `grant`, and `general`. Every item requires `description`. Publication and preprint news also requires `publication_key`, which must exactly match an entry in `_bibliography/papers.bib`. Use `inline: true` for a short list item and `inline: false` for a longer standalone page. News is explicitly sorted by its front-matter date.
 
 Reserve News for meaningful lab updates: awards, defenses and graduations, visitors and events, new members, grants, recruiting, and selected publication milestones. Routine bibliography additions belong only in `_bibliography/papers.bib`; they do not require a duplicate News item.
 
 ## Site content architecture
 
-The primary navigation is `Research`, `People`, `Publications`, `News`, and `Join Us`. The PI page remains available below People but is not a separate top-level destination.
+The primary navigation is `Research`, `PI`, `People`, `Publications`, `News`, and `Join Us`. The standalone PI page at `/pi/` is also available from the Faculty card below People.
 
-Research-area names and descriptions are maintained once in `_data/research_areas.yml`. The homepage cards and the full Research page both read this file. Each entry requires a stable lowercase `id`, a title, summary, description, methods, applications, and one or more publication-topic links. Do not duplicate these descriptions directly in page templates.
+Research-area names and descriptions are maintained once in `_data/research_areas.yml`. Publication filters and labels are maintained once in `_data/publication_topics.yml`; research areas refer to those topics by ID. The homepage cards and the full Research page read these files. Each research-area entry requires a stable lowercase `id`, a title, summary, description, methods, applications, and one or more valid publication-topic IDs. Do not duplicate these descriptions or labels directly in page templates.
 
 The homepage is a curated overview rather than a complete archive:
 
 - three research areas come from `_data/research_areas.yml`;
-- three featured papers come from bibliography entries with `selected={true}`;
-- five recent non-preprint publications not already shown as featured come from the bibliography;
+- exactly three featured papers come from bibliography entries with `homepage_featured={true}`;
+- five recent non-featured publications, including preprints, come from the bibliography;
 - five recent News items come from `_news/`;
 - recruitment details link to `_pages/join.md`.
 
-The maintainer controls `selected` and homepage placement. Member requests may propose a highlight, but publication acceptance does not automatically make an item featured.
+The maintainer controls `selected`, `homepage_featured`, and homepage placement. Member requests may propose a highlight, but publication acceptance does not automatically make an item featured.
+
+## Activity schema
+
+Activity pages read only from `_data/activity/`: `events.yml`, `talks.yml`, and `services.yml`. Submit activity changes with the Activity Issue Form so the maintainer receives the same facts these files require.
+
+- Event rows require a lowercase `id`; ISO `start_date` and `end_date`; a human-readable `date_display`; `session`, `conference`, and `location`; `lang` (`en` or `zh-CN`); and a non-empty `organizers` list whose entries contain `name` and `affiliation`. URLs are optional but must be full `http(s)` links when present.
+- Talk rows require a lowercase `id`; ISO `start_date` and `end_date`; `date_display`; `title`, `conference`, and `location`; and `lang` (`en` or `zh-CN`). Optional slides may be a full URL or a root-relative file below the repository. Delete empty placeholder rows.
+- Service sections use `type: service` with `year`, `role`, and `venue`, or `type: review` with named groups whose `description` is a list of venues. Avoid duplicate venue entries.
 
 ## Local checks
 
@@ -160,6 +178,8 @@ Run the structural validator first:
 ```bash
 ruby scripts/validate_content.rb
 ```
+
+Install the pinned Node tools with `npm ci` before running formatting, CSS purging, or accessibility checks locally.
 
 Then build the site:
 
@@ -175,7 +195,7 @@ bundle exec al-folio upgrade audit
 bundle exec al-folio upgrade overrides audit --fail-on-stale
 ```
 
-The repository excludes the unused demonstration notebook from the build, so Jupyter is not required for ordinary website maintenance. When layout, images, or rendered text changes, also inspect the affected page in a local browser preview.
+The website does not publish notebooks, so the Jupyter build plugin is not installed. If notebook content is introduced later, add and test that support deliberately rather than committing an `.ipynb` file alone. When layout, images, or rendered text changes, also inspect the affected page in a local browser preview.
 
 ## Theme architecture and upgrades
 
@@ -190,13 +210,21 @@ silently replace it:
 | LIMO styles        | `_sass/limo/`                                                 |
 | Structured content | `_people/`, `_data/cv/`, `_news/`, `_bibliography/papers.bib` |
 
-Only two intentional theme overrides remain and both are recorded in
+Two intentional theme overrides remain and both are recorded in
 `.al-folio-overrides.yml`:
 
-- `_layouts/bib.liquid` adds LIMO publication highlights while retaining the
-  upstream publication renderer.
+- `_layouts/default.liquid` provides the redirect-page handling used by local profiles.
 - `assets/css/main.scss` loads the upstream Sass modules and then the LIMO Sass
   entry point.
+
+The customized header and bibliography renderer use the site-owned
+`_includes/limo/header.liquid` and `_layouts/limo-bib.liquid` paths, so they no
+longer shadow upstream theme files.
+
+`_plugins/limo_css_cache_bust.rb` extends al-folio's stylesheet fingerprint to
+include the site-owned `_sass/` files. Keep this plugin while LIMO styles live
+outside the theme gem; otherwise browsers may continue using an older
+`main.css` after a local style update.
 
 Do not add a local file with the same path as an al-folio layout, include,
 JavaScript file, or Sass partial unless an override is unavoidable. Prefer a

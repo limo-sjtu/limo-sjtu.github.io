@@ -8,6 +8,7 @@ body:
       label: News type
       options:
         - publication
+        - preprint
         - event
         - award
         - member
@@ -32,6 +33,21 @@ body:
       label: Short title
     validations:
       required: true
+
+  - type: input
+    id: description
+    attributes:
+      label: One-sentence description
+      description: Required front-matter summary used by previews and metadata.
+      placeholder: A concise sentence describing the announcement.
+    validations:
+      required: true
+
+  - type: input
+    id: publication_key
+    attributes:
+      label: Publication citation key
+      description: Required for publication and preprint news. It must exactly match a key in _bibliography/papers.bib.
 
   - type: textarea
     id: body

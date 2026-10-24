@@ -4,6 +4,7 @@ title: Formalization of Fixed-Point Algorithms in Hilbert Spaces
 description: A new preprint on the formalization of two fixed-point algorithms in Hilbert spaces.
 date: 2026-02-19
 kind: preprint
+publication_key: bai2026formalization
 inline: true
 related_posts: false
 ---

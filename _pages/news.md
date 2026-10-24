@@ -4,7 +4,7 @@ title: News
 description: Research releases, events, and announcements from the LIMO Lab.
 permalink: /news/
 nav: true
-nav_order: 4
+nav_order: 5
 ---
 
 <p class="limo-page-lead">

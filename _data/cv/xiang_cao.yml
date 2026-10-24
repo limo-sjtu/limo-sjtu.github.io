@@ -1,0 +1,18 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Email Address
+      value: spawner at sjtu dot edu dot cn # Public anti-spam form.
+    - name: Address
+      value: Room 402, No. 6 Science Building
+    - name: Research Interests
+      value: Generative Models, PDE-based Inverse Problems, Image Processing
+
+- title: Education
+  type: time_table
+  contents:
+    - title: Bachelor in Mathematics
+      institution: Zhiyuan College, Shanghai Jiao Tong University
+      year: 2018.09 - 2022.06
+      description:
+        - Basic education in mathematics and applied mathematics

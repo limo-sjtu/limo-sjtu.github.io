@@ -6,14 +6,14 @@
     - name: Address
       value: 9th Floor, neoBay 955
     - name: Research Interests
-      value: opimization, machine learning
+      value: optimization, machine learning
 
 - title: Education
   type: time_table
   contents:
     - title: PhD in Mathematics
-      institution: Institute of Natural Science and School of Mathematical Sciences, Shanghai Jiao Tong University,
-      year: 2024.09 - PRESENT
+      institution: Institute of Natural Sciences and School of Mathematical Sciences, Shanghai Jiao Tong University
+      year: 2024.09 - Present
     - title: Bachelor in Mathematics
       institution: Zhiyuan College and School of Mathematical Sciences, Shanghai Jiao Tong University
       year: 2020.09 - 2024.06

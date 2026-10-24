@@ -1,7 +1,7 @@
 - title: Editorial Services
   type: service
   contents:
-    - year: 2024 - Now
+    - year: 2024 - Present
       role: Area Chair
       venue: Advances in Neural Information Processing Systems (NeurIPS)
       venue_url:
@@ -9,7 +9,7 @@
       role: Guest editor
       venue: Journal of Nonlinear & Variational Analysis
       venue_url:
-    - year: 2022 - Now
+    - year: 2022 - Present
       role: Associate Editor
       venue: Journal of Applied and Numerical Optimization
       venue_url:
@@ -33,11 +33,10 @@
         - Journal of Global Optimization
         - Journal of Optimization Theory and Applications
         - Journal of Mathematical Imaging and Vision
-        - Numerical Algorithm
+        - Numerical Algorithms
         - Computational Optimization and Applications
         - Applied Mathematics and Optimization
-        - Journal of Global Optimization
-        - Optimization Letter
+        - Optimization Letters
         - Set-Valued and Variational Analysis
         - Journal of Scientific Computing
         - Statistics and Computing
@@ -49,7 +48,7 @@
         - Computers and Mathematics with Applications
         - Journal of Computational and Applied Mathematics
         - Signal Processing
-    - title: Informs
+    - title: INFORMS
       description:
         - Mathematics of Operations Research
     - title: IEEE
@@ -69,7 +68,6 @@
         - Journal of Computational Mathematics
     - title: Other journals
       description:
-        - ESAIM:&nbsp;ControlOptimization and Calculus of Variations
-        - Communication in Mathematical Sciences
+        - "ESAIM: Control, Optimisation and Calculus of Variations"
+        - Communications in Mathematical Sciences
         - Advances in Computational Mathematics
-        - Computational Optimization and Applications

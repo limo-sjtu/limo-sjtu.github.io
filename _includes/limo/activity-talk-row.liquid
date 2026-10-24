@@ -1,9 +1,8 @@
 {% assign item = include.item %}
 <article class="limo-activity-item">
   <div class="limo-activity-item__meta">
-    <time class="limo-activity-item__date">
-      {{- item.date -}}
-      {%- if item.year %}, {{ item.year }}{% endif -%}
+    <time class="limo-activity-item__date" datetime="{{ item.start_date }}">
+      {{- item.date_display -}}
     </time>
     {% if item.slides -%}
       <a class="limo-activity-item__slides" href="{{ item.slides | relative_url }}">Slides</a>
@@ -13,8 +12,8 @@
     <h3>{{ item.title }}</h3>
     {% if item.session %}
       <p
-        {% if item.details_language %}
-          lang="{{ item.details_language }}"
+        {% if item.lang %}
+          lang="{{ item.lang }}"
         {% endif %}
       >
         {% if item.session_url -%}
@@ -25,8 +24,8 @@
       </p>
     {% endif %}
     <p
-      {% if item.details_language %}
-        lang="{{ item.details_language }}"
+      {% if item.lang %}
+        lang="{{ item.lang }}"
       {% endif %}
     >
       {% if item.conf_url -%}

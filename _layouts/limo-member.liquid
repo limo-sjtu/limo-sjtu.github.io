@@ -18,19 +18,14 @@ layout: default
           <span class="limo-member-hero__name-zh">({{ page.name_zh }})</span>
         {%- endif %}
       </h1>
-      {% if page.research_areas and page.research_areas.size > 0 %}
+      {% if page.category != 'Faculty' and page.research_areas and page.research_areas.size > 0 %}
         <ul class="limo-member-hero__topics" aria-label="Research areas">
           {% for area in page.research_areas %}
-            {% case area %}
-              {% when 'imaging' %}
-                {% assign area_label = 'Imaging' %}
-              {% when 'learning' %}
-                {% assign area_label = 'Machine Learning' %}
-              {% when 'optimization' %}
-                {% assign area_label = 'Optimization' %}
-              {% else %}
-                {% assign area_label = area | capitalize %}
-            {% endcase %}
+            {% assign area_data = site.data.publication_topics | where: 'id', area | first %}
+            {% assign area_label = area_data.label %}
+            {% unless area_label %}
+              {% assign area_label = area | capitalize %}
+            {% endunless %}
             <li>{{ area_label }}</li>
           {% endfor %}
         </ul>
@@ -74,10 +69,6 @@ layout: default
     <div class="publications">
       {% bibliography --cited_in_order %}
     </div>
-  {% endif %}
-
-  {% if site.plugins contains 'al_comments' %}
-    {% include plugins/al_comments.liquid %}
   {% endif %}
 </div>
 

@@ -1,28 +1,27 @@
 {% assign item = include.item %}
+{% assign heading_level = include.heading_level | default: 3 %}
 <article class="limo-activity-item">
-  <time class="limo-activity-item__date">
-    {{- item.date -}}
-    {%- if item.year %}, {{ item.year }}{% endif -%}
+  <time class="limo-activity-item__date" datetime="{{ item.start_date }}">
+    {{- item.date_display -}}
   </time>
-  <div
-    class="limo-activity-item__body"
-    {% if item.language == 'Chinese' %}
-      lang="zh-CN"
-    {% endif %}
-  >
-    <h3>
+  <div class="limo-activity-item__body" lang="{{ item.lang }}">
+    <h{{ heading_level }}>
       {% if item.session_url -%}
         <a href="{{ item.session_url }}">{{ item.session }}</a>
       {%- else -%}
         {{- item.session -}}
       {%- endif %}
-    </h3>
+    </h{{ heading_level }}>
     {% if item.organizers %}
       <p>
         <strong>
-          {%- if item.language == 'Chinese' %}组织者{% else %}Organizers{% endif %}:</strong
+          {%- if item.lang == 'zh-CN' %}组织者{% else %}Organizers{% endif %}:</strong
         >
-        {{ item.organizers }}
+        {% for organizer in item.organizers -%}
+          <strong>{{ organizer.name }}</strong>
+          {%- if organizer.affiliation %} ({{ organizer.affiliation }}){% endif -%}
+          {%- unless forloop.last %}, {% endunless -%}
+        {%- endfor %}
       </p>
     {% endif %}
     <p>
@@ -35,5 +34,13 @@
         <span aria-hidden="true"> · </span>{{ item.location -}}
       {%- endif %}
     </p>
+    {% if item.abstract %}
+      <details class="limo-activity-item__abstract">
+        <summary>
+          {% if item.lang == 'zh-CN' %}简介{% else %}Abstract{% endif %}
+        </summary>
+        <p>{{ item.abstract }}</p>
+      </details>
+    {% endif %}
   </div>
 </article>

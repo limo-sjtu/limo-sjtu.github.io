@@ -76,14 +76,12 @@ layout: default
       </section>
     {% endif %}
 
-    {% if page.join_us %}
+    {% if page.join_us and site.data.recruitment.enabled %}
       <aside class="limo-home-callout" aria-labelledby="limo-home-join">
         <div>
           <p class="limo-home-callout__eyebrow">Work with us</p>
           <h2 id="limo-home-join">Join LIMO</h2>
-          <p>
-            We welcome inquiries from prospective PhD students and postdoctoral researchers interested in imaging, optimization, and machine learning.
-          </p>
+          <p>{{ site.data.recruitment.homepage_summary }}</p>
         </div>
         <a class="limo-action-link limo-action-link--primary" href="{{ '/join/' | relative_url }}">View opportunities</a>
       </aside>

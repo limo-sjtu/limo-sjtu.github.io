@@ -1,67 +1,72 @@
-- year: 2024
-  date: 31 Oct-4 Nov
+- id: cms-2024-inexact-gradient
+  start_date: "2024-10-31"
+  end_date: "2024-11-04"
+  date_display: 31 Oct–4 Nov 2024
   title: Accelerate Sparse Optimization via Inexact Gradient
   session: 运筹与控制分组
   conference: 中国数学会2024年会
   location: 嘉兴，浙江
-  details_language: zh-CN
+  lang: zh-CN
   session_url:
   conf_url: https://xshy.zjxu.edu.cn/hyjf.htm
-  slides: /assets/slides/example_pdf.pdf
-- year: 2024
-  date: 20-22 Sep
+  slides:
+- id: matrix-optimization-2024
+  start_date: "2024-09-20"
+  end_date: "2024-09-22"
+  date_display: 20–22 Sep 2024
   title: Accelerating Sparse Over-parameterized Solvers via Fast Inexact Gradients
   session:
   conference: 第六届矩阵优化学术研讨会
   location: 长沙，湖南
-  details_language: zh-CN
+  lang: zh-CN
   session_url:
   conf_url:
   slides:
-- year: 2024
-  date: 20-24 July
+- id: polyu-2024-model-consistency
+  start_date: "2024-07-20"
+  end_date: "2024-07-24"
+  date_display: 20–24 Jul 2024
   title: Model Consistency of Iterative Regularization
   session:
   conference: Workshop on Structure-preserving Numerical Methods and Their Applications
   location: PolyU Hong Kong, China
+  lang: en
   session_url:
   conf_url: https://events.polyu.edu.hk/spnm/home
   slides:
-- year: 2024
-  date: 28 Apr-04 May
-  title: An Fast Over-parameterization Approach for Sparse Regularization
+- id: kunming-2024-over-parameterization
+  start_date: "2024-04-28"
+  end_date: "2024-05-04"
+  date_display: 28 Apr–4 May 2024
+  title: A Fast Over-parameterization Approach for Sparse Regularization
   session:
   conference: 计算调和分析及其超分辨率成像应用研讨会
   location: 天元数学国际交流中心，昆明
-  details_language: zh-CN
+  lang: zh-CN
   session_url:
   conf_url:
   slides:
-- year: 2024
-  date: 22-25 Mar
+- id: shenzhen-2024-model-consistency
+  start_date: "2024-03-22"
+  end_date: "2024-03-25"
+  date_display: 22–25 Mar 2024
   title: Model Consistency of Iterative Regularization
   session:
   conference: 深圳应用反问题理论与数值方法研讨会
   location: 深圳北理莫斯科大学，深圳
-  details_language: zh-CN
+  lang: zh-CN
   session_url:
   conf_url:
   slides:
-- year: 2024
-  date: 08-11 Jan
-  title: Partial Smoothness:&nbsp;from Functions to Sub-differentials and Beyond
+- id: ims-2024-partial-smoothness
+  start_date: "2024-01-08"
+  end_date: "2024-01-11"
+  date_display: 8–11 Jan 2024
+  title: "Partial Smoothness: from Functions to Sub-differentials and Beyond"
   session:
   conference: IMS Young Mathematical Scientists Forum — Applied Mathematics
   location: Institute for Mathematical Sciences (IMS), National University of Singapore, Singapore
+  lang: en
   session_url:
   conf_url: https://ims.nus.edu.sg/events/ims_forummath2023/
-  slides:
-- year: 2023
-  date:
-  title:
-  session:
-  conference:
-  location:
-  session_url:
-  conf_url:
   slides:

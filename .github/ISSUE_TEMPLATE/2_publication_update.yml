@@ -26,6 +26,12 @@ body:
     validations:
       required: true
 
+  - type: input
+    id: citation_key
+    attributes:
+      label: Existing citation key (corrections only)
+      description: Copy the key from papers.bib when correcting or removing an existing entry.
+
   - type: textarea
     id: authors
     attributes:
@@ -91,6 +97,14 @@ body:
     attributes:
       label: Abstract, code, award, or other notes
       description: Optional. Include only information that may be published.
+
+  - type: checkboxes
+    id: homepage_nomination
+    attributes:
+      label: Homepage nomination (optional)
+      description: The homepage always has exactly three maintainer-curated papers; this is a proposal, not an automatic placement.
+      options:
+        - label: Please consider this paper for a homepage featured slot.
 
   - type: checkboxes
     id: confirmation

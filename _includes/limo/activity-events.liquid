@@ -7,7 +7,7 @@
     {%- endfor %}
   </div>
 {% else %}
-  {% assign groups = activity_items | group_by: 'year' %}
+  {% assign groups = activity_items | group_by_exp: 'item', "item.start_date | date: '%Y'" %}
   {% assign current_year = 'now' | date: '%Y' | plus: 0 %}
   {% assign archive_before = current_year | minus: 2 %}
   <div class="limo-activity-years">

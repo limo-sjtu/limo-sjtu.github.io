@@ -28,6 +28,18 @@ body:
     validations:
       required: true
 
+  - type: input
+    id: chinese_name
+    attributes:
+      label: Chinese name (if applicable)
+      description: Use the exact Chinese characters that may be shown after the romanized name.
+
+  - type: input
+    id: sort_name
+    attributes:
+      label: Pinyin sort name
+      description: Required for students and alumni. Use "Family-name Given-name" order, for example "Bai Yifan".
+
   - type: dropdown
     id: category
     attributes:
@@ -59,6 +71,18 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: alumni_degree
+    attributes:
+      label: Alumni degree group
+      description: Required when the requested category is Alumni; otherwise choose Not applicable.
+      options:
+        - Not applicable
+        - phd
+        - masters
+    validations:
+      required: true
+
   - type: checkboxes
     id: research_areas
     attributes:
@@ -78,6 +102,7 @@ body:
         Research interests:
         Public contact (use "name at domain dot com" format):
         Education / experience:
+        For alumni, replace any "Now" or "Present" education end date with the confirmed completion date:
         Short biography:
     validations:
       required: true

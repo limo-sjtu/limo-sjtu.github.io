@@ -10,8 +10,8 @@
   type: time_table
   contents:
     - title: Master in Mathematics
-      institution: Institute of Natural Science and School of Mathematical Sciences, Shanghai Jiao Tong University
-      year: 2022.09 - now
+      institution: Institute of Natural Sciences and School of Mathematical Sciences, Shanghai Jiao Tong University
+      year: Completed # Exact graduation date to be confirmed.
 
     - title: Bachelor in Information and Computing Science
       institution: School of Mathematics, Hunan University
@@ -21,7 +21,7 @@
   type: time_table
   contents:
     - title: TikTok information Service Co., Ltd
-      year: 2024.04 - now
+      year: 2024.04 - Present
       description: Business Analysis
 
 - title: Honors and Awards

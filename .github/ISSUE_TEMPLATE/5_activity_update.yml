@@ -1,0 +1,66 @@
+name: 📅 Activity update
+description: Request an event, talk, editorial service, or referee-list update.
+title: "[Activity] "
+body:
+  - type: dropdown
+    id: activity_type
+    attributes:
+      label: Activity type
+      options:
+        - Organized event or session
+        - Invited talk
+        - Editorial service
+        - Conference or journal referee list
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Activity title
+    validations:
+      required: true
+
+  - type: input
+    id: start_date
+    attributes:
+      label: Start date or service period
+      description: For events and talks, use an exact ISO date. For ongoing service, use a readable period such as "2024 - Present".
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+
+  - type: input
+    id: end_date
+    attributes:
+      label: End date (events and talks)
+      description: Required for events and talks, including one-day activities (repeat the start date).
+      placeholder: YYYY-MM-DD
+
+  - type: input
+    id: date_display
+    attributes:
+      label: Public date label (events and talks)
+      description: Human-readable label, for example "24–27 Oct 2024".
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Structured details
+      description: Include conference or venue, session, location, organizers with affiliations, role, language code (en or zh-CN), and any public slides link that applies.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Supporting public links
+      description: Conference, program, announcement, slides, or organization page.
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I confirm that these facts may be published on the public LIMO website.
+          required: true

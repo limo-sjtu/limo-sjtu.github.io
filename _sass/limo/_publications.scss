@@ -215,8 +215,8 @@
   margin-top: 0.375rem;
 }
 
-.limo-publication-tabs .publications ol.bibliography li .links button.btn,
-.limo-publication-tabs .publications ol.bibliography li .links a.btn {
+.publications ol.bibliography li .links button.btn,
+.publications ol.bibliography li .links a.btn {
   display: inline-flex;
   box-sizing: border-box;
   height: 1.5rem;
@@ -235,24 +235,24 @@
   border-radius: 0.2rem;
 }
 
-.limo-publication-tabs .publications ol.bibliography li .links button.btn:hover,
-.limo-publication-tabs .publications ol.bibliography li .links button.btn:focus-visible,
-.limo-publication-tabs .publications ol.bibliography li .links a.btn:hover,
-.limo-publication-tabs .publications ol.bibliography li .links a.btn:focus-visible {
+.publications ol.bibliography li .links button.btn:hover,
+.publications ol.bibliography li .links button.btn:focus-visible,
+.publications ol.bibliography li .links a.btn:hover,
+.publications ol.bibliography li .links a.btn:focus-visible {
   color: var(--global-theme-color);
   border-color: var(--global-theme-color);
   outline: none;
 }
 
-.limo-publication-tabs .publications ol.bibliography li .links button.award.btn {
+.publications ol.bibliography li .links button.award.btn {
   color: var(--global-hover-text-color);
   font-weight: 600;
   background: var(--global-highlight-color);
   border-color: var(--global-highlight-color);
 }
 
-.limo-publication-tabs .publications ol.bibliography li .links button.award.btn:hover,
-.limo-publication-tabs .publications ol.bibliography li .links button.award.btn:focus-visible {
+.publications ol.bibliography li .links button.award.btn:hover,
+.publications ol.bibliography li .links button.award.btn:focus-visible {
   color: var(--global-hover-text-color);
   background: color-mix(in srgb, var(--global-highlight-color) 82%, #000);
   border-color: color-mix(in srgb, var(--global-highlight-color) 82%, #000);

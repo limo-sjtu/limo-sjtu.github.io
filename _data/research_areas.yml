@@ -12,10 +12,8 @@
     - Computational sensing
     - Scientific and engineering imaging
   publication_topics:
-    - id: imaging
-      label: Imaging publications
-    - id: optimization
-      label: Optimization publications
+    - imaging
+    - optimization
 
 - id: medical-imaging
   title: Medical Imaging
@@ -31,10 +29,8 @@
     - Low-dose and limited-angle imaging
     - X-ray image analysis
   publication_topics:
-    - id: imaging
-      label: Imaging publications
-    - id: learning
-      label: Machine-learning publications
+    - imaging
+    - learning
 
 - id: optimization-learning
   title: Optimization and Machine Learning
@@ -50,7 +46,5 @@
     - Optimal transport and graph learning
     - Reliable learning for inverse problems
   publication_topics:
-    - id: optimization
-      label: Optimization publications
-    - id: learning
-      label: Machine-learning publications
+    - optimization
+    - learning

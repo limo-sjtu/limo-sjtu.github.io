@@ -14,6 +14,7 @@ footer_text: >
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 keywords: # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
+timezone: Asia/Shanghai
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://limo-sjtu.github.io # the base hostname & protocol for your site
@@ -37,15 +38,16 @@ al_folio:
     version: 4.1.18
     preflight: false
     css_entry: assets/tailwind/app.css
+  # Core validates this contract even though the optional Distill plugin is disabled.
   distill:
     engine: distillpub-template
     source: al-org-dev/distill-template#al-folio
     allow_remote_loader: false
   features:
     cv:
-      enabled: true
+      enabled: false
     distill:
-      enabled: true
+      enabled: false
   compat:
     bootstrap:
       # Site-owned templates no longer depend on the temporary v1 compatibility
@@ -284,14 +286,12 @@ exclude:
   - _pages/about_einstein.md
   - purgecss.config.js
   - README.md
+  - update.md
   - readme_preview/
-  - assets/file/information/
-  - assets/file/information.zip
-  - assets/html/relativity.html
-  - assets/img/people/profile.jpg
-  - assets/img/publication_preview/
-  - assets/jupyter/
+  # Real course files are retained in the repository but have no public page.
+  - assets/teaching/
   - docs/
+  - scripts/
   - vendor
 keep_files:
   - CNAME
@@ -303,9 +303,7 @@ plugins:
   - jekyll-archives-v2
   - jekyll-cache-bust
   - jekyll-email-protect
-  - jekyll-get-json
   - jekyll-imagemagick
-  - jekyll-jupyter-notebook
   - jekyll-link-attributes
   - jekyll-minifier
   - jekyll-paginate-v2
@@ -322,23 +320,7 @@ plugins:
   # al-folio v1.x runtime and feature plugins
   - al_folio_core
   - al_icons
-  - al_folio_cv
-  - al_folio_distill
   - al_folio_upgrade
-  - al_folio_bootstrap_compat
-  - al_cookie
-  - al_analytics
-  - al_citations
-  - al_ext_posts
-  - al_img_tools
-  - al_search
-  - al_charts
-  - al_math
-  - al_comments
-  - al_newsletter
-  - al_email_protect
-  - al_marimo
-  - al_rtl
 
 # Sitemap settings
 defaults:
@@ -396,7 +378,7 @@ scholar:
 
   source: /_bibliography/
   bibliography: papers.bib
-  bibliography_template: bib
+  bibliography_template: limo-bib
   # Note: if you have latex math in your bibtex, the latex filter
   # preprocessing may conflict with MathJAX if the latter is enabled.
   # See https://github.com/alshedivat/al-folio/issues/357.
@@ -409,16 +391,10 @@ scholar:
   details_link: Details
 
   query: "@*"
+  sort_by: year, month
+  order: descending
   group_by: year
   group_order: descending
-
-# Display different badges withs stats for your publications
-# Customize badge behavior in _layouts/bib.liquid
-enable_publication_badges:
-  altmetric: false # No bibliography entries currently use this badge.
-  dimensions: false # No bibliography entries currently use this badge.
-  google_scholar: false # Enable when citation IDs are maintained in papers.bib.
-  inspirehep: false # Enable when InspireHEP IDs are maintained in papers.bib.
 
 # Filter out certain bibtex entry keywords used internally from the bib output
 filtered_bibtex_keywords:
@@ -451,6 +427,7 @@ filtered_bibtex_keywords:
     spot_detail,
     highlights,
     highlights_detail,
+    homepage_featured,
   ]
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
@@ -735,24 +712,3 @@ third_party_libraries:
       js: "https://cdn.jsdelivr.net/npm/vega-lite@{{version}}/build/vega-lite.min.js"
       js_map: "https://cdn.jsdelivr.net/npm/vega-lite@{{version}}/build/vega-lite.min.js.map"
     version: "5.16.3"
-
-# -----------------------------------------------------------------------------
-# Get external JSON data
-# -----------------------------------------------------------------------------
-
-jekyll_get_json:
-  - data: resume
-    json: assets/json/resume.json # it can also be an url
-jsonresume:
-  - basics
-  - work
-  - education
-  - publications
-  - projects
-  - volunteer
-  - awards
-  - certificates
-  - skills
-  - languages
-  - interests
-  - references

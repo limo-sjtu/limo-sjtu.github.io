@@ -10,7 +10,7 @@ status: current
 position: Distinguished Professor
 research_areas: [imaging, optimization, learning]
 local_profile: /pi/
-redirect: https://math.sjtu.edu.cn/faculty/xqzhang/
+redirect: /pi/
 sitemap: false
 webpage: true
 scholar: https://scholar.google.com/citations?user=mzsf_aUAAAAJ&hl=en

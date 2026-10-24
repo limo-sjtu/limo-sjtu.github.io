@@ -4,7 +4,7 @@ permalink: /publications/
 title: Publications
 description: Research publications of the LIMO Lab in reverse chronological order.
 nav: true
-nav_order: 3
+nav_order: 4
 ---
 
 <p class="limo-page-lead">

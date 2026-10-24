@@ -22,7 +22,7 @@
   type: time_table
   contents:
     - title: Mathematical Formalization
-      year: 2024.07 - now
+      year: 2024.07 - Present
       description: Formalization of convergence analysis of algorithms in optimization using Lean4
 
     - title: Algorithm Engineer (Internship) at HUAWEI

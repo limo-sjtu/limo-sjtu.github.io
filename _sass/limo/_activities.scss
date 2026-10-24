@@ -53,15 +53,30 @@
   font-weight: 500;
 }
 
+.limo-activity-item__abstract {
+  margin-top: 0.5rem;
+}
+
+.limo-activity-item__abstract > summary {
+  width: fit-content;
+  color: var(--global-theme-color);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.limo-activity-item__abstract > p {
+  margin: 0.5rem 0 0;
+}
+
 .limo-activity-item__slides,
 .limo-activity-archive > summary {
   display: inline-block;
   padding: 0.2rem 0.55rem;
-  color: var(--global-hover-text-color);
+  color: var(--limo-on-accent);
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  background: var(--global-theme-color);
+  background: var(--limo-accent-fill);
   border-radius: 0.2rem;
 }
 

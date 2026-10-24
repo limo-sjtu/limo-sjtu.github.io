@@ -11,19 +11,19 @@
 - title: Education
   type: time_table
   contents:
-    - title: Phd in Mathematics
-      institution: Institute of Natural Science and School of Mathematical Sciences, Shanghai Jiao Tong University
-      year: 2021.09 - present
+    - title: PhD in Mathematics
+      institution: Institute of Natural Sciences and School of Mathematical Sciences, Shanghai Jiao Tong University
+      year: 2021.09 - Present
     - title: Bachelor in Mathematics & Chemical Biology
-      institution: School of Mathematical Sciences and College of Chemisty, Nankai University
+      institution: School of Mathematical Sciences and College of Chemistry, Nankai University
       year: 2017.09 - 2021.06
 
 - title: Experience
   type: time_table
   contents:
-    - title: talk at the 25th International Symposium on Mathematical Programming
+    - title: Talk at the 25th International Symposium on Mathematical Programming
       year: 2024
-      description: presented "Activity Identification in Non-smooth Optimization - A Set-Valued Operator Perspective"
+      description: Presented "Activity Identification in Non-smooth Optimization - A Set-Valued Operator Perspective"
 
 - title: Other Interests
   type: list

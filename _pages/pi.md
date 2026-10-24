@@ -3,7 +3,8 @@ layout: page
 title: PI
 permalink: /pi/
 description: Principal Investigator
-nav: false
+nav: true
+nav_order: 2
 ---
 
 <div class="limo-pi-profile">
@@ -11,7 +12,7 @@ nav: false
     <img src="{{ '/assets/img/people/xiaoqun.jpg' | relative_url }}" alt="Xiaoqun Zhang" width="200" height="300">
   </div>
   <div class="limo-pi-profile__details">
-    <h2>Xiaoqun Zhang</h2>
+    <h2>Xiaoqun Zhang (张小群)</h2>
     <p><b>Distinguished Professor</b><br>
     <a href="https://math.sjtu.edu.cn/" target="_blank">School of Mathematical Sciences</a> and
     <a href="http://ins.sjtu.edu.cn/" target="_blank">Institute of Natural Sciences</a><br>
@@ -65,4 +66,4 @@ Institute of Natural Sciences, Shanghai Jiao Tong University<br>
 
 <h3 class="section-title">Recruiting</h3>
 
-Currently recruiting PhD students and postdocs. Please email for details.
+Current recruiting information and inquiry instructions are available on the [Join Us page]({{ '/join/' | relative_url }}).

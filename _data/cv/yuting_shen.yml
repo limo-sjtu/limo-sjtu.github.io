@@ -26,11 +26,11 @@
 - title: Selected Publications
   type: publications
   contents:
-    - year: 2019.04
+    - year: "2019.04"
       name: Determinant of a rectangle matrix over the quaternion algebra
       publisher: Journal of Shanghai University (Natural Science)
       authors: Pingping Song, Yuxin Jiang, Yuting Shen.
-    - year: 2018.05
+    - year: "2018.05"
       name: A quaternion matrix equation involving φ-Hermicity
       publisher: JP Journal of Algebra, Number Theory & Applications
       authors: Deng Ye, Yuting Shen.

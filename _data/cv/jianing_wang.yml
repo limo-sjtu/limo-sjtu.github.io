@@ -3,21 +3,19 @@
   contents:
     - name: Email Address
       value: victorlurx at sjtu dot edu dot cn # do not use the full email address to avoid spam
-    - name: Address
-      value: None
     - name: Research Interests
-      value: machine learning
+      value: Optimization
 
 - title: Education
   type: time_table
   contents:
     - title: Master
       institution: School of Mathematical Sciences, SJTU
-      year: 2023.9 - Now
+      year: 2023.09 - Present
 
 - title: Honors and Awards
   type: time_table
   contents:
     - year: 2023
       items:
-        - first-class scholarship
+        - First-Class Scholarship

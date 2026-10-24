@@ -4,6 +4,7 @@ title: Self-Supervised Learning for X-Ray Bone Image Analysis Published
 description: A LIMO paper evaluating self-supervised learning for X-ray bone image analysis has been published.
 date: 2026-03-16
 kind: publication
+publication_key: zhao2026exploring
 inline: true
 related_posts: false
 ---

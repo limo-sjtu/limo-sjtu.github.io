@@ -1,3 +1,5 @@
+> **Upstream reference only.** This inherited al-folio document is not the authoritative content schema for LIMO. Follow [update.md](update.md) for current data sources, required fields, validation, and publishing workflow.
+
 # Customize
 
 Here we give you some tips on how to customize the website. Submit proposed updates through the process in the [website update guide](update.md) and [contribution guide](CONTRIBUTING.md). The maintainer implements approved changes on a feature branch and merges them into `master` after review. Do not edit `gh-pages` directly because deployment overwrites it.

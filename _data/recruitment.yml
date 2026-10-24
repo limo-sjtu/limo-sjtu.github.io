@@ -1,0 +1,25 @@
+enabled: true
+homepage_summary: >-
+  We welcome inquiries from prospective PhD students and postdoctoral researchers interested in imaging, optimization, inverse problems, and machine learning.
+lead: >-
+  LIMO welcomes inquiries from prospective PhD students and postdoctoral researchers who are interested in the mathematical foundations and practical applications of imaging, optimization, inverse problems, and machine learning.
+opportunities:
+  - title: PhD students
+    description: >-
+      We welcome applicants with strong preparation in applied mathematics, optimization, scientific computing, statistics, machine learning, or a related field.
+  - title: Postdoctoral researchers
+    description: >-
+      Researchers working in mathematical imaging, inverse problems, optimization, or theoretically grounded machine learning are encouraged to get in touch.
+contact_email: xqzhang at sjtu dot edu dot cn
+inquiry_requirements:
+  - a current curriculum vitae
+  - a short description of your research interests and how they connect to LIMO
+  - representative publications, preprints, code, or other relevant work
+  - your intended start date or application timeline
+availability_note: >-
+  Positions and funding depend on current availability. An inquiry is not an application or an offer; shortlisted candidates will receive information about the appropriate Shanghai Jiao Tong University application process.
+collaboration: >-
+  We also welcome research discussions and potential collaborations with academic, clinical, and industrial partners. In your message, please describe the problem, relevant background, and the type of collaboration you have in mind.
+location:
+  - Institute of Natural Sciences, Shanghai Jiao Tong University
+  - 800 Dongchuan Road, Minhang District, Shanghai 200240, China

@@ -2,7 +2,7 @@
   type: map
   contents:
     - name: Email Address
-      value: jz_liu at sjtu dot edu dot cn # do not use the full email address to avoid spam
+      value: jz_liu at sjtu dot edu dot cn # Public anti-spam form.
     - name: Address
       value: Room 502, No. 6 Science Building
     - name: Research Interests

@@ -1,3 +1,5 @@
+> **Upstream reference only.** This inherited al-folio document is not the authoritative setup or publishing guide for LIMO and may describe upstream defaults that this repository does not use. Follow [update.md](update.md) for the current LIMO workflow, validation commands, branch policy, and deployment process.
+
 # Table of Contents
 
 - [Table of Contents](#table-of-contents)

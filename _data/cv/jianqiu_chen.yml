@@ -2,9 +2,7 @@
   type: map
   contents:
     - name: Email Address
-      value: cjq63127230 at sjtu dot edu dot cn # do not use the full email address to avoid spam
-    - name: Address
-      value: None
+      value: cjq63127230 at sjtu dot edu dot cn # Public anti-spam form.
     - name: Research Interests
       value: Stochastic Optimization
 
@@ -21,10 +19,10 @@
   type: time_table
   contents:
     - title: Commodity Futures and Cryptocurrency Quantitative Strategy Development
-      year: 2024.05 - Now
+      year: 2024.05 - Present
       description: Trend Following, Multi-Factor Model, Machine Learning, Portfolio Optimization
 
 - title: Other Interests
   type: list
   contents:
-    - <b>Hobbies:</b> Trading, Running 2, etc.
+    - <b>Hobbies:</b> Trading, Running, etc.

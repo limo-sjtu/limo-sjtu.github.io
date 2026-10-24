@@ -4,7 +4,7 @@ permalink: /people/
 title: People
 description: Faculty, students, and alumni of the LIMO Lab.
 nav: true
-nav_order: 2
+nav_order: 3
 display_categories: [Faculty, Post-doc, PhD student, Master student, Undergraduate, Alumni]
 ---
 

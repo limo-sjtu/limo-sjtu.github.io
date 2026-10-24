@@ -28,8 +28,17 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2.2"
+          ruby-version: "3.3.5"
           bundler-cache: true
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install Node dependencies 💾
+        env:
+          CHROMEDRIVER_SKIP_DOWNLOAD: "true"
+        run: npm ci
       - name: Update _config.yml ⚙️
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -43,13 +52,10 @@ jobs:
           '
       - name: Install and Build 🔧
         run: |
-          pip3 install --upgrade jupyter
           export JEKYLL_ENV=production
           bundle exec jekyll build
       - name: Purge unused CSS 🧹
-        run: |
-          npm install -g purgecss
-          purgecss -c purgecss.config.js
+        run: npx purgecss -c purgecss.config.js
       - name: Get Chromium version 🌐
         # https://github.com/GoogleChromeLabs/chrome-for-testing?tab=readme-ov-file#other-api-endpoints
         run: |
@@ -64,17 +70,48 @@ jobs:
           install-chromedriver: true
       - name: Run axe 🪓
         # https://github.com/dequelabs/axe-core-npm/tree/develop/packages/cli
+        env:
+          REQUESTED_PATH: ${{ github.event.inputs.url }}
         run: |
-          npm install -g @axe-core/cli
-          npm install -g http-server
-          http-server _site/ &
-          if [ -n "${{ github.event.inputs.url }}" ]; then
-            urls=("http://localhost:8080/${{ github.event.inputs.url }}")
+          npx http-server _site/ --silent &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..30}; do
+            curl --fail --silent http://localhost:8080/ >/dev/null && break
+            sleep 1
+          done
+          curl --fail --silent http://localhost:8080/ >/dev/null
+
+          if [ -n "$REQUESTED_PATH" ]; then
+            clean_path="${REQUESTED_PATH#/}"
+            urls=("http://localhost:8080/$clean_path")
           else
             urls=(
               "http://localhost:8080/"
+              "http://localhost:8080/research/"
+              "http://localhost:8080/pi/"
               "http://localhost:8080/people/"
               "http://localhost:8080/publications/"
+              "http://localhost:8080/news/"
+              "http://localhost:8080/join/"
+              "http://localhost:8080/activities/events/"
+              "http://localhost:8080/activities/talks/"
+              "http://localhost:8080/activities/services/"
+              "http://localhost:8080/people/yifan_bai/"
+              "http://localhost:8080/404.html"
             )
           fi
-          axe --chromedriver-path "${{ steps.setup-chrome.outputs.chromedriver-path }}" "${urls[@]}" --load-delay=1500 --exit
+
+          run_axe() {
+            if ! npx axe --chromedriver-path "${{ steps.setup-chrome.outputs.chromedriver-path }}" "$@" --load-delay=1500 --exit; then
+              sleep 2
+              npx axe --chromedriver-path "${{ steps.setup-chrome.outputs.chromedriver-path }}" "$@" --load-delay=1500 --exit
+            fi
+          }
+
+          failed=0
+          for url in "${urls[@]}"; do
+            run_axe "$url" || failed=1
+            run_axe --chrome-options="--force-dark-mode" "$url" || failed=1
+          done
+          exit "$failed"

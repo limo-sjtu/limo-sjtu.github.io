@@ -15,9 +15,9 @@
       <span id="limo-publication-topic-label" class="limo-publication-controls__label">Research topic</span>
       <div class="limo-publication-tabs__list">
         <button type="button" aria-pressed="true" data-limo-publication-filter="all">All topics</button>
-        <button type="button" aria-pressed="false" data-limo-publication-filter="imaging">Imaging</button>
-        <button type="button" aria-pressed="false" data-limo-publication-filter="optimization">Optimization</button>
-        <button type="button" aria-pressed="false" data-limo-publication-filter="learning">Machine Learning</button>
+        {% for topic in site.data.publication_topics %}
+          <button type="button" aria-pressed="false" data-limo-publication-filter="{{ topic.id }}">{{ topic.label }}</button>
+        {% endfor %}
       </div>
     </div>
 
