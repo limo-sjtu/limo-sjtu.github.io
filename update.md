@@ -1,5 +1,9 @@
 # LIMO website maintenance guide
 
+For workflow governance, access control, review states, deployment, rollback,
+and rollout planning, see [WEBSITE_UPDATE_WORKFLOW.md](WEBSITE_UPDATE_WORKFLOW.md).
+This guide defines the content schemas and day-to-day editing procedures.
+
 This repository uses a request-and-review workflow. Lab members submit facts through GitHub Issue Forms; the website maintainer decides what to publish, prepares the file changes, reviews the pull request, and merges it. Submitting a request never changes the website automatically.
 
 ## Roles and access
