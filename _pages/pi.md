@@ -22,9 +22,9 @@ nav_order: 2
       <i class="fa-solid fa-envelope"></i> xqzhang at sjtu dot edu dot cn<br>
       <i class="fa-solid fa-phone"></i> (+86) 21-5474-5874<br>
       <i class="fa-solid fa-location-dot"></i> Room 349, No. 6 Science Building<br>
-      <i class="fa-solid fa-house-user"></i> <a href="https://math.sjtu.edu.cn/faculty/xqzhang/" target="_blank">Personal Homepage</a>
+      <!-- <i class="fa-solid fa-house-user"></i> <a href="https://math.sjtu.edu.cn/faculty/xqzhang/" target="_blank">Personal Homepage</a>
       &nbsp;·&nbsp;
-      <i class="ai ai-google-scholar-square"></i> <a href="https://scholar.google.com/citations?user=mzsf_aUAAAAJ&hl=en" target="_blank">Google Scholar</a>
+      <i class="ai ai-google-scholar-square"></i> <a href="https://scholar.google.com/citations?user=mzsf_aUAAAAJ&hl=en" target="_blank">Google Scholar</a> -->
     </p>
 
   </div>
@@ -64,6 +64,4 @@ Institute of Natural Sciences, Shanghai Jiao Tong University<br>
 - Sep 2000 - Jul 2003: M.S. in Applied Mathematics
 - Sep 1996 - Jul 2000: B.S. in Computational Mathematics
 
-<h3 class="section-title">Recruiting</h3>
 
-Current recruiting information and inquiry instructions are available on the [Join Us page]({{ '/join/' | relative_url }}).

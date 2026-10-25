@@ -3,12 +3,20 @@ changelog:
     labels:
       - ignore-for-release
   categories:
-    - title: new features 🚀
+    - title: profile updates 👤
       labels:
-        - enhancement
-    - title: bug fixes and improvements ✨
+        - "type: profile"
+    - title: publication updates 📚
       labels:
-        - bug-fix
+        - "type: publication"
+    - title: news and activities 📣
+      labels:
+        - "type: news"
+        - "type: activity"
+    - title: corrections and maintenance 🛠️
+      labels:
+        - "type: correction"
+        - "type: maintenance"
     - title: other changes 🛠️
       labels:
         - "*"
